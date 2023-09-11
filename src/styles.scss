@@ -1,0 +1,315 @@
+@import "~@angular/material/theming";
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+
+* {
+    -webkit-overflow-scrolling: touch;
+    font-family: "Quicksand", sans-serif;
+}
+
+@include mat-core();
+
+$Jobsngon-primary: mat-palette($mat-indigo);
+$Jobsngon-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$Jobsngon-warn: mat-palette($mat-red);
+
+$Jobsngon-theme: mat-light-theme((color: (primary: $Jobsngon-primary,
+                accent: $Jobsngon-accent,
+                warn: $Jobsngon-warn,
+            ),
+        ));
+
+@include angular-material-theme($Jobsngon-theme);
+
+
+sup {
+    color: red;
+    font-size: 12px;
+}
+
+.ngx-pagination .current {
+    background: #009900 !important;
+    ;
+}
+
+.input-enter {
+    padding: 8px;
+    border-radius: 5px !important;
+    font-weight: 700;
+}
+
+.ant-card-head,
+.ant-layout-header {
+    padding: 0 !important;
+}
+
+.mat-dialog-container {
+    padding: 8px !important;
+    // background: transparent linear-gradient(179deg, #edfff5, #fff) 0 0 no-repeat padding-box !important
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: #009900 !important;
+}
+
+textarea::-webkit-scrollbar {
+    width: 4px;
+}
+
+textarea::-webkit-scrollbar-track {
+    --webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--ion-color-hu-green);
+    outline: 1px solid slategrey;
+}
+
+.no-data {
+    font-size: 1rem;
+    width: 100%;
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.input-view {
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    resize: none;
+    /*remove the resize handle on the bottom right*/
+}
+
+
+/* CSS- zorro component*/
+
+.ant-menu-inline .ant-menu-item::after {
+    border-right: 3px solid var(--ion-color-hu-green);
+}
+
+.ant-menu-item-active,
+.ant-menu-item:hover,
+.ant-menu-submenu-active,
+.ant-menu-submenu-title:hover,
+.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-submenu-selected,
+.ant-menu-item-selected,
+.ant-menu-item-selected a,
+.ant-menu-item-selected a:hover {
+    color: var(--ion-color-hu-green) !important;
+    // border-bottom: 1px solid var(--ion-color-hu-green) !important
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: transparent !important;
+}
+
+.ant-menu-submenu-inline>.ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after {
+    background: linear-gradient(to right, var(--ion-color-hu-green), var(--ion-color-hu-green));
+}
+
+.ant-dropdown-menu-item-selected,
+.ant-dropdown-menu-item-selected>a,
+.ant-dropdown-menu-submenu-title-selected,
+.ant-dropdown-menu-submenu-title-selected>a {
+    color: var(--ion-color-hu-green) !important;
+    background: white !important
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn,
+.ant-tabs-tab:hover {
+    color: var(--ion-color-hu-green) !important;
+}
+
+.ant-tabs-ink-bar {
+    background: var(--ion-color-hu-green) !important;
+}
+
+.ant-checkbox-checked::after {
+    background-color: var(--ion-color-hu-green) !important;
+    border: 1px solid var(--ion-color-hu-green);
+    color: var(--ion-color-hu-green) !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--ion-color-hu-green) !important;
+    border-color: var(--ion-color-hu-green) !important;
+}
+
+.ant-input:focus {
+    box-shadow: none;
+}
+
+.ant-select:focus {
+    box-shadow: none;
+}
+
+
+.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+    border: 1px solid var(--ion-color-hu-green);
+}
+
+.ant-picker-today-btn {
+    color: var(--ion-color-hu-green);
+}
+
+.ant-picker-focused {
+    border-color: none !important;
+}
+
+.ant-picker-focused,
+.ant-picker:hover {
+    border-color: var(--ion-color-hu-green);
+}
+
+.ant-layout-sider-trigger {
+    background-color: var(--ion-color-hu-green) !important;
+    border-top: 1px solid;
+}
+
+.ant-picker-input>input:focus {
+    border-color: var(--ion-color-hu-green);
+}
+
+.ant-btn-primary {
+    background: var(--ion-color-hu-green) !important;
+    border-color: var(--ion-color-hu-green) !important;
+}
+
+.ant-modal-body {
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+}
+
+.ant-modal-body::-webkit-scrollbar {
+    width: 0px !important;
+    /* For Chrome, Safari, and Opera */
+}
+
+.ant-layout,
+.ant-modal {
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+}
+
+.ant-layout::-webkit-scrollbar,
+.ant-modal::-webkit-scrollbar {
+    width: 0px;
+    /* For Chrome, Safari, and Opera */
+}
+
+.ant-radio-input:focus+.ant-radio-inner,
+.ant-radio-wrapper:hover .ant-radio,
+.ant-radio:hover .ant-radio-inner {
+    border-color: var(--ion-color-hu-green) !important;
+    color: var(--ion-color-hu-green) !important;
+}
+
+.ant-radio-checked .ant-radio-inner {
+    border-color: var(--ion-color-hu-green) !important;
+}
+
+
+.ant-radio-checked {
+    color: var(--ion-color-hu-green) !important;
+}
+
+
+.nz-hover-border:focus,
+.ant-pagination-item:focus {
+    color: var(--ion-color-hu-black) !important;
+    border-color: var(--ion-color-hu-green) !important;
+}
+
+.nz-hover-border:hover,
+.ant-pagination-item:hover {
+    color: var(--ion-color-hu-black) !important;
+    border-color: var(--ion-color-hu-green) !important;
+}
+
+.nz-hover-border-green:focus,
+.nz-hover-border-green:hover {
+    color: var(--ion-color-hu-white) !important;
+    background: var(--ion-color-hu-green) !important;
+    border-color: var(--ion-color-hu-green) !important;
+}
+
+.ant-radio-checked+label::after {
+    background: var(--ion-color-hu-green) !important;
+    color: var(--ion-color-hu-green) !important;
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-color: var(--ion-color-hu-green);
+    box-shadow: none;
+}
+
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+    border-color: var(--ion-color-hu-green);
+}
+
+.ant-input-number:hover {
+    border-color: var(--ion-color-hu-green) !important;
+}
+
+input {
+    width: 100px;
+    margin-left: 10px;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-radius: 5px !important;
+}
+
+.ant-switch {
+    border-radius: 100px !important;
+}
+
+.ant-switch-checked {
+    background-color: var(--ion-color-hu-green) !important;
+}
+
+/* ----------------------------------------- */
+
+html {
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar {
+    width: 0px;
+    /* For Chrome, Safari, and Opera */
+}
+
+body {
+    -webkit-overflow-scrolling: touch;
+}
+
+.ant-table-pagination.ant-pagination {
+    margin: 0 !important;
+    background: white !important;
+    position: sticky !important;
+    bottom: 0px !important;
+    height: 48px !important;
+}

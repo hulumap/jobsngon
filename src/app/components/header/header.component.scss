@@ -1,0 +1,56 @@
+nav {
+    box-shadow: 0 4px 8px 0 rgba(168, 178, 186, .3);
+    background-color: white !important;
+
+    a {
+        font-size: 14px;
+        font-weight: 600;
+        color: #4f535b !important;
+        margin-right: 30px;
+    }
+
+    a:hover {
+        color: #009900 !important;
+    }
+
+    .login {
+        border: 0.5px solid lightgray;
+        margin: 4px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #4f535b !important;
+    }
+
+    .sign-up {
+        font-weight: 600;
+        background: #009900;
+        color: white;
+        margin: 8px;
+        font-size: 14px;
+    }
+
+    .line {
+        height: 48px;
+        width: 1px;
+        background-color: #e8e8e8;
+    }
+
+    .ntd {
+        margin-left: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        .icon {
+            font-size: 22px;
+            color: #009900;
+            margin-right: 4px;
+        }
+
+        .title {
+            font-weight: 600;
+            color: #4f535b !important;
+            font-size: 14px;
+        }
+    }
+}

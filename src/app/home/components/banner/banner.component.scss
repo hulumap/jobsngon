@@ -1,0 +1,108 @@
+.banner-image {
+    background-image: url('https://freec.asia/_next/static/image/_/_/packages/optimal-page/wrapper/home/assets/img/hero-bg.2380e96d80b27db77a176d33b9d46801.png');
+    background-position: bottom center;
+    background-size: 1385px 443px;
+    background-color: #cff7d2;
+    height: 500px;
+
+    .wrapper-container {
+        max-width: 1230px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
+
+        .row {
+            height: 100%;
+
+            .col {
+                height: 100%;
+                max-width: 50% !important;
+            }
+
+            @media (max-width: 768px) {
+                .col {
+                    max-width: 100% !important;
+                }
+            }
+
+            .search-jobs {
+                padding-top: 79px;
+                padding-bottom: 68px;
+            }
+
+            .title {
+                font-size: 48px;
+                line-height: 56px;
+                color: #0c1f47;
+                font-weight: bold;
+            }
+
+            .sub-title {
+                font-size: 18px;
+                line-height: 26px;
+                color: #0c1f47;
+                margin-bottom: 32px
+            }
+
+            .fr-search {
+                max-width: 588px;
+                padding: 10px 10px 10px 16px;
+                margin-bottom: 16px;
+                border-radius: 8px;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #fff;
+                box-shadow: 0 4px 8px 0 rgba(168, 178, 186, .2);
+                display: flex;
+
+                .input-search {
+                    width: 75%;
+                    display: flex;
+                    align-items: center;
+
+                    span {
+                        color: gray;
+                        font-size: 22px;
+                    }
+
+                    input {
+                        border: none;
+                        width: 100%;
+                        font-size: 18px;
+                        outline: none;
+                    }
+                }
+
+
+
+                .btn-search {
+                    width: unset;
+                    padding: 18px;
+                    border-radius: 8px;
+                    margin-bottom: 0;
+                    outline: 0;
+                    border: none;
+                    box-shadow: 0 4px 28px 0 rgba(187, 187, 187, .11);
+                    background-color: #009900;
+                    color: #fff;
+                    width: 25%;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+
+
+            }
+
+            .industry {
+                span {
+                    font-size: 14px;
+                    line-height: 22px;
+                    color: #000;
+                    margin: 4px
+                }
+            }
+        }
+    }
+}

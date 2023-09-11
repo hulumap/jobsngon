@@ -1,0 +1,30 @@
+<div nz-col class='col' style="max-width: 400px;">
+    <h2 style="text-align: center; color: #00b14f; font-weight: bold;">Đăng Nhập</h2>
+    <h3 style="text-align: center; color: #00b14f;">Dành cho cộng tác viên</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="tryLogin(loginForm.value)">
+        <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="email" placeholder="Email" />
+        </nz-input-group>
+        <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+            <input [type]="passwordVisible ? 'text' : 'password'" (keyup)="checkKey($event)" nz-input
+                formControlName="password" placeholder="Mật khẩu" />
+        </nz-input-group>
+        <ng-template #suffixTemplate>
+            <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"></i>
+        </ng-template>
+        <button type="submit" nz-button [disabled]="loginForm.invalid" [nzType]="'primary'">
+
+            <span *ngIf="!loading">Đăng nhập</span>
+            <i *ngIf="loading" nz-icon nzType="loading" nzTheme="outline"></i>
+        </button>
+    </form>
+    <h3 style="text-align: center; margin: 4px; font-size: 12px;">- OR - </h3>
+    <button (click)="signinGoogle()" nz-button [nzType]="'primary'">
+        <i style="font-size: 24px;" nz-icon nzType="google" nzTheme="outline"></i> Đăng nhập bằng
+        Google</button>
+    <div nz-col nzSpan="24" style="padding-top: 8px; text-align: center;">
+        Bạn chưa có tài khoản? <a style="color:var(--ion-color-hu-green)" [routerLink]="['/login/signup']">Đăng
+            ký</a>
+    </div>
+</div>

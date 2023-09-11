@@ -1,0 +1,58 @@
+[
+    {
+        "name":"Cấp quản lý",
+        "id": 1
+    },
+    {
+        "name":"Kế toán",
+        "id": 2
+    },
+    {
+        "name":"Phiên dịch viên",
+        "id": 3
+    },
+    {
+        "name":"Kinh doanh/ Bán hàng",
+        "id": 4
+    },
+    {
+        "name":"Kỹ thuật cơ khí - điện",
+        "id": 5
+    },
+    {
+        "name":"QC - QA - ISO",
+        "id": 6
+    },
+    {
+        "name":"Quản lý sản xuất",
+        "id": 7
+    },
+    {
+        "name":"Thu mua",
+        "id": 8
+    },
+    {
+        "name":"Xuất nhập khẩu",
+        "id": 9
+    },
+    {
+        "name":"Thiết kế/ PLC, CAD",
+        "id": 10
+    },
+    {
+        "name":"HR - GA",
+        "id": 11
+    },
+    {
+        "name":"IT - Phần mềm",
+        "id": 12
+    },
+    {
+        "name":"IT - Phần cứng",
+        "id": 13
+    },
+    {
+        "name":"Ngành ngề khác",
+        "id": 60
+    }
+]

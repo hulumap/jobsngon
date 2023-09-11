@@ -1,0 +1,61 @@
+{
+  "name": "Jobsngon",
+  "author": {
+    "name": "Jobsngon",
+    "url": "https://jobsngon.com"
+  },
+  "description": "Jobsngon",
+  "version": "0.0.1",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve -o --port 4400",
+    "build": "ng build --prod"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~11.2.13",
+    "@angular/cdk": "^11.2.13",
+    "@angular/common": "~11.2.13",
+    "@angular/compiler": "~11.2.13",
+    "@angular/core": "~11.2.13",
+    "@angular/fire": "^6.1.5",
+    "@angular/forms": "~11.2.13",
+    "@angular/material": "^11.2.13",
+    "@angular/platform-browser": "~11.2.13",
+    "@angular/platform-browser-dynamic": "~11.2.13",
+    "@angular/router": "~11.2.13",
+    "cleave.js": "^1.6.0",
+    "dom-to-image": "^2.6.0",
+    "ng-dynamic-component": "^8.0.1",
+    "firebase": "^8.10.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.4.0",
+    "localforage": "^1.10.0",
+    "ng-zorro-antd": "^11.4.1",
+    "ngx-pagination": "^3.0.3",
+    "print-js": "^1.5.0",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.4.0",
+    "zone.js": "^0.11.6"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^0.1102.19",
+    "@angular/cli": "^11.2.19",
+    "@angular/compiler-cli": "~11.2.13",
+    "@types/jasmine": "~3.6.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.20.55",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "^6.4.0",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "^4.0.2",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.1.2"
+  }
+}

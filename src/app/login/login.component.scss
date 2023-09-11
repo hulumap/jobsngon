@@ -1,0 +1,20 @@
+.body {
+    height: 100%;
+    background: transparent linear-gradient(179deg, #edfff5, #fff) 0 0 no-repeat padding-box;
+    // padding: 48px;
+    border-radius: 5px;
+
+}
+
+.img {
+    background-image: url(https://jobsngon.com/wp-content/uploads/2023/04/cowomen-ZKHksse8tUU-unsplash-1.jpg);
+}
+
+.row {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}

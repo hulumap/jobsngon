@@ -112,6 +112,15 @@ export class Jobsngon {
       return this.storage.storage.refFromURL(downloadUrl).delete();
   }
 
+  paginateArray<T>(array: T[], page: number, pageSize: number): T[] {
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return array.slice(startIndex, endIndex);
+  }
+
+
+  // Firebase // 
+
 
   onAuthStateChanged() {
     return new Promise((resolve, rejects) => {

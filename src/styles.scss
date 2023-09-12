@@ -8,6 +8,10 @@
     font-family: "Quicksand", sans-serif;
 }
 
+body {
+   // background-color: #f6f8fc
+}
+
 @include mat-core();
 
 $Jobsngon-primary: mat-palette($mat-indigo);

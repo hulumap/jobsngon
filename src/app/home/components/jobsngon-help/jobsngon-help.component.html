@@ -7,10 +7,23 @@
         xây dựng đội ngũ nhân sự tài năng</h5>
     <div class="fr-jobs">
         <div class="row" style="padding: 16px;">
-            <div class="col-12">
-                <img style="width: 100%;"
-                    src="https://firebasestorage.googleapis.com/v0/b/viethmoon.appspot.com/o/jobsngon%2Fcv.png?alt=media&token=9c084a33-8547-4c2b-8dc4-392f105a2649"
-                    alt="">
+            <div class="col-12 col-sm-4 col-md-4 col-lg-4" *ngFor="let item of items" style="padding: 0;">
+                <div class="fr-main">
+                    <div style="height: 132px; text-align: center;">
+                        <img [src]="item.img" alt="" style="height: 100%;
+                        object-fit: contain;">
+                    </div>
+                    <div style="margin-top: 16px;">
+                        <div class="company-name">
+                            {{item.title}}
+                        </div>
+                    </div>
+                    <div style="margin-top: 16px;">
+                        <div class="position">
+                            {{item.subtitle}}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

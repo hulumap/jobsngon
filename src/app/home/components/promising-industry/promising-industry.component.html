@@ -8,22 +8,21 @@
         <div class="row" style="padding: 16px;">
             <div class="col-12">
                 <owl-carousel-o [options]="carouselOptions">
-                    <ng-container class="item" *ngFor="let item of company">
+                    <ng-container class="item" *ngFor="let item of industry">
                         <ng-template carouselSlide>
                             <div class="fr-main">
-                                <div style="height: 132px; text-align: center;">
-                                    <img [src]="item.company.logo" alt="" style="height: 100%;
+                                <div style="height: 80px; text-align: center;">
+                                    <img src="https://freec.asia/_next/image?url=%2F_next%2Fstatic%2Fimage%2F_%2F_%2Fpackages%2Foptimal-page%2Fwrapper%2Fhome%2Fassets%2Fimg%2FIT-NetworkHardware.5f873612fefbf9cd73a30bc2be225fc7.webp&w=48&q=75" alt="" style="height: 100%;
                                     object-fit: contain;">
                                 </div>
                                 <div style="margin-top: 32px;">
                                     <div class="company-name">
-                                        {{item.company.name}}
+                                        {{item.name}}
                                     </div>
                                 </div>
                                 <div style="margin-top: 32px;">
                                     <div class="position">
-                                        <span nz-icon nzType="form" nzTheme="outline" style="margin-right: 8px;"></span>
-                                        10 vị trí đang tuyển
+                                        Xem thêm
                                     </div>
                                 </div>
                             </div>

@@ -20,6 +20,7 @@
 
             @media (max-width: 768px) {
                 font-size: 22px;
+                text-align: center;
             }
 
         }
@@ -38,7 +39,37 @@
     }
 
     .fr-jobs {
-        margin-top: 32px;
+        margin-top: 16px;
 
+        .fr-main {
+            background-color: white;
+            // border: 1px solid lightgray;
+            border-radius: 5px;
+            padding: 8px;
+            margin: 8px;
+            //box-shadow: 0 4px 15px 0 rgba(168, 178, 186, .35);
+            cursor: pointer;
+
+            .company-name {
+                font-size: 20px;
+                line-height: 24px;
+                color: #0c1f47;
+                margin: 12px 0 2px 0;
+                font-weight: 700;
+                text-align: center;
+            }
+
+            .position {
+                //background-color: #f0fdf5;
+                border-radius: 4px;
+                padding: 5px 8px;
+                color: #000;
+                font-size: 15px;
+                //font-weight: 700;
+                text-align: center;
+                display: flex;
+                align-items: center
+            }
+        }
     }
 }

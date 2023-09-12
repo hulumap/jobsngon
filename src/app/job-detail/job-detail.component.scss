@@ -1,0 +1,59 @@
+.wrapper-container {
+    max-width: 1230px;
+    padding-top: 32px !important;
+    height: auto;
+    margin: auto;
+    padding-bottom: 32px;
+    
+    .info {
+        box-shadow: 0 2px 4px 0 rgba(168, 178, 186, .35);
+        padding: 16px;
+        background-color: white;
+        .info-text {
+            display: flex;
+            flex-direction: column;
+
+            h3 {
+                font-size: 16px;
+                color: gray;
+            }
+
+            h2 {
+                font-size: 24px;
+                font-weight: 800;
+            }
+
+            .send {
+                font-weight: 600;
+                background: #009900;
+                color: white;
+                padding: 12px 22px 12px 22px;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+
+
+    .description {
+        margin-top: 20px;
+        h3 {
+            color: #212f3f;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: -.16px;
+            line-height: 24px;
+            //margin: 0;
+        }
+    }
+}
+
+pre {
+    font-family: "Quicksand", sans-serif !important;
+    white-space: pre-line;
+    font-size: 15px;
+}

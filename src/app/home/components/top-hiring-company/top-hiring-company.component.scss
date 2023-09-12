@@ -60,6 +60,7 @@
                 display: -webkit-box;
                 -webkit-line-clamp: 1;
                 -webkit-box-orient: vertical;
+                text-align: center;
             }
 
             .position {
@@ -70,8 +71,7 @@
                 font-size: 14px;
                 font-weight: 700;
                 text-align: center;
-                display: flex;
-                align-items: center
+                text-align: center;
             }
         }
 

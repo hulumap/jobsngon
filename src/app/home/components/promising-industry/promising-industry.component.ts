@@ -15,67 +15,65 @@ export class PromisingIndustryComponent implements OnInit {
         items: 2 // Số lượng mục hiển thị cho màn hình nhỏ hơn 600px
       },
       600: {
-        items: 4 // Số lượng mục hiển thị cho màn hình rộng hơn hoặc bằng 600px
+        items: 6 // Số lượng mục hiển thị cho màn hình rộng hơn hoặc bằng 600px
       }
     }
   };
-  company: any = [
-    {
-      name: "NHÂN VIÊN NHÂN SỰ TỔNG VỤ 1",
-      company: {
-        name: "CÔNG TY TNHH JOBS NGON VIỆT NAM",
-        logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png",
-        number: 10
+  industry: any =
+    [
+      {
+        "name": "Kế toán",
+        "id": 2
       },
-      address: "Quận Bình Thạnh, TPHCM",
-      salary: " 15 – 20 mil VND"
-    },
-    {
-      name: "NHÂN VIÊN NHÂN SỰ TỔNG VỤ 2",
-      company: {
-        name: "CÔNG TY TNHH JOBS NGON VIỆT NAM",
-        logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png"
+      {
+        "name": "Phiên dịch viên",
+        "id": 3
       },
-      address: "Quận Bình Thạnh, TPHCM",
-      salary: " 15 – 20 mil VND"
-    },
-    {
-      name: "NHÂN VIÊN NHÂN SỰ TỔNG VỤ 3",
-      company: {
-        name: "CÔNG TY TNHH JOBS NGON VIỆT NAM",
-        logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png"
+      {
+        "name": "Kinh doanh/ Bán hàng",
+        "id": 4
       },
-      address: "Quận Bình Thạnh, TPHCM",
-      salary: " 15 – 20 mil VND"
-    },
-    {
-      name: "NHÂN VIÊN NHÂN SỰ TỔNG VỤ 4",
-      company: {
-        name: "CÔNG TY TNHH JOBS NGON VIỆT NAM",
-        logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png"
+      {
+        "name": "Kỹ thuật cơ khí - điện",
+        "id": 5
       },
-      address: "Quận Bình Thạnh, TPHCM",
-      salary: " 15 – 20 mil VND"
-    },
-    {
-      name: "NHÂN VIÊN NHÂN SỰ TỔNG VỤ 5",
-      company: {
-        name: "CÔNG TY TNHH JOBS NGON VIỆT NAM",
-        logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png"
+      {
+        "name": "QC - QA - ISO",
+        "id": 6
       },
-      address: "Quận Bình Thạnh, TPHCM",
-      salary: " 15 – 20 mil VND"
-    },
-    {
-      name: "NHÂN VIÊN NHÂN SỰ TỔNG VỤ 6",
-      company: {
-        name: "CÔNG TY TNHH JOBS NGON VIỆT NAM",
-        logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png"
+      {
+        "name": "Quản lý sản xuất",
+        "id": 7
       },
-      address: "Quận Bình Thạnh, TPHCM",
-      salary: " 15 – 20 mil VND"
-    },
-  ]
+      {
+        "name": "Xuất nhập khẩu",
+        "id": 9
+      },
+      {
+        "name": "HR - GA",
+        "id": 11
+      },
+      {
+        "name": "IT - Phần mềm",
+        "id": 12
+      },
+      {
+        "name": "IT - Phần cứng",
+        "id": 13
+      },
+      {
+        "name": "Hành chính thư ký",
+        "id": 14
+      },
+      {
+        "name": "Marketing",
+        "id": 16
+      },
+      {
+        "name": "Ngành ngề khác",
+        "id": 60
+      }
+    ]
 
   currentSlide = 0;
   constructor() { }

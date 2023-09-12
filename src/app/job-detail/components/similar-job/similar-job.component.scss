@@ -1,0 +1,48 @@
+.fr-jobs {
+    .fr-main {
+        background-color: white;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        padding: 8px;
+        margin: 8px;
+        //box-shadow: 0 4px 15px 0 rgba(168, 178, 186, .35);
+        cursor: pointer;
+        .fr-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 8px;
+
+            .name {
+                font-weight: 700;
+                text-transform: capitalize;
+            }
+        }
+
+        .fr-info {
+            display: flex;
+            width: 100%;
+            margin: 8px;
+
+            .company-name {
+                color: gray;
+                text-transform: capitalize;
+                font-weight: 700;
+            }
+
+            .info-jobs {
+                display: flex;
+                align-items: center;
+                margin-top: 4px;
+
+                .icon {
+                    margin-right: 4px;
+                    color: gray;
+                }
+            }
+        }
+    }
+    .fr-main:hover {
+        border-color: #009900;
+    }
+}

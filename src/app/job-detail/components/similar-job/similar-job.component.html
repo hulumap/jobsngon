@@ -1,0 +1,31 @@
+<div class="fr-jobs">
+    <div class="row" style="padding: 16px;">
+        <div class="col-12" *ngFor="let item of showJobs" style="padding: 0;">
+            <div class="fr-main">
+                <div class="fr-name">
+                    <span class="name">
+                        {{item.name}}
+                    </span>
+                </div>
+                <div class="fr-info">
+                    <div style="width: 20%;">
+                        <img [src]="item.company.logo" alt="" style="width: 64px;">
+                    </div>
+                    <div style="font-size: 13px;">
+                        <div class="company-name">
+                            {{item.company.name}}
+                        </div>
+                        <div class="info-jobs">
+                            <span class="icon" nz-icon nzType="wallet" nzTheme="outline"></span>
+                            <span style="font-weight: 700;">{{item.salary}}</span>
+                        </div>
+                        <div class="info-jobs">
+                            <span class="icon" nz-icon nzType="global" nzTheme="outline"></span>
+                            <span style="font-weight: 700;">{{item.address}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

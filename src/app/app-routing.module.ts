@@ -7,6 +7,14 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
+    path: 'viec-lam',
+    loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule),
+  },
+  {
+    path: 'viec-lam/:link',
+    loadChildren: () => import('./job-detail/job-detail.module').then(m => m.JobDetailModule),
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   }

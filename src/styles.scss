@@ -1,5 +1,7 @@
 @import "~@angular/material/theming";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 * {
     -webkit-overflow-scrolling: touch;

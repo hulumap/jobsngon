@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import {
   DatePipe,
   LocationStrategy,
@@ -26,9 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { NgZorroAntModule } from './ng-zorro-ant.module';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -39,7 +39,7 @@ import { NgZorroAntModule } from './ng-zorro-ant.module';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     MaterialModule,
-    NgZorroAntModule
+    NgZorroAntModule,
   ],
   providers: [
     Jobsngon,

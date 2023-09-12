@@ -10,7 +10,7 @@ import { JobsngonHelpComponent } from './components/jobsngon-help/jobsngon-help.
 import { TopHiringCompanyComponent } from './components/top-hiring-company/top-hiring-company.component';
 import { OutstandingJobComponent } from './components/outstanding-job/outstanding-job.component';
 import { PromisingIndustryComponent } from './components/promising-industry/promising-industry.component';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
 const routes: Routes = [
   {
     path: '',
@@ -33,6 +33,7 @@ const routes: Routes = [
     NgZorroAntModule,
     FormsModule,
     ReactiveFormsModule,
+    CarouselModule,
     RouterModule.forChild(routes),
   ]
 })

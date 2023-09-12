@@ -9,6 +9,7 @@ import { BannerCvComponent } from './components/banner-cv/banner-cv.component';
 import { JobsngonHelpComponent } from './components/jobsngon-help/jobsngon-help.component';
 import { TopHiringCompanyComponent } from './components/top-hiring-company/top-hiring-company.component';
 import { OutstandingJobComponent } from './components/outstanding-job/outstanding-job.component';
+import { PromisingIndustryComponent } from './components/promising-industry/promising-industry.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     BannerCvComponent,
     JobsngonHelpComponent,
     TopHiringCompanyComponent,
-    OutstandingJobComponent
+    OutstandingJobComponent,
+    PromisingIndustryComponent
   ],
   imports: [
     CommonModule,

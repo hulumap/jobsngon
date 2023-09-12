@@ -1,0 +1,44 @@
+.wrapper-container {
+    max-width: 1230px;
+    padding-top: 64px;
+    margin: auto;
+
+    .fr-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+            font-size: 32px;
+            margin-right: 8px;
+            color: #009900;
+        }
+
+        h3 {
+            font-weight: 700;
+            margin: 0;
+
+            @media (max-width: 768px) {
+                font-size: 22px;
+            }
+
+        }
+    }
+
+    h5 {
+        color: gray;
+        text-align: center;
+        font-size: 18px;
+        margin-top: 8px;
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
+
+    }
+
+    .fr-jobs {
+        margin-top: 32px;
+
+    }
+}

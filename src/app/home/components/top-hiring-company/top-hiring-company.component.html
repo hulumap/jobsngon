@@ -1,1 +1,30 @@
-<p>top-hiring-company works!</p>
+<div class="wrapper-container">
+    <div class="fr-title">
+        <span class="icon" nz-icon nzType="hdd" nzTheme="outline"></span>
+        <h3>Nhà tuyển dụng <span style="color: #009900;">hàng đầu</span> cho bạn</h3>
+    </div>
+    <h5>Vị trí hấp dẫn từ các công ty lớn đang chờ bạn</h5>
+    <div class="fr-jobs">
+        <div class="row" style="padding: 16px;">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2" *ngFor="let item of company" style="padding: 0;">
+                <div class="fr-main">
+                    <div style="height: 132px; text-align: center;">
+                        <img [src]="item.company.logo" alt="" style="height: 100%;
+                        object-fit: contain;">
+                    </div>
+                    <div style="margin-top: 32px;">
+                        <div class="company-name">
+                            {{item.company.name}}
+                        </div>
+                    </div>
+                    <div style="margin-top: 32px;">
+                        <div class="position">
+                            <span nz-icon nzType="form" nzTheme="outline" style="margin-right: 8px;"></span> 10 vị trí đang tuyển
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

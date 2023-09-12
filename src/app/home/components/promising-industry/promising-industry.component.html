@@ -1,1 +1,27 @@
-<p>promising-industry works!</p>
+<div class="wrapper-container">
+    <div class="fr-title">
+        <span class="icon" nz-icon nzType="pic-center" nzTheme="outline"></span>
+        <h3>Các ngành nghề <span style="color: #009900;">triển vọng</span> cho bạn</h3>
+    </div>
+    <h5>Lựa chọn ngành nghề phù hợp với bạn</h5>
+    <div class="fr-jobs">
+        <div class="row" style="padding: 16px;">
+            <div class="col-12">
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item" *ngFor="let product of products">
+                                <img [src]="product.imageUrl" alt="{{ product.name }}">
+                                <h4>{{ product.name }}</h4>
+                                <p>{{ product.description }}</p>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" (click)="prevSlide()">&#10094;</a>
+                        <a class="carousel-control-next" (click)="nextSlide()">&#10095;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

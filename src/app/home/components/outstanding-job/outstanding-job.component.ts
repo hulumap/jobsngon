@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Jobsngon } from 'src/app/service/jobsngon.service';
 
 @Component({
@@ -122,7 +123,7 @@ export class OutstandingJobComponent implements OnInit {
   currentPage = 1;
   pageSize = 12;
   totalPages: any = 0
-  constructor(private jobsngon: Jobsngon) { }
+  constructor(private jobsngon: Jobsngon, private router: Router) { }
 
   ngOnInit(): void {
     this.totalPages = Math.ceil(this.jobs.length / this.pageSize);
@@ -144,5 +145,9 @@ export class OutstandingJobComponent implements OnInit {
       this.currentPage = this.currentPage + 1;
       this.showJobs = this.jobsngon.paginateArray(this.jobs, this.currentPage, this.pageSize)
     }
+  }
+
+  gotoJobDetail(job) {
+    this.router.navigate(['/viec-lam', job.name]);
   }
 }

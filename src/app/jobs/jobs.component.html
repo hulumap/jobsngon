@@ -1,1 +1,31 @@
-<p>jobs works!</p>
+<div style="width: 100%; background-color: #f6f8fc;;">
+    <div class="wrapper-container">
+        <div class="fr-search">
+            <div style="width: 35%; padding: 4px;">
+                <nz-input-group style="color: #000;
+                border-radius: 4px;
+                padding: 12px;" [nzPrefix]="prefixTemplateUser">
+                    <input type="text" nz-input placeholder="Enter your username" />
+                </nz-input-group>
+                <ng-template #prefixTemplateUser><span nz-icon nzType="search" nzTheme="outline"></span></ng-template>
+            </div>
+            <div style="width: 25%;">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả nghề nghiệp" [(ngModel)]="type_job">
+                    <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                    <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                    <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                </nz-select>
+            </div>
+            <div style="width: 25%;">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả địa điểm" [(ngModel)]="type_address">
+                    <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                    <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                    <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                </nz-select>
+            </div>
+            <div style="width: 15%;">
+                <button class="btn-search">Tìm kiếm</button>
+            </div>
+        </div>
+    </div>
+</div>

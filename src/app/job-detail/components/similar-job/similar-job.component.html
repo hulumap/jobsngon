@@ -1,6 +1,6 @@
 <div class="fr-jobs">
     <div class="row" style="padding: 16px;">
-        <div class="col-12" *ngFor="let item of showJobs" style="padding: 0;">
+        <div class="col-12" *ngFor="let item of showJobs" style="padding: 0;" (click)="gotoJobDetail(item)">
             <div class="fr-main">
                 <div class="fr-name">
                     <span class="name">

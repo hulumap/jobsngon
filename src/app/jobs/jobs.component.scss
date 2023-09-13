@@ -1,0 +1,44 @@
+.wrapper-container {
+    max-width: 1230px;
+    padding-top: 32px !important;
+    height: auto;
+    margin: auto;
+    padding-bottom: 32px;
+
+    .fr-search {
+        min-height: 112px;
+        padding: 6px 0 4px 0;
+        background: #fff;
+        border-bottom: solid 1px #e8e8e8;
+        display: flex;
+        padding: 16px;
+        align-items: center;
+
+        .btn-search {
+            width: unset;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 0;
+            outline: 0;
+            border: none;
+            box-shadow: 0 4px 28px 0 rgba(187, 187, 187, .11);
+            background-color: #009900;
+            color: #fff;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+
+            @media (max-width: 768px) {
+                width: 100%;
+                padding: 8px;
+                margin-top: 8px;
+            }
+        }
+
+        nz-select {
+            width: 98%;
+        }
+
+    }
+}
+

@@ -5,7 +5,7 @@
                 <nz-input-group style="color: #000;
                 border-radius: 4px;
                 padding: 12px;" [nzPrefix]="prefixTemplateUser">
-                    <input type="text" nz-input placeholder="Enter your username" />
+                    <input [(ngModel)]="searchKey" type="text" nz-input placeholder="Enter your username" />
                 </nz-input-group>
                 <ng-template #prefixTemplateUser><span nz-icon nzType="search" nzTheme="outline"></span></ng-template>
             </div>
@@ -25,6 +25,51 @@
             </div>
             <div style="width: 15%;">
                 <button class="btn-search">Tìm kiếm</button>
+            </div>
+        </div>
+        <h3 style="margin: 16px 0px 0px 0px;">Kết quả tìm kiếm</h3>
+        <div class="fr-list">
+            <div class="fr-jobs">
+                <div class="row" style="padding: 8px;">
+                    <div class="col-9" *ngFor="let item of showJobs" style="padding: 0;" (click)="gotoJobDetail(item)">
+                        <div class="fr-main">
+                            <div class="fr-info">
+                                <div style="width: 15%;">
+                                    <img [src]="item.company.logo" alt="" style="width: 75%;">
+                                </div>
+                                <div style="font-size: 13px;">
+                                    <div class="job-name">
+                                        {{item.name}}
+                                    </div>
+                                    <div class="company-name">
+                                        {{item.company.name}}
+                                    </div>
+                                    <div class="info-jobs">
+                                        <span class="icon" nz-icon nzType="wallet" nzTheme="outline"></span>
+                                        <span style="font-weight: 700;">{{item.salary}}</span>
+                                    </div>
+                                    <div class="info-jobs">
+                                        <span class="icon" nz-icon nzType="global" nzTheme="outline"></span>
+                                        <span style="font-weight: 700;">{{item.address}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="panigation">
+                <button class="btn my-2 my-sm-0 login" (click)="previousPage()"
+                    [ngClass]="{'disabled': currentPage <= 1}" [disabled]="currentPage <= 1">
+                    <span nz-icon nzType="left" nzTheme="outline"></span>
+                </button>
+                <span style="margin: 8px;"><span style="color: #009900;">{{currentPage}}</span> / {{totalPages}}
+                    trang</span>
+                <button class="btn my-2 my-sm-0 login" (click)="nextPage()"
+                    [ngClass]="{'disabled': currentPage >= totalPages}" [disabled]="currentPage >= totalPages">
+                    <span nz-icon nzType="right" nzTheme="outline"></span>
+                </button>
             </div>
         </div>
     </div>

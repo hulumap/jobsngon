@@ -1,32 +1,67 @@
 <div style="width: 100%; background-color: #f6f8fc;;">
-    <div class="wrapper-container">
-        <div class="fr-search">
-            <div style="width: 35%; padding: 4px;">
-                <nz-input-group style="color: #000;
-                border-radius: 4px;
-                padding: 12px;" [nzPrefix]="prefixTemplateUser">
-                    <input [(ngModel)]="searchKey" type="text" nz-input placeholder="Enter your username" />
-                </nz-input-group>
-                <ng-template #prefixTemplateUser><span nz-icon nzType="search" nzTheme="outline"></span></ng-template>
+    <div class="wraper-search">
+        <div class="fr-two-search">
+            <div class="fr-search">
+                <div style="width: 35%; padding-right: 4px;">
+                    <nz-input-group style="color: #000;
+                    border-radius: 4px;
+                    padding: 12px;" [nzPrefix]="prefixTemplateUser">
+                        <input [(ngModel)]="searchKey" type="text" nz-input placeholder="Enter your username" />
+                    </nz-input-group>
+                    <ng-template #prefixTemplateUser><span nz-icon nzType="search"
+                            nzTheme="outline"></span></ng-template>
+                </div>
+                <div style="width: 25%;">
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả nghề nghiệp" [(ngModel)]="type_job">
+                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    </nz-select>
+                </div>
+                <div style="width: 25%;">
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả địa điểm" [(ngModel)]="type_address">
+                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    </nz-select>
+                </div>
+                <div style="width: 15%; text-align: end;">
+                    <button class="btn-search">Tìm kiếm</button>
+                </div>
             </div>
-            <div style="width: 25%;">
-                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả nghề nghiệp" [(ngModel)]="type_job">
-                    <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-                    <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-                    <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
-                </nz-select>
-            </div>
-            <div style="width: 25%;">
-                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả địa điểm" [(ngModel)]="type_address">
-                    <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-                    <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-                    <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
-                </nz-select>
-            </div>
-            <div style="width: 15%;">
-                <button class="btn-search">Tìm kiếm</button>
+            <div class="fr-sub-search">
+                <div style="width: 25%;">
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả trình độ" [(ngModel)]="type_address">
+                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    </nz-select>
+                </div>
+                <div style="width: 25%;">
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả cấp bậc" [(ngModel)]="type_address">
+                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    </nz-select>
+                </div>
+                <div style="width: 25%;">
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả giới tinh" [(ngModel)]="type_address">
+                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    </nz-select>
+                </div>
+                <div style="width: 25%;">
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả kinh nghiệm" [(ngModel)]="type_address">
+                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    </nz-select>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="wrapper-container">
         <h3 style="margin: 16px 0px 0px 0px;">Kết quả tìm kiếm</h3>
         <div class="fr-list">
             <div class="fr-jobs">
@@ -37,20 +72,28 @@
                                 <div style="width: 15%;">
                                     <img [src]="item.company.logo" alt="" style="width: 75%;">
                                 </div>
-                                <div style="font-size: 13px;">
+                                <div
+                                    style="width: 85%; display: flex; flex-direction: column; justify-content: center;">
                                     <div class="job-name">
-                                        {{item.name}}
+                                        <span>
+                                            {{item.name}}
+                                        </span>
+                                        <div class="salary">
+                                            <span class="icon" nz-icon nzType="dollar" nzTheme="outline"></span>
+                                            <span style="font-weight: 700;">{{item.salary}}</span>
+                                        </div>
                                     </div>
                                     <div class="company-name">
                                         {{item.company.name}}
                                     </div>
-                                    <div class="info-jobs">
-                                        <span class="icon" nz-icon nzType="wallet" nzTheme="outline"></span>
-                                        <span style="font-weight: 700;">{{item.salary}}</span>
-                                    </div>
-                                    <div class="info-jobs">
-                                        <span class="icon" nz-icon nzType="global" nzTheme="outline"></span>
-                                        <span style="font-weight: 700;">{{item.address}}</span>
+                                    <div class="job-name">
+                                        <div class="salary">
+                                            <span class="icon" nz-icon nzType="global" nzTheme="outline"></span>
+                                            <span class=address>{{item.address}}</span>
+                                        </div>
+                                        <span>
+                                            <button class="btn my-2 my-sm-0 view-job">Xem nhanh</button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

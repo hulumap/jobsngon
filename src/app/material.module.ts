@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   imports: [
     MatButtonModule,
@@ -14,7 +14,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatCardModule,
     ScrollingModule,
     MatProgressSpinnerModule,
-    DragDropModule
+    DragDropModule,
+    MatSelectModule
 
   ],
   exports: [
@@ -24,7 +25,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatCardModule,
     ScrollingModule,
     MatProgressSpinnerModule,
-    DragDropModule
+    DragDropModule,
+    MatSelectModule
   ]
 })
 

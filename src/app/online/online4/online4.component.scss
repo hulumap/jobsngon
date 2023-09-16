@@ -1,0 +1,21 @@
+.cv {
+    width: 100%;
+   // border: 1px solid #9b9999;
+    box-shadow: 0 4px 8px 0 rgba(168, 178, 186, 0.3);
+    @media only screen and (max-width: 600px) {
+        padding: 0;
+    }
+    .cv-o {
+        width: 100%;
+        padding: 16px;
+        border: 1px solid lightgrey;
+    }
+    .img {
+        height: 160px;
+        width: 160px;
+        @media only screen and (max-width: 600px) {
+            height: 150px;
+            width: 80px;
+        }
+    }
+}

@@ -14,7 +14,7 @@
                 <a class="nav-link" routerLink="/tim-viec-lam">Tìm Việc</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tạo CV</a>
+                <a class="nav-link" routerLink="/my-cv">Tạo CV</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Công Ty</a>
@@ -23,14 +23,36 @@
                 <a class="nav-link" href="#">Cẩm nang</a>
             </li>
         </ul>
-        <div class="form-inline my-2 my-lg-0">
+        <div class="form-inline my-2 my-lg-0" *ngIf="!isLogin">
             <div>
-                <button class="btn my-2 my-sm-0 login">Đăng Mhập</button>
+                <button routerLink="/login" class="btn my-2 my-sm-0 login">Đăng Nhập</button>
                 <button class="btn my-2 my-sm-0 sign-up">Đăng Ký</button>
             </div>
+
             <div class="line"></div>
             <div class="ntd">
-                <span class="icon" nz-icon nzType="home" nzTheme="outline"></span> <span class="title" (click)="openNtd()">Nhà Tuyển Dụng</span>
+                <span class="icon" nz-icon nzType="home" nzTheme="outline"></span> <span class="title"
+                    (click)="openNtd()">Nhà Tuyển Dụng</span>
+            </div>
+        </div>
+
+        <div *ngIf="isLogin" class="form-inline my-2 my-lg-0">
+            <div>
+                <span nz-menu style="display: flex; align-items: center;justify-content: flex-end; height: 100%;">
+                    <span style="font-size: 16px;" class="greeting"><i>{{title}}</i>,</span>
+                    <span style="font-size: 16px;" nz-menu-item nz-dropdown [nzDropdownMenu]="menu" nzTrigger="hover"
+                        nzPlacement='bottomLeft'>
+                        <b style="padding-right: 12px;" class="greeting"> {{user.displayName}}</b>
+                        <img style="height: 32px;width: 32px;border-radius: 100%;" [src]="user.photoURL" alt="">
+                    </span>
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu nzSelectable>
+                            <li class="info-li" nz-menu-item routerLink="/user/info" nz-menu-item>Thông tin</li>
+                            <li class="info-li" nz-menu-item (click)="logout()" nz-menu-item>Thoát</li>
+                        </ul>
+
+                    </nz-dropdown-menu>
+                </span>
             </div>
         </div>
     </div>

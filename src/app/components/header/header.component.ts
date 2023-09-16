@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Jobsngon } from 'src/app/service/jobsngon.service';
 
 @Component({
   selector: 'app-header',
@@ -7,12 +8,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   public isCollapsed = true;
-  constructor() { }
+  public isLogin: boolean = false
+  public user: any = {}
+  public title: any = ""
+  constructor(private jobsngon: Jobsngon) { }
 
   ngOnInit(): void {
+    this.checkLogin()
+    this.showHelloUser()
   }
   openNtd() {
     window.open('https://khachhang.jobsngon.com/', "_blank")
   }
 
+
+  checkLogin() {
+    this.jobsngon.onAuthStateChanged()
+      .then((user: any) => {
+        if (user) {
+          console.log(user)
+          this.user = user
+          this.isLogin = true
+        }
+      })
+
+  }
+
+  /** Hiển thị lời chào theo thời gian */
+  showHelloUser() {
+    var today = new Date();
+    var curHr = today.getHours();
+    if (curHr < 12) {
+      this.title = `Chào buổi sáng`;
+    } else if (curHr < 18) {
+      this.title = `Chào buổi chiều`;
+    } else {
+      this.title = `Chào buổi tối`;
+    }
+  }
+
+  logout() {
+    // this.jobsngon.logoutUser()
+    //   .then(() => {
+    //     this.router.navigate(['']).then(() => {
+    //       localStorage.clear()
+    //       window.location.reload()
+    //     })
+    //   })
+  }
 }

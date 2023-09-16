@@ -15,6 +15,14 @@ const routes: Routes = [
     loadChildren: () => import('./job-detail/job-detail.module').then(m => m.JobDetailModule),
   },
   {
+    path: 'my-cv',
+    loadChildren: () => import('./template/template.module').then(m => m.TemplateModule)
+  },
+  {
+    path: 'online/:id/:name',
+    loadChildren: () => import('./online/online.module').then(m => m.OnlineModule)
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   }

@@ -1,0 +1,270 @@
+<nz-spin *ngIf="hide" class="loading" nzTip="Đang tải dữ liệu..."></nz-spin>
+<div class='cv' *ngIf="!hide">
+    <div nz-row style="padding: 8px;">
+        <div nz-row class="info" style="height: 400px;">
+            <div nz-col nzSpan="18" style="height: 100%;">
+                <div nz-row style="border-bottom: 2px dashed #ccc; height: 10%;">
+                    <div style="width: 20%; font-weight: bold;padding: 4px">ふりがな</div>
+                    <span style="width: 60%;text-align: center;">
+                        <textarea disabled="true" style="text-align: center;" class='online-content'
+                            [(ngModel)]="resume.info.spelling" [minRows]="1" autosize></textarea>
+                    </span>
+                    <span style="width: 20%;"></span>
+                </div>
+                <div nz-row style="border-bottom: 2px solid #333; height: 40%;">
+                    <div style="width: 100%;font-weight: bold;padding: 4px">氏　名</div>
+                    <span
+                        style="width: 100%;text-align: center;padding-bottom: 16px; text-transform: uppercase;font-size: 18px;">
+
+                        <textarea disabled="true" style="text-align: center;" class='online-content'
+                            [(ngModel)]="resume.info.name" [minRows]="1" autosize></textarea>
+
+                    </span>
+                </div>
+                <div nz-row style="height: 20%;" style="border-bottom: 2px solid #333">
+                    <div nz-row style="width: 80%;">
+                        <div style="width: 100%;font-weight: bold;padding: 4px">生年月日</div>
+                        <span class='font' style="width: 100%;text-align: center;">
+                            <textarea disabled="true" style="text-align: center;" class='online-content'
+                                [(ngModel)]="resume.info.dateBirth" [minRows]="1" autosize></textarea>
+
+                        </span>
+                    </div>
+                    <div nz-row style="width: 20%; border-left: 1px solid #333;">
+                        <div style="width: 100%;font-weight: bold;padding: 4px">性別</div>
+                        <span style="width: 100%;text-align: center;">
+                            <textarea disabled="true" style="text-align: center;" class='online-content'
+                                [(ngModel)]="resume.info.sex" [minRows]="1" autosize></textarea>
+
+
+                        </span>
+                    </div>
+                </div>
+                <div nz-row style="height: 10%;" style="border-bottom: 0.5px dashed #ccc">
+                    <div style="width: 20%;font-weight: bold;padding: 4px">ふりがな</div>
+                    <span style="width: 60%;text-align: center;">
+                        <textarea disabled="true" style="text-align: center;" class='online-content'
+                            [(ngModel)]="resume.info.spaddress" [minRows]="1" autosize></textarea>
+                    </span>
+                    <span style="width: 20%;"></span>
+                </div>
+                <div nz-row style="height: 20%;">
+                    <div style="width: 100%;font-weight: bold;padding: 4px">現住所〒</div>
+                    <span class='font' style="width: 100%;text-align: center;padding-bottom: 16px; ">
+                        <textarea disabled="true" style="text-align: center;" class='online-content'
+                            [(ngModel)]="resume.info.address" [minRows]="1" autosize></textarea>
+                    </span>
+                </div>
+            </div>
+            <div nz-col nzSpan="6" style="border-left: 1px solid #333; height: 100%;">
+                <div nz-row style="height: 50%;width: 100%; border-bottom: 2px solid #333;">
+                    <img [src]="resume.info.img? resume.info.img : 'assets/icon/user.svg'" alt="" style="object-fit: cover;
+                    height: 80%;
+                    margin: auto;
+                    width: 100%;
+                    object-fit: contain;">
+                </div>
+                <div nz-row style="height: 25%; border-bottom: 2px solid #333">
+                    <div style="width: 100%;font-weight: bold;padding: 4px">電話</div>
+                    <span class='font' style="width: 100%;text-align: center;">
+                        <textarea disabled="true" style="text-align: center;" class='online-content'
+                            [(ngModel)]="resume.info.phone" [minRows]="1" autosize></textarea>
+                    </span>
+                </div>
+                <div nz-row style="height: 25%;">
+                    <div style="width: 100%;font-weight: bold;padding: 4px">メールアドレス</div>
+                    <span class='font' style="width: 100%;text-align: center;">
+                        <textarea disabled="true" style="text-align: center;" class='online-content'
+                            [(ngModel)]="resume.info.email" [minRows]="1" autosize></textarea>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- education -->
+    <div>
+        <div *ngFor="let data of  resume.data_eec; let i = index">
+            <div *ngIf="data.status" nz-row style="padding: 8px;">
+
+                <div nz-row class="edu">
+                    <div nz-row style="width: 100%; text-align: center; border-bottom: 2px solid #ccc; height: 32px;">
+                        <div style="border-right: 2px solid #ccc;display: flex;
+                        justify-content: center;
+                        align-items: center;" nz-col nzSpan="4">
+                            <div class="bold">開始日</div>
+                        </div>
+                        <div nz-col nzSpan="4" style="border-right: 2px solid #ccc;display: flex;
+                        justify-content: center;
+                        align-items: center;">
+                            <div class="bold">終了日</div>
+                        </div>
+                        <div nz-col nzSpan="16" style="display: flex;
+                        justify-content: center;
+                        align-items: center;">
+                            <input disabled="true" class='online bold' type="text" [(ngModel)]="data.title">
+                        </div>
+                    </div>
+                    <div style="width: 100%; text-align: center;" nz-row *ngFor="let item of data.data; let j = index"
+                        nz-row>
+                        <div nz-col nzSpan="4" style="border-right: 2px solid #ccc">
+                            <span>
+                                <textarea disabled="true" style="text-align: center;" class='online-content'
+                                    [(ngModel)]="item.start" [minRows]="1" autosize></textarea>
+                            </span>
+                        </div>
+                        <div nz-col nzSpan="4" style="border-right: 2px solid #ccc">
+                            <span>
+                                <textarea disabled="true" style="text-align: center;" class='online-content'
+                                    [(ngModel)]="item.end" [minRows]="1" autosize></textarea>
+                            </span>
+                        </div>
+                        <div nz-col nzSpan="16"
+                            style="text-align: left; display: flex;flex-direction: column;padding: 4px;">
+                            <span>
+                                <textarea disabled="true"
+                                    style="text-align: left; text-transform: uppercase; font-weight: bold;"
+                                    class='online-content' [(ngModel)]="item.name" [minRows]="1" autosize></textarea>
+
+                            </span>
+                            <span>
+
+                                <textarea disabled="true" style="text-align: left;" class='online-content'
+                                    [(ngModel)]="item.position" [minRows]="1" autosize></textarea>
+                            </span>
+                            <span class="decs-just">
+
+                                <textarea disabled="true" style="text-align: left;" class='online-content'
+                                    [(ngModel)]="item.describe" [minRows]="1" autosize></textarea>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div>
+        <div *ngFor="let data of  resume.data_slc; let i = index">
+
+            <div *ngIf="data.status" style="padding: 8px;">
+
+
+
+                <div nz-row>
+                    <div nz-row class="edu">
+                        <div *ngIf="data.titleStatus !=='Yêu thích' && data.titleStatus !=='Kỹ năng'" nz-row
+                            style="width: 100%; text-align: center; border-bottom: 2px solid #ccc;">
+                            <div style="border-right: 2px solid #ccc;padding: 4px;" nz-col nzSpan="4">
+                                <div class="bold">取得日</div>
+                            </div>
+                            <div nz-col nzSpan="20" style="border-right: 2px solid #ccc">
+                                <input disabled="true" class='online bold' type="text" [(ngModel)]="data.title">
+                            </div>
+                        </div>
+                        <div *ngIf="data.titleStatus =='Yêu thích' || data.titleStatus =='Kỹ năng'" nz-row
+                            style="width: 100%; padding: 4px;">
+                            <div nz-col nzSpan="24">
+                                <input disabled="true" class='online bold-start' type="text" [(ngModel)]="data.title">
+
+                            </div>
+                        </div>
+                        <div style="width: 100%;" nz-row *ngFor="let item of data.data; let j = index" nz-row>
+                            <div nz-row *ngIf="data.titleStatus !=='Kỹ năng' && data.titleStatus !=='Yêu thích'"
+                                style="width: 100%;">
+                                <div nz-col nzSpan="4"
+                                    style="border-right: 2px solid #ccc;text-align: center; padding: 4px;">
+                                    <span>
+                                        <textarea disabled="true" [minRows]="1" autosize
+                                            style="width: 100%; text-align: center;" type="text" class='online-content'
+                                            [(ngModel)]="item.name"></textarea>
+                                    </span>
+                                </div>
+                                <div nz-col nzSpan="20" style="border-right: 2px solid #ccc; padding: 4px;">
+                                    <span>
+                                        <textarea disabled="true" [minRows]="1" autosize style="width: 100%;"
+                                            type="text" class='online-content' [(ngModel)]="item.value"></textarea>
+                                    </span>
+                                </div>
+                            </div>
+                            <div *ngIf="data.titleStatus =='Kỹ năng' && data.titleStatus !=='Yêu thích'"
+                                style="width: 100%; text-align: left; padding: 8px;" nz-row>
+                                <div nz-col nzSpan="24">
+                                    <span class='decs-just'> <textarea disabled="true" [minRows]="1" autosize
+                                            style="width: 100%;" type="text" class='online-content'
+                                            [(ngModel)]="item.describe"></textarea></span>
+                                </div>
+                            </div>
+                            <div *ngIf="data.titleStatus =='Yêu thích'"
+                                style="width: 100%; text-align: left; padding: 8px;" nz-row>
+                                <div nz-col nzSpan="24">
+                                    <span class='decs-just'>
+
+                                        <textarea disabled="true" [minRows]="1" autosize style="width: 100%;"
+                                            type="text" class='online-content' [(ngModel)]="item.value"></textarea>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- goal -->
+    <div *ngIf='resume.goal.status'>
+        <div *ngIf='resume.goal.status' nz-row style="padding: 8px;">
+            <div nz-row class="edu">
+                <div nz-row style="width: 100%; padding: 4px;">
+                    <div nz-col nzSpan="24">
+                        <textarea disabled="true"
+                            style="text-align: left; text-transform: uppercase; font-weight: bold;" class='online'
+                            [(ngModel)]="resume.goal.title" [minRows]="1" autosize></textarea>
+                    </div>
+                </div>
+                <div style="width: 100%; text-align: left; padding: 8px;" nz-row>
+                    <div nz-col nzSpan="24">
+                        <span class='decs-just'>
+                            <textarea disabled="true" [minRows]="1" autosize style="width: 100%;" type="text"
+                                class='online-content' [(ngModel)]="resume.goal.value"></textarea>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- additonal -->
+
+    <div *ngFor="let data of  resume.data_adr; let i = index">
+
+        <div *ngIf="data.status" nz-row style="padding: 8px;">
+            <div *ngIf="data.titleStatus !=='Người tham chiếu'" nz-row class="edu">
+                <div nz-row style="width: 100%; padding: 4px;">
+                    <div nz-col nzSpan="24">
+                        <input disabled="true" class='online bold-start' type="text" [(ngModel)]="data.title">
+                    </div>
+                </div>
+                <div style="width: 100%; text-align: left; padding: 8px;" nz-row>
+                    <div nz-col nzSpan="24">
+                        <span class='decs-just'>
+
+                            <textarea disabled="true" [minRows]="1" autosize style="width: 100%;" type="text"
+                                class='online-content' [(ngModel)]="data.value"></textarea>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

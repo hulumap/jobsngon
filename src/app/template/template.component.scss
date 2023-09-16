@@ -1,0 +1,37 @@
+.wrapper-container {
+    max-width: 1230px;
+    padding-top: 16px;
+    margin: auto;
+
+    .row {
+        padding: 16px;
+        background-color: #fff;
+       // width: 70vw;
+
+        .col {
+            // display: flex;
+            // justify-content: center;
+            padding: 16px;
+
+            nz-card {
+                border-radius: 5px;
+                box-shadow: 2px 2px 10px 1px rgb(0 0 0 / 8%);
+                min-height: 200px;
+            }
+
+            .img {
+                height: 25px;
+                width: 30px;
+                display: block;
+                align-items: center;
+                margin: 4px;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    display: block;
+                }
+            }
+        }
+    }
+}

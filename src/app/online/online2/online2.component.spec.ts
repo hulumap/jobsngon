@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CvComponent } from './cv.component';
+import { Online2Component } from './online2.component';
 
-describe('CvComponent', () => {
-  let component: CvComponent;
-  let fixture: ComponentFixture<CvComponent>;
+describe('Online2Component', () => {
+  let component: Online2Component;
+  let fixture: ComponentFixture<Online2Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CvComponent ]
+      declarations: [ Online2Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CvComponent);
+    fixture = TestBed.createComponent(Online2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

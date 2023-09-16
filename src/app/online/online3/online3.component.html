@@ -1,0 +1,223 @@
+<nz-spin *ngIf="hide" class="loading" nzTip="Đang tải dữ liệu..."></nz-spin>
+<div class='cv' *ngIf="!hide">
+    <div class="cv-o">
+        <div nz-row style="width: 100%; padding-top: 32px;">
+            <div [ngStyle]="{'background-color': resume.theme.color}" nz-row style="width: 100%; height: 120px; align-items: center;">
+                <div nz-col nzSpan="6">
+                    <div nz-row class="img">
+                        <div style="height: 100%;width: 100%;">
+                            <img [src]="resume.info.img? resume.info.img : 'assets/icon/user.svg'" alt="" style="object-fit: cover;
+                            width: 100%;margin: auto; height: 100%;">
+                        </div>
+                    </div>
+                </div>
+                <div nz-col nzSpan="18">
+                    <div [ngStyle]="{'fontSize.pt': resume.theme.name +5 ,'font-family':resume.theme.fontfamily}" class="name" nz-row>
+
+                        <textarea disabled="true" style="background-color: transparent;" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="resume.info.name"></textarea>
+
+
+                    </div>
+                    <div [ngStyle]="{'fontSize.pt': resume.theme.font +3 ,'font-family':resume.theme.fontfamily}" class="title" nz-row>
+                        <textarea disabled="true" style="background-color: transparent;" type="text" [minRows]="1" autosize class='online-content' [(ngModel)]="resume.title"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div nz-row style="width: 100%; padding: 16px;">
+                <div nz-col nzSpan="6"></div>
+                <div nz-col nzSpan="9">
+                    <div style="width: 100%;display: flex; align-items: center;" [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                        <i [ngStyle]="{'color': resume.theme.color}" nz-icon nzType="calendar" nzTheme="outline"></i>
+                        <textarea disabled="true" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="resume.info.dateBirth"></textarea>
+                    </div>
+                    <div style="width: 100%;display: flex; align-items: center;" [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                        <i [ngStyle]="{'color': resume.theme.color}" nz-icon nzType="user" nzTheme="outline"></i>
+                        <textarea disabled="true" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="resume.info.sex"></textarea>
+                    </div>
+                    <div style="width: 100%;display: flex; align-items: center;" [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                        <i [ngStyle]="{'color': resume.theme.color}" nz-icon nzType="phone" nzTheme="outline"></i>
+                        <textarea disabled="true" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="resume.info.phone"></textarea>
+                    </div>
+                </div>
+                <div nz-col nzSpan="9">
+                    <div style="width: 100%;display: flex; align-items: center;" [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                        <i [ngStyle]="{'color': resume.theme.color}" nz-icon nzType="global" nzTheme="outline"></i>
+                        <textarea disabled="true" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="resume.info.web"></textarea>
+                    </div>
+                    <div style="width: 100%;display: flex; align-items: center;" [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                        <i [ngStyle]="{'color': resume.theme.color}" nz-icon nzType="mail" nzTheme="outline"></i>
+                        <textarea disabled="true" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="resume.info.email"></textarea>
+                    </div>
+                    <div style="width: 100%; display: flex; align-items: center;" [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                        <i [ngStyle]="{'color': resume.theme.color}" nz-icon>
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 368.16 368.16"
+                                style="enable-background:new 0 0 368.16 368.16;" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <g>
+                                            <path d="M184.08,0c-74.992,0-136,61.008-136,136c0,24.688,11.072,51.24,11.536,52.36c3.576,8.488,10.632,21.672,15.72,29.4
+            l93.248,141.288c3.816,5.792,9.464,9.112,15.496,9.112s11.68-3.32,15.496-9.104l93.256-141.296
+            c5.096-7.728,12.144-20.912,15.72-29.4c0.464-1.112,11.528-27.664,11.528-52.36C320.08,61.008,259.072,0,184.08,0z
+             M293.8,182.152c-3.192,7.608-9.76,19.872-14.328,26.8l-93.256,141.296c-1.84,2.792-2.424,2.792-4.264,0L88.696,208.952
+            c-4.568-6.928-11.136-19.2-14.328-26.808C74.232,181.816,64.08,157.376,64.08,136c0-66.168,53.832-120,120-120
+            c66.168,0,120,53.832,120,120C304.08,157.408,293.904,181.912,293.8,182.152z" />
+                                            <path d="M184.08,64.008c-39.704,0-72,32.304-72,72c0,39.696,32.296,72,72,72c39.704,0,72-32.304,72-72
+            C256.08,96.312,223.784,64.008,184.08,64.008z M184.08,192.008c-30.872,0-56-25.12-56-56s25.128-56,56-56s56,25.12,56,56
+            S214.952,192.008,184.08,192.008z" />
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+
+                        </i> <textarea disabled="true" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="resume.info.address"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div nz-row style="width: 100%;">
+            <div nz-col nzSpan="10" [ngStyle]="{'border-color': resume.theme.color}" style="border-right: 1px solid;">
+
+
+                <!-- goal -->
+                <div *ngIf='resume.goal.status'>
+
+                    <div [ngStyle]="{'border-color': resume.theme.color}" style="border-top: 1px solid;">
+
+                        <div nz-row style="padding: 16px; display: flex; flex-direction: column; width: 100%;">
+                            <div nz-col style="width: 100%;">
+                                <textarea disabled="true" [minRows]="1" autosize class='online' [ngStyle]="{'color': resume.theme.color,
+                            'font-family':resume.theme.fontfamily, 'fontSize.pt': resume.theme.title}" style="font-weight: 600;" type="text" [(ngModel)]="resume.goal.title"></textarea>
+                            </div>
+                            <div nz-col>
+                                <div [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}" class='decs-just' style="width: 100%;">
+                                    <textarea disabled="true" autosize type="text" class='online-content' [(ngModel)]="resume.goal.value"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div>
+
+                    <div *ngFor="let data of  resume.data_slc; let i = index" [ngStyle]="{'border-color': resume.theme.color}" style="border-top: 1px solid;">
+                        <div *ngIf="data.status" nz-row style="padding: 16px; display: flex; flex-direction: column;">
+                            <div nz-col>
+                                <textarea disabled="true" [minRows]="1" autosize class='online' [ngStyle]="{'color': resume.theme.color,
+                                'font-family':resume.theme.fontfamily, 'fontSize.pt': resume.theme.title}" style="font-weight: 600;" type="text" [(ngModel)]="data.title"></textarea>
+                            </div>
+                            <div nz-col *ngFor="let item of data.data; let j = index">
+
+                                <!-- kỹ năng -->
+                                <div *ngIf="data.titleStatus =='Kỹ năng'" nz-row style="display: flex; flex-direction: column;">
+                                    <div style="display: flex;align-items: center" [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}" class='decs-just'>
+                                        <input disabled="true" autoSizeInput type="text" class='online-content' [(ngModel)]="item.name">:
+
+                                        <textarea disabled="true" class="decs-just" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="item.describe"></textarea>
+
+                                    </div>
+
+                                </div>
+                                <!-- ngôn ngữ -->
+                                <div *ngIf="data.titleStatus =='Ngôn ngữ' && data.titleStatus !=='Yêu thích'" nz-row style="display: flex; flex-direction: column;">
+                                    <div style="display: flex;align-items: center" [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}" class='decs-just'><input autoSizeInput type="text" class='online-content' [(ngModel)]="item.name">:
+                                        <textarea disabled="true" class="decs-just" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="item.value"></textarea>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- chứng chỉ, giải thưởng -->
+                                <div *ngIf="data.titleStatus !=='Kỹ năng' && data.titleStatus !=='Yêu thích' && data.titleStatus !=='Ngôn ngữ'" style="width: 100%;">
+                                    <div [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}" style="width: 100%;">
+                                        <textarea disabled="true" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="item.value"></textarea>
+                                    </div>
+                                    <div style="font-size: 12px; color: #333;width: 100%; font-weight: 600;">
+                                        (<input autoSizeInput type="text" class='online-content' [(ngModel)]="item.name">)
+                                    </div>
+                                </div>
+
+                                <!-- yêu thích -->
+                                <div *ngIf="data.titleStatus =='Yêu thích'" nz-col>
+                                    <div [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}" class='decs-just' style="width: 100%;">
+                                        <textarea disabled="true" [minRows]="1" autosize type="text" class='online-content' [(ngModel)]="item.value"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+                <div>
+                    <div [ngStyle]="{'border-color': resume.theme.color}" style="border-top: 1px solid; width: 100%;" *ngFor="let data of  resume.data_adr; let i = index">
+
+
+                        <div *ngIf="data.status" nz-row>
+                            <div nz-row style="padding: 16px; display: flex; flex-direction: column;width: 100%;">
+                                <div nz-col>
+                                    <textarea disabled="true" [minRows]="1" autosize class='online' [ngStyle]="{'color': resume.theme.color,
+            'font-family':resume.theme.fontfamily, 'fontSize.pt': resume.theme.title}" style="font-weight: 600;" type="text" [(ngModel)]="data.title"></textarea>
+                                </div>
+                                <div nz-col>
+                                    <div [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}" class='decs-just' style="width: 100%;">
+                                        <textarea disabled="true" [minRows]="1" autosize style="width: 100%;" type="text" class='online-content' [(ngModel)]="data.value"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div nz-col nzSpan="14">
+                <div>
+                    <div [ngStyle]="{'border-color': resume.theme.color}" style="border-top: 1px solid; width: 100%;" *ngFor="let data of  resume.data_eec; let i = index">
+
+
+                        <div [ngStyle]="{'border-color': resume.theme.color}" style="border-top: 1px solid; width: 100%;" *ngIf="data.status" nz-row style="padding: 16px; display: flex; flex-direction: column;">
+                            <div nz-col>
+                                <input disabled="true" class='online' [ngStyle]="{'color': resume.theme.color,
+                            'font-family':resume.theme.fontfamily, 'fontSize.pt': resume.theme.title}" style="font-weight: 600;" type="text" [(ngModel)]="data.title">
+                            </div>
+                            <div nz-col *ngFor="let item of data.data; let j = index">
+
+                                <div [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily,'color': resume.theme.color}" style="width: 100%;">
+                                    <input disabled="true" autoSizeInput class="online-content" [(ngModel)]="item.name" />
+                                    <div style="font-size: 13px; color: #333;">(
+                                        <input disabled="true" style="font-weight: 600;" autosize class="online-content" autoSizeInput [(ngModel)]="item.start"> -
+                                        <input disabled="true" style="font-weight: 600;" autoSizeInput autosize class="online-content" [(ngModel)]="item.end">)
+                                    </div>
+
+                                </div>
+                                <div [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}" style="width: 100%; color: #333; font-weight: 600;">
+                                    <textarea disabled="true" [minRows]="1" autosize style="width: 100%;" type="text" class='online-content' [(ngModel)]="item.position"></textarea>
+                                </div>
+                                <div [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}" class='decs-just' style="width: 100%;">
+                                    <textarea disabled="true" [minRows]="1" autosize style="width: 100%;" type="text" class='online-content' [(ngModel)]="item.describe"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

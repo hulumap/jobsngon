@@ -1,6 +1,6 @@
 <div nz-col class='col' style="max-width: 400px;">
     <h2 style="text-align: center; color: #00b14f; font-weight: bold;">Đăng Ký</h2>
-    <h3 style="text-align: center; color: #00b14f;">Dành cho cộng tác viên</h3>
+    <h3 style="text-align: center; color: #00b14f;">Người tìm việc</h3>
     <form [formGroup]="registerForm" (ngSubmit)="tryRegister(registerForm.value)">
         <nz-input-group nzPrefixIcon="info-circle">
             <input type="text" nz-input formControlName="name" placeholder="Tên" />
@@ -19,7 +19,7 @@
             <i *ngIf="loading" nz-icon nzType="loading" nzTheme="outline"></i>
         </button>
     </form>
-    <h3 style="text-align: center; margin: 4px">- OR - </h3>
+    <h3 style="text-align: center; margin: 4px;font-size: 12px">- OR - </h3>
     <button (click)="signinGoogle()" nz-button [nzType]="'primary'">
         <i nz-icon nzType="google" nzTheme="outline"></i> Đăng nhập bằng Google</button>
     <div nz-col nzSpan="24" style="padding-top: 8px; text-align: center;">

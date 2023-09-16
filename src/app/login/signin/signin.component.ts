@@ -13,7 +13,7 @@ export class SigninComponent {
   loading: boolean = false;
   passwordVisible = false;
   constructor(
-    private partner: Jobsngon,
+    private jobsngon: Jobsngon,
     private router: Router,
     private ngZone: NgZone,
     private message: NzMessageService,
@@ -51,14 +51,15 @@ export class SigninComponent {
   }
 
   signinGoogle() {
-    // this.partner.signInWithGoogle().then((user) => {
-    //   this.navigate();
-    // }, err => console.log(err));
+    this.jobsngon.signInWithGoogle().then((user) => {
+      this.navigate();
+    }, err => console.log(err));
   }
   navigate() {
     this.ngZone.run(() => {
       this.router.navigate(['']).then(() => {
         this.loading = false;
+        window.location.reload()
       });
     });
   }

@@ -1,0 +1,21 @@
+.cv {
+    width: 100%;
+   // border: 1px solid #9b9999;
+    box-shadow: 0 4px 8px 0 rgba(168, 178, 186, 0.3);
+    @media only screen and (max-width: 600px) {
+        padding: 0;
+    }
+    span {
+        padding: 4px;
+        font-family: ms mincho, TakaoPGothic, takao pゴシック, ヒラギノ角ゴ pro w3, hiragino kaku gothic pro, Osaka, メイリオ, Meiryo, ＭＳ Ｐゴシック, ms pgothic, sans-serif;
+        font-size: 100%;
+    }
+    .info {
+        width: 100%;
+        border: 2px solid rgb(82, 80, 80);
+    }
+    .edu {
+        width: 100%;
+        border: 2px solid rgb(82, 80, 80);
+    }
+}

@@ -1,0 +1,10 @@
+<div nz-row class="cv">
+    <div nz-row style="width: 100%;" [ngSwitch]="index">
+        <app-online1 style="width: 100%;" *ngSwitchCase="'1'" [id]="id"></app-online1>
+        <app-online2 *ngSwitchCase="'2'" [id]="id"></app-online2>
+        <app-online3 style="width: 100%;" *ngSwitchCase="'3'" [id]="id"></app-online3>
+        <app-online4 *ngSwitchCase="'4'" [id]="id"></app-online4>
+        <app-online5 *ngSwitchCase="'5'" [id]="id"></app-online5>
+        <app-online6 *ngSwitchCase="'6'" [id]="id"></app-online6>
+    </div>
+</div>

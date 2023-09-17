@@ -1,6 +1,6 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light">
+<nav class="navbar  navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">
-        <img src="assets/logo.svg" alt="" style="width: 120px;">
+        <img src="assets/logo.svg" alt="" style="height: 45px;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
         aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation"
@@ -14,7 +14,7 @@
                 <a class="nav-link" routerLink="/tim-viec-lam">Tìm Việc</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/my-cv">Tạo CV</a>
+                <a class="nav-link" routerLink="/mau-cv">Tạo CV</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Công Ty</a>
@@ -42,13 +42,13 @@
                     <span style="font-size: 16px;" class="greeting"><i>{{title}}</i>,</span>
                     <span style="font-size: 16px;" nz-menu-item nz-dropdown [nzDropdownMenu]="menu" nzTrigger="hover"
                         nzPlacement='bottomLeft'>
-                        <b style="padding-right: 12px;" class="greeting"> {{user.displayName}}</b>
+                        <b style="padding-right: 12px;" class="greeting"> {{user.name}}</b>
                         <img style="height: 32px;width: 32px;border-radius: 100%;" [src]="user.photoURL" alt="">
                     </span>
                     <nz-dropdown-menu #menu="nzDropdownMenu">
                         <ul nz-menu nzSelectable>
-                            <li class="info-li" nz-menu-item routerLink="/user/info" nz-menu-item>Thông tin</li>
-                            <li class="info-li" nz-menu-item (click)="logout()" nz-menu-item>Thoát</li>
+                            <li class="info-li" nz-menu-item routerLink="/tai-khoan" nz-menu-item>Thông tin</li>
+                            <li class="info-li" nz-menu-item (click)="logout()" nz-menu-item>Đăng xuất</li>
                         </ul>
 
                     </nz-dropdown-menu>

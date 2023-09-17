@@ -1,0 +1,39 @@
+.wrapper-container {
+    max-width: 1230px;
+    padding-top: 16px;
+    margin: auto;
+    min-height: 100vh;
+    .fr-info {
+        background: #fff;
+        -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+        border-radius: 5px;
+
+        h3 {
+            font-size: 13px;
+            padding: 8px;
+            margin: 0;
+            border-bottom: 1px solid lightgray;
+            color: gray;
+        }
+
+        .line {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            padding-left: 12px;
+        }
+
+        .line:hover {
+            background-color: #cff7cf;
+        }
+    }
+
+    .fr-outlet {
+        background: #fff;
+        -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+        border-radius: 5px;
+    }
+}

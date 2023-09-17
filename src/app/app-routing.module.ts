@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,8 +16,13 @@ const routes: Routes = [
     loadChildren: () => import('./job-detail/job-detail.module').then(m => m.JobDetailModule),
   },
   {
-    path: 'my-cv',
+    path: 'mau-cv',
     loadChildren: () => import('./template/template.module').then(m => m.TemplateModule)
+  },
+  {
+    path: 'tai-khoan',
+    loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'online/:id/:name',

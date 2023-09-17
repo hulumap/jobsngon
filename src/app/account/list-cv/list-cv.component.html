@@ -1,0 +1,58 @@
+<nz-tabset nzType="card">
+    <nz-tab nzTitle="Danh sách Cv">
+        <div nz-row class="row">
+            <div nz-row style="width: 100%;">
+                <div (click)="gotoTemplate(item.path)" class='col' nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8"
+                    nzXl="8" *ngFor="let item of cv;">
+                    <nz-card nzHoverable [nzCover]="coverTemplate">
+                        <nz-card-meta nzTitle="Miễn phí" [nzDescription]="item.name"></nz-card-meta>
+                        <div nz-row *ngIf="item.type ==1">
+                            <div nz-col class='img'>
+                                <img src="assets/icon/jp.svg" alt="">
+                            </div>
+                        </div>
+                        <div nz-row *ngIf="item.type !=1">
+                            <div nz-col class='img'>
+                                <img src="assets/icon/vi.svg" alt="">
+                            </div>
+                            <div nz-col class='img'>
+                                <img src="assets/icon/en.svg" alt="">
+                            </div>
+                            <div nz-col class='img'>
+                                <img src="assets/icon/jp.svg" alt="">
+                            </div>
+                        </div>
+                    </nz-card>
+                    <ng-template #coverTemplate>
+                        <img style="height: 100% ;width: 100%;" [src]="item.img" loading="lazy" />
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </nz-tab>
+    <nz-tab nzTitle="Đăng tải CV">
+        <!-- <div style="padding: 16px" *ngIf="a !== ''">
+            <div
+                style="display: flex; justify-content: space-between;align-items: center; display: flex;justify-content: space-between;align-items: center;height: 175px;border: 1px dashed lightgray; padding: 16px;border-radius: 5px;">
+                <input id="id_view" class="input-enter" placeholder="Chọn CV" nz-input type="file"
+                    (change)="selectFileDown($event)" />
+            </div>
+        </div> -->
+        <div style="padding: 16px">
+            <div style="display: flex; justify-content: flex-end;align-items: center; padding: 16px;">
+                <input id="id_change_cv" class="input-enter" placeholder="Chọn CV" nz-input type="file"
+                    (change)="selectFileDown($event)" style="display: none;" />
+                <button (click)="changeCv()" nz-button nzType="default"
+                    style="display: flex;align-items: center;height: 40px;border-radius: 5px">
+                    <i *ngIf="loadingDown" nz-icon nzType="loading" nzTheme="outline"></i>
+                    <i *ngIf="!loadingDown" nz-icon nzType="download" nzTheme="outline"></i>
+                    <span *ngIf="!loadingDown">Thay đổi CV</span>
+                </button>
+
+            </div>
+            <div style="height: 90vh;">
+                <iframe style="height:100%; width: 100%;" [src]="file_cv" frameborder="0"></iframe>
+            </div>
+        </div>
+    </nz-tab>
+</nz-tabset>

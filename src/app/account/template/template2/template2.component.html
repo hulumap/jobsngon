@@ -1,0 +1,402 @@
+<div class="wrapper-container">
+    <nz-spin *ngIf="hide" class="loading" nzTip="Đang tải dữ liệu..."></nz-spin>
+    <div nz-row class='body' *ngIf="!hide">
+        <div nz-row class='theme' style="margin-bottom: 32pt;">
+            <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="18" nzXl="18"
+                style="display: flex; justify-content: start; align-items: center;">
+                <app-theme [theme]="resume.theme" (color)="setColor($event)" (lang)="changeLang($event.value)"
+                    (fontfamily)="setFontfamily($event)" (fontsize)="setFontsize($event)"></app-theme>
+            </div>
+            <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="6"
+            style="text-align: center; padding: 4pt; display: flex;">
+
+            <button class="button" (click)="exportPDF()" nz-button>
+                Tải CV
+            </button>
+            <button class="button" (click)="saveResume()" [disabled]="disable" nz-button>
+                <i nz-icon nzType="save"></i>
+                Lưu CV
+            </button>
+            <ng-template #contentTemplate>
+                <div style="cursor: pointer;">
+                    <p style=" font-weight: 600;" (click)="copy()">Copy
+                        link cv
+                    </p>
+                    <p style="font-weight: 600;" (click)="viewOnline()">Xem cv online</p>
+                    <p nz-popconfirm nzPopconfirmTitle="Đặt lại dữ liệu CV mẫu?" nzPopconfirmPlacement="bottom"
+                        (nzOnConfirm)="setDefault()" style="font-weight: 600;">Đặt lại dữ liệu mẫu</p>
+                </div>
+            </ng-template>
+            <button class="button" nz-popover [nzPopoverContent]="contentTemplate" nzPopoverTrigger="click"
+                nz-button style="font-size: 11px;">
+                <i nz-icon nzType="menu"></i>
+            </button>
+        </div>
+        </div>
+        <div class='cv' id='tmp2' *ngIf="resume != ''">
+            <div nz-row style="height: 100%; padding: 8pt;">
+                <div nz-col nzSpan="12" style="padding: 8pt;">
+                    <div nz-row>
+                        <div nz-col [ngStyle]="{'background-color': resume.theme.color}" class="img">
+                            <img (click)="getFile()" [src]="resume.info.img? resume.info.img : 'assets/icon/user.svg'"
+                                alt=""
+                                style="object-fit: cover;width: 100%; height: 100%; margin: auto;border-radius: 100%">
+                        </div>
+                        <span [ngStyle]="{'color': resume.theme.color,
+                        'font-family':resume.theme.fontfamily, 'fontSize.pt':resume.theme.name}"
+                            style="width: 100%; padding: 8pt;"> <input style="text-align: center; text-transform: uppercase"
+                                type="text" class='input-content' [(ngModel)]="resume.info.name"></span>
+                        <span [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}"
+                            style="width: 100%"> <input type="text" style="text-align: center;text-transform: capitalize;"
+                                class='input-content' [(ngModel)]="resume.title"></span>
+                    </div>
+                    <div *ngIf='resume.goal.status' (mouseenter)="this.showGoal=true" (mouseleave)="this.showGoal=false"
+                        [ngStyle]="{'border': showGoal ? '3pt solid lightgrey' : 'none'}">
+                        <div *ngIf="showGoal" class="edit" style="left: 8pt;">
+                            <button (click)="openMenu()" nzType="default" class="menu" nz-button>
+                                <i nz-icon nzType="menu" nzTheme="outline"></i>
+                            </button>
+                            <button class="button-edit" (click)="hideGoal()"
+                                style="background-color: #f22f2f; opacity: 0.8;" nz-button><i nz-icon nzType="minus"
+                                    nzTheme="outline"></i> Ẩn
+                                mục</button>
+    
+                        </div>
+                        <div nz-row style="padding-top: 16pt;">
+                            <div nz-col style="width: 100%;display: flex;flex-direction: row;align-items: center;">
+    
+    
+                                <textarea [minRows]="1" autosize class='input' [ngStyle]="{'color': resume.theme.color,
+                                'font-family':resume.theme.fontfamily, 'fontSize.pt': resume.theme.title}"
+                                    style="width: 65%;font-weight: bold;" type="text"
+                                    [(ngModel)]="resume.goal.title"></textarea>
+                                <div style="height: 3pt; width: 35%; background-color: #9b9999;"></div>
+    
+    
+                            </div>
+                            <div nz-row style="width: 100%;">
+                                <div style="width: 100%;"
+                                    [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}"
+                                    class='decs-just'>
+                                    <textarea autosize style="width: 100%;" type="text" class='input-content'
+                                        [(ngModel)]="resume.goal.value"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div [ngStyle]="{'border': showDragS ? '1pt dotted lightgrey' : 'none'}" cdkDropList
+                        (cdkDropListDropped)="dropS($event)">
+                        <div cdkDrag *ngFor="let data of resume.data_slc; let i = index" (mouseenter)="this.showS=i"
+                            (mouseleave)="this.showS=null">
+                            <div *ngIf="showS==i" class="edit" style="left: 8pt;">
+                                <div style="display: flex;align-items: center;">
+                                    <button (click)="openMenu()" nzType="default" class="menu" nz-button>
+                                        <i nz-icon nzType="menu" nzTheme="outline"></i>
+                                    </button>
+                                    <button class="button-edit" (click)="hideDataS(data)"
+                                        style="background-color: #f22f2f; opacity: 0.8;" nz-button><i nz-icon nzType="minus"
+                                            nzTheme="outline"></i> Ẩn
+                                        mục</button>
+    
+                                </div>
+                                <div *ngIf="data.titleStatus !=='Yêu thích'">
+                                    <button class="button-edit" (click)="addDataS(i)"
+                                        style="background-color: #00b14f; opacity: 0.8;" nz-button><i nz-icon nzType="plus"
+                                            nzTheme="outline"></i> Thêm</button>
+    
+                                </div>
+                                <div (mouseenter)="this.showDragS=true" (mouseleave)="this.showDragS=false">
+                                    <button nzType="default" class="drag" nz-button>
+                                        <i nz-icon nzType="drag" nzTheme="outline"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="data.status" [ngStyle]="{'border': showS==i ? '3pt solid lightgrey' : 'none'}"
+                                nz-row style="padding-top: 16pt;" cdkDropList (cdkDropListDropped)="dropSsub($event,i)">
+                                <div nz-col style="width: 100%;display: flex;flex-direction: row;align-items: center;">
+                                    <textarea [minRows]="1" autosize class='input' [ngStyle]="{'color': resume.theme.color,
+                                'font-family':resume.theme.fontfamily, 'fontSize.pt': resume.theme.title}"
+                                        style="width: 42%;font-weight: bold;" type="text"
+                                        [(ngModel)]="data.title"></textarea>
+                                    <div style="height: 3pt; width: 58%; background-color: #9b9999;"></div>
+    
+                                </div>
+                                <div cdkDrag
+                                    [ngStyle]="{'border-bottom': showDeleteS ==j && showS==i && data.data.length >1 ? '2pt dotted gray' : 'none'}"
+                                    style="width: 100%; padding-bottom: 8pt;" nz-row
+                                    *ngFor="let item of data.data; let j = index" (mouseenter)="this.showDeleteS = j"
+                                    (mouseleave)="this.showDeleteS =''">
+    
+                                    <!-- chứng chỉ, giải thưởng -->
+                                    <div *ngIf="data.titleStatus !=='Kỹ năng' && data.titleStatus !=='Yêu thích' && data.titleStatus !=='Ngôn ngữ'"
+                                        style="width: 100%;">
+                                        <div style="width: 100%;">
+                                            <input style="font-weight: 600;" autosize class="input-content" autoSizeInput
+                                                [(ngModel)]="item.name">
+                                        </div>
+                                        <div [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}"
+                                            style="width: 100%;">
+                                            <textarea [minRows]="1" autosize class="input-content"
+                                                [(ngModel)]="item.value"></textarea>
+                                        </div>
+                                    </div>
+                                    <!-- ngôn ngữ -->
+                                    <div *ngIf="data.titleStatus =='Ngôn ngữ' && data.titleStatus !=='Yêu thích'" nz-row
+                                        style="width: 100%;display: flex;align-items: center;">
+                                        <div style="display: flex;align-items: center"
+                                            [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}"
+                                            class='decs-just'><input autoSizeInput type="text" class='input-content'
+                                                [(ngModel)]="item.name">:
+                                            <textarea class="decs-just" [minRows]="1" autosize type="text"
+                                                class='input-content' [(ngModel)]="item.value"></textarea>
+    
+                                        </div>
+                                    </div>
+    
+                                    <!-- kỹ năng -->
+                                    <div *ngIf="data.titleStatus =='Kỹ năng' && data.titleStatus !=='Yêu thích'"
+                                        style="width: 100%; display: flex; align-items: center;"
+                                        [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}"
+                                        class='decs-just'><input autoSizeInput type="text" class='input-content'
+                                            [(ngModel)]="item.name">: <span class="decs-just"
+                                            style="font-style: italic; display: flex; width: 100%;"><textarea [minRows]="1"
+                                                autosize type="text" class='input-content'
+                                                [(ngModel)]="item.describe"></textarea></span>
+                                    </div>
+    
+                                    <!-- yêu thích -->
+                                    <div *ngIf="data.titleStatus =='Yêu thích'" nz-row style="width: 100%;">
+                                        <div style="width: 100%;"
+                                            [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}"
+                                            class='decs-just'>
+                                            <textarea [minRows]="1" autosize style="width: 100%;" type="text"
+                                                class='input-content' [(ngModel)]="item.value"></textarea>
+                                        </div>
+                                    </div>
+    
+                                    <div *ngIf="showDeleteS ==j && showS==i && data.data.length >1" class="button-delete">
+                                        <button nzType="default" class="drag" nz-button>
+                                            <i nz-icon nzType="drag" nzTheme="outline"></i>
+                                        </button>
+                                        <button class="button-edit" (click)="deleteDataS(i,j)"
+                                            style="background: #f22f2f; opacity: 0.8;" nz-button>
+                                            <i nz-icon nzType="minus" nzTheme="outline"></i> Xóa
+                                        </button>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div [ngStyle]="{'border': showDragL ? '1pt dotted lightgrey' : 'none'}" cdkDropList
+                        (cdkDropListDropped)="dropL($event)">
+                        <div cdkDrag *ngFor="let data of resume.data_adr; let i = index" (mouseenter)="this.showL=i"
+                            (mouseleave)="this.showL=null">
+                            <div *ngIf="showL ==i" class="edit" style="left: 8pt;">
+                                <button (click)="openMenu()" nzType="default" class="menu" nz-button>
+                                    <i nz-icon nzType="menu" nzTheme="outline"></i>
+                                </button>
+                                <button class="button-edit" (click)="hideDataL(data)"
+                                    style="background-color: #f22f2f; opacity: 0.8;" nz-button><i nz-icon nzType="minus"
+                                        nzTheme="outline"></i> Ẩn
+                                    mục</button>
+    
+                                <div (mouseenter)="this.showDragL=true" (mouseleave)="this.showDragL=false">
+                                    <button nzType="default" class="drag" nz-button>
+                                        <i nz-icon nzType="drag" nzTheme="outline"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="data.status" [ngStyle]="{'border': showL==i ? '3pt solid lightgrey' : 'none'}"
+                                nz-row style="padding-top: 16pt;">
+                                <div nz-col style="width: 100%;display: flex;flex-direction: row;align-items: center;">
+    
+    
+                                    <textarea [minRows]="1" autosize class='input' [ngStyle]="{'color': resume.theme.color,
+            'font-family':resume.theme.fontfamily, 'fontSize.pt': resume.theme.title}"
+                                        style="width: 55%;font-weight: bold;" type="text"
+                                        [(ngModel)]="data.title"></textarea>
+                                    <div style="height: 3pt; width: 45%; background-color: #9b9999;"></div>
+    
+    
+                                </div>
+                                <div nz-row style="width: 100%;">
+                                    <div style="width: 100%;"
+                                        [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}"
+                                        class='decs-just'>
+                                        <textarea [minRows]="1" autosize style="width: 100%;" type="text"
+                                            class='input-content' [(ngModel)]="data.value"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col nzSpan="12" style="padding: 8pt;">
+                    <!-- Thông tin -->
+                    <div (mouseenter)="this.showInfo=true" (mouseleave)="this.showInfo=false"
+                        [ngStyle]="{'border': showInfo ? '3pt solid lightgrey' : 'none'}">
+                        <div *ngIf="showInfo" class="edit" style="left: 8pt;">
+                            <button (click)="openMenu()" nzType="default" class="menu" nz-button>
+                                <i nz-icon nzType="menu" nzTheme="outline"></i>
+                            </button>
+    
+    
+                        </div>
+    
+                        <div nz-row style="padding-top: 16pt;">
+                            <div nz-col style="width: 100%;display: flex;flex-direction: row;align-items: center;">
+                                <textarea [minRows]="1" autosize class='input' [ngStyle]="{'color': resume.theme.color,
+                                'font-family':resume.theme.fontfamily, 'fontSize.pt': resume.theme.title}"
+                                    style="width: 65%;font-weight: bold;" type="text"
+                                    [(ngModel)]="resume.info.title"></textarea>
+                                <div style="height: 3pt; width: 35%; background-color: #9b9999;"></div>
+                            </div>
+                            <div nz-row>
+                                <div style="width: 100%; display: flex; align-items: center;"
+                                    [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                                    <i [ngStyle]="{'color': resume.theme.color}" nz-icon nzType="calendar"
+                                        nzTheme="outline"></i>
+                                    <input type="text" class='input-content' [(ngModel)]="resume.info.dateBirth">
+                                </div>
+                                <div style="width: 100%; display: flex; align-items: center;"
+                                    [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                                    <i [ngStyle]="{'color': resume.theme.color}" nz-icon nzType="user"
+                                        nzTheme="outline"></i> <input type="text" class='input-content'
+                                        [(ngModel)]="resume.info.sex">
+                                </div>
+                                <div style="width: 100%; display: flex; align-items: center;"
+                                    [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                                    <i [ngStyle]="{'color': resume.theme.color}" nz-icon nzType="phone"
+                                        nzTheme="outline"></i> <input type="text" class='input-content'
+                                        [(ngModel)]="resume.info.phone">
+                                </div>
+                                <div style="width: 100%; display: flex; align-items: center;"
+                                    [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                                    <i [ngStyle]="{'color': resume.theme.color}" nz-icon nzType="mail"
+                                        nzTheme="outline"></i> <input type="text" class='input-content'
+                                        [(ngModel)]="resume.info.email">
+                                </div>
+                                <div style="width: 100%; display: flex; align-items: center;"
+                                    [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                                    <i [ngStyle]="{'color': resume.theme.color}" nz-icon>
+                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0pt" y="0pt"
+                                            viewBox="0 0 368.16 368.16" style="enable-background:new 0 0 368.16 368.16;"
+                                            xml:space="preserve">
+                                            <g>
+                                                <g>
+                                                    <g>
+                                                        <path d="M184.08,0c-74.992,0-136,61.008-136,136c0,24.688,11.072,51.24,11.536,52.36c3.576,8.488,10.632,21.672,15.72,29.4
+                        l93.248,141.288c3.816,5.792,9.464,9.112,15.496,9.112s11.68-3.32,15.496-9.104l93.256-141.296
+                        c5.096-7.728,12.144-20.912,15.72-29.4c0.464-1.112,11.528-27.664,11.528-52.36C320.08,61.008,259.072,0,184.08,0z
+                         M293.8,182.152c-3.192,7.608-9.76,19.872-14.328,26.8l-93.256,141.296c-1.84,2.792-2.424,2.792-4.264,0L88.696,208.952
+                        c-4.568-6.928-11.136-19.2-14.328-26.808C74.232,181.816,64.08,157.376,64.08,136c0-66.168,53.832-120,120-120
+                        c66.168,0,120,53.832,120,120C304.08,157.408,293.904,181.912,293.8,182.152z" />
+                                                        <path d="M184.08,64.008c-39.704,0-72,32.304-72,72c0,39.696,32.296,72,72,72c39.704,0,72-32.304,72-72
+                        C256.08,96.312,223.784,64.008,184.08,64.008z M184.08,192.008c-30.872,0-56-25.12-56-56s25.128-56,56-56s56,25.12,56,56
+                        S214.952,192.008,184.08,192.008z" />
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+    
+                                    </i>
+                                    <textarea [minRows]="1" autosize style="width: 100%;" type="text" class='input-content'
+                                        [(ngModel)]="resume.info.address"></textarea>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                    <!-- kinh nghiệm, học vấn -->
+                    <div [ngStyle]="{'border': showDragE ? '1pt dotted lightgrey' : 'none'}" cdkDropList
+                        (cdkDropListDropped)="drop($event)">
+                        <div cdkDrag *ngFor="let data of resume.data_eec; let i = index" (mouseenter)="this.show=i"
+                            (mouseleave)="this.show=null">
+                            <div *ngIf="show ==i" class="edit" style="left: 8pt;">
+                                <div style="display: flex;align-items: center;">
+                                    <button (click)="openMenu()" nzType="default" class="menu" nz-button>
+                                        <i nz-icon nzType="menu" nzTheme="outline"></i>
+                                    </button>
+                                    <button class="button-edit" (click)="hideDataE(data)"
+                                        style="background-color: #f22f2f; opacity: 0.8;" nz-button><i nz-icon nzType="minus"
+                                            nzTheme="outline"></i> Ẩn
+                                        mục</button>
+    
+                                </div>
+                                <div>
+                                    <button class="button-edit" (click)="addDataE(i)"
+                                        style="background-color: #00b14f; opacity: 0.8;" nz-button><i nz-icon nzType="plus"
+                                            nzTheme="outline"></i> Thêm</button>
+                                </div>
+    
+                                <div (mouseenter)="this.showDragE=true" (mouseleave)="this.showDragE=false">
+                                    <button nzType="default" class="drag" nz-button>
+                                        <i nz-icon nzType="drag" nzTheme="outline"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="data.status" [ngStyle]="{'border': show==i ? '3pt solid lightgrey' : 'none'}" nz-row
+                                style="padding-top: 16pt;" cdkDropList (cdkDropListDropped)="dropEsub($event,i)">
+                                <div nz-col style="width: 100%;display: flex;flex-direction: row;align-items: center;">
+                                    <textarea [minRows]="1" autosize class='input' [ngStyle]="{'color': resume.theme.color,
+                            'font-family':resume.theme.fontfamily, 'fontSize.pt': resume.theme.title}"
+                                        style="width: 60%;font-weight: bold;" type="text"
+                                        [(ngModel)]="data.title"></textarea>
+                                    <div style="height: 3pt; width: 30%; background-color: #9b9999;"></div>
+    
+                                </div>
+                                <div cdkDrag
+                                    [ngStyle]="{'border-bottom': showDelete ==j && show && data.data.length >1 ? '2pt dotted gray' : 'none'}"
+                                    *ngFor="let item of data.data; let j = index" (mouseenter)="this.showDelete = j"
+                                    (mouseleave)="this.showDelete =''" nz-row>
+                                    <div style="font-size: 11pt; color: #333; width: 100%;">(
+                                        <input style="font-weight: 600;" autosize class="input-content" autoSizeInput
+                                            [(ngModel)]="item.start"> -
+                                        <input style="font-weight: 600;" autoSizeInput autosize class="input-content"
+                                            [(ngModel)]="item.end">)
+                                    </div>
+    
+                                    <div style="width: 100%;" [ngStyle]="{'color': resume.theme.color,
+                            'font-family':resume.theme.fontfamily, 'fontSize.pt': resume.theme.font}">
+                                        <textarea [minRows]="1" autosize style="width: 100%;" class="input-content"
+                                            [(ngModel)]="item.name" style="text-align: left; font-weight: bold;"></textarea>
+                                    </div>
+    
+                                    <div style="width: 100%;"
+                                        [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}">
+                                        <textarea [minRows]="1" autosize style="width: 100%;" class="input-content"
+                                            [(ngModel)]="item.position" style="text-align: left;"></textarea>
+                                    </div>
+                                    <div style="width: 100%;"
+                                        [ngStyle]="{'fontSize.pt': resume.theme.font ,'font-family':resume.theme.fontfamily}"
+                                        class='decs-just'>
+                                        <textarea [minRows]="1" autosize style="width: 100%;" type="text"
+                                            class='input-content' [(ngModel)]="item.describe"></textarea>
+                                    </div>
+                                    <div *ngIf="showDelete ==j && show==i && data.data.length >1" class="button-delete">
+                                        <button nzType="default" class="drag" nz-button>
+                                            <i nz-icon nzType="drag" nzTheme="outline"></i>
+                                        </button>
+                                        <button class="button-edit" (click)="deleteDataE(i,j)"
+                                            style="background: #f22f2f; opacity: 0.8;" nz-button>
+                                            <i nz-icon nzType="minus" nzTheme="outline"></i> Xóa
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <input style="display: none;" id="file-upload" type="file" accept=".png, .jpg" (change)="upLogo($event)" />
+    <app-menu [dataIn]="resume" (closeMenu)="closeMenu($event)" [isVisible]="isVisible"></app-menu>
+</div>

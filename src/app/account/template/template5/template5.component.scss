@@ -1,0 +1,89 @@
+.wrapper-container {
+    max-width: 1230px;
+    padding: 16px;
+    margin: auto;
+}
+.body {
+    background-color: white;
+    padding: 16px;
+    color: #000;
+    width: 750pt;
+    margin: auto;
+    border: 1px solid #9b9999;
+    box-shadow: 0 4px 8px 0 rgba(168, 178, 186, 0.3);
+    .cv {
+        width: 100%;
+        padding: 8px;
+       // height: 100%;
+        width: 750pt;
+       // height: 1200pt;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        .name {
+            margin: 0 0 15px;
+            width: 100%;
+            line-height: 32px;
+            text-transform: uppercase;
+            font-weight: 700;
+            border: 2px solid;
+            border-radius: 6px;
+            text-align: center;
+            input {
+                background-color: transparent;
+                font-weight: 700;
+                padding-left: 8px;
+            }
+        }
+        .name-1 {
+            margin: 0 0 15px;
+            width: 85%;
+            line-height: 32px;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 6px;
+            text-align: center;
+            color: white;
+            input {
+                background-color: transparent;
+                font-weight: 700;
+                color: white;
+                padding-left: 8px;
+            }
+        }
+    }
+    .cv::-webkit-scrollbar {
+        width: 2px;
+    }
+    .cv::-webkit-scrollbar-thumb {
+        background-color: #00a859;
+    }
+    .cv::-webkit-scrollbar-track {
+        --webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #f5f5f5;
+    }
+    .theme {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #9b9999;
+        /* position: fixed; */
+        /* top: 100px; */
+        background-color: #009900;
+        z-index: 99;
+        border-radius: 5px;
+        padding: 8px;
+    }
+    .img {
+        border-radius: 100%;
+        margin: auto;
+        width: 180px;
+        height: 180px;
+        @media only screen and (max-width: 600px) {
+            height: 100px;
+            width: 100px;
+        }
+    }
+    .button {
+        margin: 1px;
+    }
+}

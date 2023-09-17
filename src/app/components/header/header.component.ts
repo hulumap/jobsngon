@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     this.jobsngon.onAuthStateChanged()
       .then((user: any) => {
         if (user) {
-          console.log(user)
+          // console.log(user)
           this.user = user
           this.isLogin = true
         }
@@ -48,12 +48,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    // this.jobsngon.logoutUser()
-    //   .then(() => {
-    //     this.router.navigate(['']).then(() => {
-    //       localStorage.clear()
-    //       window.location.reload()
-    //     })
-    //   })
+    this.jobsngon.signOut()
+      .then(() => {
+        window.location.reload()
+      })
   }
 }

@@ -1,0 +1,27 @@
+<div nz-col nzSpan="24" class="body">
+    <div>
+        <div nz-row style="padding: 8px; display: flex; justify-content: space-between;">
+            <h2 style="font-weight: bold; font-size: 16px;">Thông tin cá nhân</h2>
+        </div>
+        <div nz-row style="width: 100%;flex-direction: row;display: flex;align-items: center; margin:4px ;">
+            <div style="width: 30%;"><b class="label">Họ và tên</b></div>
+            <input [(ngModel)]="user.name" style="width: 70%;" class="input-enter" type="text" nz-input
+                placeholder="Họ và tên" />
+        </div>
+        <div nz-row style="width: 100%;flex-direction: row;display: flex;align-items: center; margin:4px ;">
+            <div style="width: 30%;"><b class="label">Email</b></div>
+            <input disabled="true" [(ngModel)]="user.email" style="width: 70%;" class="input-enter" type="text" nz-input
+                placeholder="Email" />
+        </div>
+        <div nz-row style="width: 100%;flex-direction: row;display: flex;align-items: center; margin:4px ;">
+            <div style="width: 30%;"><b class="label">Điện thoại</b></div>
+            <input [(ngModel)]="user.phone" style="width: 70%;" class="input-enter" type="text" nz-input
+                placeholder="Điện thoại" />
+        </div>
+    </div>
+    <div nz-row style="width: 100%; display: flex; align-items: center; margin-top: 16px; justify-content: center;">
+        <button (click)="update()" nz-button nzType="primary" nzShape="round">
+            Cập nhật
+        </button>
+    </div>
+</div>

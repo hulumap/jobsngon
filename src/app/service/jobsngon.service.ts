@@ -162,8 +162,11 @@ export class Jobsngon {
   getUser() {
     return this.currentUser
   }
+
   signOut(): Promise<any> {
-    return this.afAuth.signOut()
+    return this.afAuth.signOut().then(() => {
+      this.clearLocal()
+    })
   }
 
   signInWithEmail(email: string, password: string): Promise<any> {
@@ -180,14 +183,13 @@ export class Jobsngon {
       this.afAuth.createUserWithEmailAndPassword(value.email, value.password)
         .then((user) => {
           let data = {
-            'email': value.email,
-            "name": value.name,
-            "type": 2,
+            'email': user.user.email,
+            "name": user.user.displayName,
             "date": new Date(),
-            "uid": user.user.uid
+            "photoURL": user.user.photoURL
           }
           this.afs
-            .collection('partners')
+            .collection('info_users')
             .doc(user.user.uid)
             .set(data)
             .then((obj: any) => {
@@ -200,9 +202,9 @@ export class Jobsngon {
     })
 
   }
-  signInWithGoogle(): Promise<any> {
-    return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-  }
+  // signInWithGoogle(): Promise<any> {
+  //   return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+  // }
 
   /**
        * Lấy thông tin từ firestore theo UID
@@ -211,22 +213,44 @@ export class Jobsngon {
   getInfoUser() {
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe((currentUser) => {
+        // console.log(currentUser)
         if (currentUser) {
           firebase
             .firestore()
-            .collection("users")
+            .collection("info_users")
             .doc(currentUser.uid)
             .get()
             .then((snapshots) => {
-              let data = { ...snapshots.data() }
-              data['id'] = currentUser.uid
-              resolve(data);
+              if (snapshots.exists) {
+                let data = { ...snapshots.data() }
+                data['id'] = currentUser.uid
+                resolve(data);
+              } else resolve(false)
             })
             .catch((error: any) => {
               reject(error);
             });
         }
       });
+    });
+  }
+  //** hàm update thông tin chỉnh sửa khách hàng, lưu ý, uid là id của khách hàng luôn */
+  updateInfo(value) {
+    let data = { ...value }
+    data.date = new Date()
+    return new Promise((resolve, reject) => {
+      this.afAuth.user.subscribe((currentUser) => {
+        this.afs
+          .collection('info_users')
+          .doc(currentUser.uid)
+          .update(data)
+          .then((obj: any) => {
+            resolve(obj);
+          })
+          .catch((error: any) => {
+            reject(error);
+          });
+      })
     });
   }
 
@@ -239,53 +263,52 @@ export class Jobsngon {
       this.afAuth
         .onAuthStateChanged((user) => {
           this.currentUser = user
-          console.log(this.currentUser)
-          // if (user) {
-          //   this.getInfoUser()
-          //     .then((user) => {
-          //       resolve(user)
-          //     }, err => rejects(false))
-          // } else rejects(false)
-          resolve(user)
+          if (user) {
+            this.getInfoUser()
+              .then((data) => {
+                if (data) this.setLocalData("user", data)
+                resolve(data)
+              }, err => rejects(false))
+          } else rejects(false)
         }, err => rejects(false))
         .catch((err) => rejects(false));
     });
   }
 
-  // signInWithGoogle(): Promise<any> {
-  //   return new Promise((resolve, rejects) => {
-  //     this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-  //       .then((user) => {
-  //         this.getInfo()
-  //           .then((data) => {
-  //             if (!data) {
-  //               console.log("chưa tồn tại", data)
-  //               let value = {
-  //                 'email': user.user.email,
-  //                 "name": user.user.displayName,
-  //                 "type": 2,
-  //                 "date": new Date(),
-  //                 "uid": user.user.uid
-  //               }
-  //               this.afs
-  //                 .collection('partners')
-  //                 .doc(user.user.uid)
-  //                 .set(value)
-  //                 .then((obj: any) => {
-  //                   resolve(user);
-  //                 })
-  //                 .catch((error: any) => {
-  //                   rejects(error);
-  //                 });
-  //             } else {
-  //               resolve(user)
-  //               console.log("đã tồn tại", data)
-  //             }
-  //           })
-  //           , err => rejects(err);
-  //       })
-  //   })
-  // }
+  signInWithGoogle(): Promise<any> {
+    return new Promise((resolve, rejects) => {
+      this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        .then((user) => {
+          //  console.log(user)
+          this.getInfoUser()
+            .then((data) => {
+              if (!data) {
+                //console.log("chưa tồn tại", data)
+                let value = {
+                  'email': user.user.email,
+                  "name": user.user.displayName,
+                  "date": new Date(),
+                  "photoURL": user.user.photoURL
+                }
+                this.afs
+                  .collection('info_users')
+                  .doc(user.user.uid)
+                  .set(value)
+                  .then((obj: any) => {
+                    resolve(user);
+                  })
+                  .catch((error: any) => {
+                    rejects(error);
+                  });
+              } else {
+                resolve(user)
+                //console.log("đã tồn tại", data)
+              }
+            })
+            , err => rejects(err);
+        })
+    })
+  }
 
 
   getJobs(uid) {

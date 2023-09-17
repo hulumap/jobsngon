@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Jobsngon } from '../service/jobsngon.service';
 
 @Component({
   selector: 'app-template',
@@ -11,54 +10,50 @@ export class TemplateComponent implements OnInit {
   data: any = [
     {
       name: 'Mẫu tiếng nhật chuẩn',
-      path: 'my-cv/mau-1',
+      path: 'tai-khoan/cv/mau-1',
       img: "assets/cv/mau-1.jpg",
       type: 1
     },
     {
       name: 'Năng động, sáng tạo',
-      path: 'my-cv/mau-2',
+      path: 'tai-khoan/cv/mau-2',
       img: "assets/cv/mau-2.jpg",
       type: 2
     },
     {
       name: 'Chuyên nghiệp',
-      path: 'my-cv/mau-3',
+      path: 'tai-khoan/cv/mau-3',
       img: "assets/cv/mau-3.jpg",
       type: 2
     },
     {
       name: 'Đơn giản',
-      path: 'my-cv/mau-4',
+      path: 'tai-khoan/cv/mau-4',
       img: "assets/cv/mau-4.jpg",
       type: 2
     },
     {
       name: 'Mạnh mẽ',
-      path: 'my-cv/mau-5',
+      path: 'tai-khoan/cv/mau-5',
       img: "assets/cv/mau-5.jpg",
       type: 2
     },
     {
       name: 'Cao cấp',
-      path: 'my-cv/mau-6',
+      path: 'tai-khoan/cv/mau-6',
       img: "assets/cv/mau-6.jpg",
       type: 2
     },
   ]
   cv: any = []
-  constructor(private router: Router, private jobsngon: Jobsngon) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.cv = this.data
   }
 
   gotoTemplate(path) {
-    this.jobsngon.getLocalData('user')
-      .then((data) => {
-        if (data) this.router.navigate(['tai-khoan/cv'])
-        else this.router.navigate(['login'])
-      }, err => this.router.navigate(['login']))
+    this.router.navigate([path])
   }
 
 

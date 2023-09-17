@@ -346,6 +346,7 @@ textarea::-webkit-scrollbar-thumb {
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn,
 .ant-tabs-tab:hover {
     color: var(--ion-color-hu-green) !important;
+    font-weight: bold !important;
 }
 
 .ant-tabs-ink-bar {
@@ -401,6 +402,11 @@ textarea::-webkit-scrollbar-thumb {
 .ant-btn-primary {
     background: var(--ion-color-hu-green) !important;
     border-color: var(--ion-color-hu-green) !important;
+}
+
+.ant-btn:hover {
+    border-color: var(--ion-color-hu-green) !important;
+    color: var(--ion-color-hu-green) !important;
 }
 
 .ant-modal-body {
@@ -468,6 +474,10 @@ textarea::-webkit-scrollbar-thumb {
 .ant-radio-checked+label::after {
     background: var(--ion-color-hu-green) !important;
     color: var(--ion-color-hu-green) !important;
+}
+
+.ant-radio-inner::after {
+    background-color: var(--ion-color-hu-green) !important;
 }
 
 .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {

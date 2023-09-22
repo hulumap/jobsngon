@@ -6,56 +6,51 @@
                     <nz-input-group style="color: #000;
                     border-radius: 4px;
                     padding: 12px;" [nzPrefix]="prefixTemplateUser">
-                        <input [(ngModel)]="searchKey" type="text" nz-input placeholder="Enter your username" />
+                        <input [(ngModel)]="searchKey" type="text" nz-input
+                            placeholder="Tìm việc làm mà bạn muốn ứng tuyển…" />
                     </nz-input-group>
                     <ng-template #prefixTemplateUser><span nz-icon nzType="search"
                             nzTheme="outline"></span></ng-template>
                 </div>
                 <div style="width: 25%;">
-                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả nghề nghiệp" [(ngModel)]="type_job">
-                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    <nz-select nzShowSearch nzPlaceHolder="Tất cả nghề nghiệp" [(ngModel)]="type_career">
+                        <nz-option nzLabel="Tất cả nghề nghiệp" nzValue="all"></nz-option>
+                        <nz-option *ngFor="let item of career" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
                     </nz-select>
                 </div>
                 <div style="width: 25%;">
-                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả địa điểm" [(ngModel)]="type_address">
-                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    <nz-select nzShowSearch nzPlaceHolder="Tất cả địa điểm" [(ngModel)]="type_address">
+                        <nz-option nzLabel="Tất cả địa điểm" nzValue="all"></nz-option>
+                        <nz-option *ngFor="let item of address" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
                     </nz-select>
                 </div>
                 <div style="width: 15%; text-align: end;">
-                    <button class="btn-search">Tìm kiếm</button>
+                    <button (click)="search()" class="btn-search">Tìm kiếm</button>
                 </div>
             </div>
             <div class="fr-sub-search">
                 <div style="width: 25%;">
-                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả trình độ" [(ngModel)]="type_address">
-                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    <nz-select nzShowSearch nzPlaceHolder="Tất cả ngôn ngữ" [(ngModel)]="type_lang">
+                        <nz-option nzLabel="Tất cả ngôn ngữ" nzValue="all"></nz-option>
+                        <nz-option *ngFor="let item of lang" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
                     </nz-select>
                 </div>
                 <div style="width: 25%;">
-                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả cấp bậc" [(ngModel)]="type_address">
-                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    <nz-select nzShowSearch nzPlaceHolder="Tất cả cấp bậc" [(ngModel)]="type_level">
+                        <nz-option nzLabel="Tất cả cấp bậc" nzValue="all"></nz-option>
+                        <nz-option *ngFor="let item of level" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
                     </nz-select>
                 </div>
                 <div style="width: 25%;">
-                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả giới tinh" [(ngModel)]="type_address">
-                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    <nz-select nzShowSearch nzPlaceHolder="Tất cả giới tinh" [(ngModel)]="type_sex">
+                        <nz-option nzLabel="Tất cả giới tính" nzValue="all"></nz-option>
+                        <nz-option *ngFor="let item of sex" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
                     </nz-select>
                 </div>
                 <div style="width: 25%;">
-                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Tất cả kinh nghiệm" [(ngModel)]="type_address">
-                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                    <nz-select nzShowSearch nzPlaceHolder="Tất cả kinh nghiệm" [(ngModel)]="type_exp">
+                        <nz-option nzLabel="Tất cả kinh nghiệm" nzValue="all"></nz-option>
+                        <nz-option *ngFor="let item of exp" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
                     </nz-select>
                 </div>
             </div>

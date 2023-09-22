@@ -1,42 +1,52 @@
 [
     {
-        "name":"Tiếng nhật N1",
-        "id":1
+        "name": "Tiếng nhật N1",
+        "id": 1,
+        "link": "tieng-nhat-n1"
     },
     {
-        "name":"Tương đương N1",
-        "id":2
+        "name": "Tương đương N1",
+        "id": 2,
+        "link": "tương-duong-n1"
     },
     {
-        "name":"Tiếng nhật N2",
-        "id":3
+        "name": "Tiếng nhật N2",
+        "id": 3,
+        "link": "tieng-nhat-n2"
     },
     {
-        "name":"Tương đương N2",
-        "id":4
+        "name": "Tương đương N2",
+        "id": 4,
+        "link": "tương-duong-n2"
     },
     {
-        "name":"Tiếng nhật N3",
-        "id":5
+        "name": "Tiếng nhật N3",
+        "id": 5,
+        "link": "tieng-nhat-n3"
     },
     {
-        "name":"Tương đương N3",
-        "id":6
+        "name": "Tương đương N3",
+        "id": 6,
+        "link": "tương-duong-n3"
     },
     {
-        "name":"Tiếng nhật N4",
-        "id":7
+        "name": "Tiếng nhật N4",
+        "id": 7,
+        "link": "tieng-nhat-n4"
     },
     {
-        "name":"Tiếng anh",
-        "id":8
+        "name": "Tiếng anh",
+        "id": 8,
+        "link": "tieng-anh"
     },
     {
-        "name":"Tiếng trung",
-        "id":9
+        "name": "Tiếng trung",
+        "id": 9,
+        "link": "tieng-trung"
     },
     {
-        "name":"Ngoại ngữ khác",
-        "id":10
+        "name": "Ngoại ngữ khác",
+        "id": 10,
+        "link": "ngon-ngu-khac"
     }
 ]

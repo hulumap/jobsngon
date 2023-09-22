@@ -10,9 +10,10 @@
                 <owl-carousel-o [options]="carouselOptions">
                     <ng-container class="item" *ngFor="let item of industry">
                         <ng-template carouselSlide>
-                            <div class="fr-main">
+                            <div class="fr-main" (click)="gotoDetail(item.link)">
                                 <div style="height: 80px; text-align: center;">
-                                    <img src="https://freec.asia/_next/image?url=%2F_next%2Fstatic%2Fimage%2F_%2F_%2Fpackages%2Foptimal-page%2Fwrapper%2Fhome%2Fassets%2Fimg%2FIT-NetworkHardware.5f873612fefbf9cd73a30bc2be225fc7.webp&w=48&q=75" alt="" style="height: 100%;
+                                    <img src="https://freec.asia/_next/image?url=%2F_next%2Fstatic%2Fimage%2F_%2F_%2Fpackages%2Foptimal-page%2Fwrapper%2Fhome%2Fassets%2Fimg%2FIT-NetworkHardware.5f873612fefbf9cd73a30bc2be225fc7.webp&w=48&q=75"
+                                        alt="" style="height: 100%;
                                     object-fit: contain;">
                                 </div>
                                 <div style="margin-top: 32px;">

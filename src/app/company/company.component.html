@@ -1,1 +1,47 @@
-<p>company works!</p>
+<div style="width: 100%; background-color: #f6f8fc;;">
+    <div class="wraper-search">
+        <h3>Tìm một nơi tuyệt vời để làm việc</h3>
+        <h5>Tìm hiểu thêm về các công ty và chọn cho mình nơi làm việc tốt nhất</h5>
+    </div>
+    <div class="wrapper-container">
+        <div class="fr-list">
+            <div class="fr-jobs">
+                <div class="row" style="padding: 8px;">
+                    <div class="col-4" *ngFor="let item of jobs" style="padding: 0;" (click)="gotoJobDetail(item)">
+                        <div class="fr-main">
+                            <div class="fr-info">
+                                <div style="width: 25%;">
+                                    <img [src]="item.logo" alt="" style="width: 90%;">
+                                </div>
+                                <div
+                                    style="width: 75%; display: flex; flex-direction: column; justify-content: center;">
+                                    <div class="job-name">
+                                        <span>
+                                            {{item.name}}
+                                        </span>
+                                        <div class="salary">
+                                            <span class="icon" nz-icon nzType="dollar" nzTheme="outline"></span>
+                                            <span style="font-weight: 700;">{{item.size}}</span>
+                                        </div>
+                                        <div class="salary">
+                                            <span class="icon" nz-icon nzType="global" nzTheme="outline"></span>
+                                            <span class=address>{{item.address}}</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-button">
+                                <button class="btn my-2 my-sm-0 view-job"><span nz-icon nzType="double-right"
+                                        nzTheme="outline"></span> Xem công ty</button>
+                                <button style="border-color: lightgrey;" class="btn my-2 my-sm-0 view-job"><span nz-icon
+                                        nzType="gift" nzTheme="outline"></span> 10 công việc</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Jobsngon } from 'src/app/service/jobsngon.service';
+import career from '../../../../assets/jobs/career.json'
 @Component({
   selector: 'app-promising-industry',
   templateUrl: './promising-industry.component.html',
@@ -19,66 +22,16 @@ export class PromisingIndustryComponent implements OnInit {
       }
     }
   };
-  industry: any =
-    [
-      {
-        "name": "Kế toán",
-        "id": 2
-      },
-      {
-        "name": "Phiên dịch viên",
-        "id": 3
-      },
-      {
-        "name": "Kinh doanh/ Bán hàng",
-        "id": 4
-      },
-      {
-        "name": "Kỹ thuật cơ khí - điện",
-        "id": 5
-      },
-      {
-        "name": "QC - QA - ISO",
-        "id": 6
-      },
-      {
-        "name": "Quản lý sản xuất",
-        "id": 7
-      },
-      {
-        "name": "Xuất nhập khẩu",
-        "id": 9
-      },
-      {
-        "name": "HR - GA",
-        "id": 11
-      },
-      {
-        "name": "IT - Phần mềm",
-        "id": 12
-      },
-      {
-        "name": "IT - Phần cứng",
-        "id": 13
-      },
-      {
-        "name": "Hành chính thư ký",
-        "id": 14
-      },
-      {
-        "name": "Marketing",
-        "id": 16
-      },
-      {
-        "name": "Ngành ngề khác",
-        "id": 60
-      }
-    ]
+  industry: Array<any> = career
 
   currentSlide = 0;
-  constructor() { }
+  constructor(private jobsngon: Jobsngon, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+
+  gotoDetail(value) {
+    this.router.navigate(['/tim-viec-lam'], { queryParams: { career: value } });
   }
 
 

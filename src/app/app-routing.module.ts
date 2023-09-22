@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./job-detail/job-detail.module').then(m => m.JobDetailModule),
   },
   {
+    path: 'cong-ty',
+    loadChildren: () => import('./company/company.module').then(m => m.CompanyModule)
+  },
+  {
     path: 'mau-cv',
     loadChildren: () => import('./template/template.module').then(m => m.TemplateModule)
   },

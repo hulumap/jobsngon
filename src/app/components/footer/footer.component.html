@@ -1,59 +1,70 @@
 <div class="body">
     <footer class="py-5">
         <div class="row">
-            <div class="col mb-3">
+            <div class="col-4 mb-3">
                 <img src="assets/logo.svg" alt="" style="width: 250px;">
-                <p class="text-body-secondary">&copy; 2023</p>
+                <div style="color: white; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="display: flex; align-items: center;">
+                        <span nz-icon nzType="global" nzTheme="outline" style="margin-right: 8px;"></span><span>51 Đường
+                            số 2, Cityland Park Hills, Gò Vấp, Thành phố Hồ Chí Minh</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <span nz-icon nzType="phone" nzTheme="outline" style="margin-right: 8px;"></span><span>028 7300
+                            1013</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <span nz-icon nzType="mail" nzTheme="outline"
+                            style="margin-right: 8px;"></span><span>jobsngon@gmail.com</span>
+                    </div>
+                </div>
             </div>
-
-            <div class="col mb-3">
-
-            </div>
-
-            <div class="col mb-3">
-                <h5>Section</h5>
+            <div class="col-2 mb-3">
+                <h5>Về Jobsngon</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Tìm việc</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Tạo CV</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Công ty</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Đăng tin</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Liên hệ</a></li>
                 </ul>
             </div>
 
-            <div class="col mb-3">
-                <h5>Section</h5>
+            <div class="col-3 mb-3">
+                <h5>Việc làm theo ngôn ngữ</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li (click)="gotoJobsLang('tieng-nhat-n1')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Tiếng Nhật N1</a></li>
+                    <li (click)="gotoJobsLang('tieng-nhat-n2')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Tiếng Nhật N2</a></li>
+                    <li (click)="gotoJobsLang('tieng-nhat-n3')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Tiếng Nhật N3</a></li>
+                    <li (click)="gotoJobsLang('tieng-nhat-n4')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Tiếng Nhật N4</a></li>
+                    <li (click)="gotoJobsLang('tieng-anh')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Tiếng Anh</a></li>
+                    <li (click)="gotoJobsLang('ngon-ngu-khac')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Không Ngoại ngữ</a>
+                    </li>
                 </ul>
             </div>
 
-            <div class="col mb-3">
-                <h5>Section</h5>
+            <div class="col-3 mb-3">
+                <h5>Việc làm theo địa điểm</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li (click)="gotoJobsAddress('ho-chi-minh')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Hồ Chí Minh</a></li>
+                    <li (click)="gotoJobsAddress('binh-duong')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Bình Dương</a></li>
+                    <li (click)="gotoJobsAddress('dong-nai')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Đồng Nai</a></li>
+                    <li (click)="gotoJobsAddress('ha-noi')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Hà Nội</a></li>
+                    <li (click)="gotoJobsAddress('long-an')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Long An</a></li>
+                    <li (click)="gotoJobsAddress('binh-dinh')" class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">Bình Định</a></li>
                 </ul>
             </div>
 
         </div>
         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <p>&copy; 2023 Company, Inc. All rights reserved.</p>
+            <p>Copyright 2023 © Jobsngon</p>
             <ul class="list-unstyled d-flex">
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
+                <li class="ms-3"><a class="link-body-emphasis"><svg class="bi" width="24" height="24">
                             <use xlink:href="#twitter" />
                         </svg></a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
+                <li class="ms-3"><a class="link-body-emphasis"><svg class="bi" width="24" height="24">
                             <use xlink:href="#instagram" />
                         </svg></a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
+                <li class="ms-3"><a class="link-body-emphasis"><svg class="bi" width="24" height="24">
                             <use xlink:href="#facebook" />
                         </svg></a></li>
             </ul>

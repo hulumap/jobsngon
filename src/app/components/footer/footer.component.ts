@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Jobsngon } from 'src/app/service/jobsngon.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private jobsngon: Jobsngon, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+
+
+  gotoJobsLang(value) {
+    this.router.navigate(['/tim-viec-lam'], { queryParams: { lang: value } });
+  }
+  gotoJobsAddress(value) {
+    this.router.navigate(['/tim-viec-lam'], { queryParams: { address: value } });
   }
 
 }

@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./company/company.module').then(m => m.CompanyModule)
   },
   {
+    path: 'tinh-luong',
+    loadChildren: () => import('./caculate-salary/caculate-salary.module').then(m => m.CaculateSalaryModule)
+  },
+  {
     path: 'mau-cv',
     loadChildren: () => import('./template/template.module').then(m => m.TemplateModule)
   },

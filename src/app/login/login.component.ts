@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Jobsngon } from '../service/jobsngon.service';
 
 @Component({
   selector: 'app-login',
@@ -7,5 +9,16 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
   constructor(
-  ) { }
+    private jobsngon: Jobsngon,
+    private router: Router,
+  ) {
+    this.checkLogin()
+  }
+
+  checkLogin() {
+    this.jobsngon.onAuthStateChanged()
+      .then((user) => {
+        if (user) this.router.navigate([''])
+      })
+  }
 }

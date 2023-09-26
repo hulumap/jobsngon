@@ -20,13 +20,13 @@
                 <a class="nav-link" routerLink="/cong-ty">Công Ty</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Cẩm nang</a>
+                <a class="nav-link" routerLink="/tinh-luong">Tính lương</a>
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0" *ngIf="!isLogin">
             <div>
                 <button routerLink="/login" class="btn my-2 my-sm-0 login">Đăng Nhập</button>
-                <button class="btn my-2 my-sm-0 sign-up">Đăng Ký</button>
+                <button routerLink="/login/signup" class="btn my-2 my-sm-0 sign-up">Đăng Ký</button>
             </div>
 
             <div class="line"></div>

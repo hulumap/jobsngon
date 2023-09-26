@@ -1,0 +1,127 @@
+<div class="wrapper-container">
+    <div class="row" style="padding: 8px;">
+        <div class="col-8">
+            <div class="fr-input">
+                <h1 class="title">
+                    Công cụ tính lương Gross sang Net và ngược lại [Chuẩn 2023]
+                </h1>
+                <p>
+                    Áp dụng mức giảm trừ gia cảnh mới nhất 11 triệu đồng/tháng (132 triệu đồng/năm) với nguời nộp
+                    thuế và 4,4 triệu đồng/tháng với mỗi người phụ thuộc (Theo Nghị quyết số 954/2020/UBTVQH14)
+                    <br> <br>
+                    Áp dụng <span style="color: #009900;">mức lương tối thiểu vùng</span> mới nhất có hiệu lực từ ngày
+                    01/07/2022 (Theo điều 3, Nghị định 38/2022/NĐ-CP)
+                </p>
+                <div class="form">
+                    <div class="salary-calculate">
+                        <div style="font-size: 15px;font-weight: 600;">Áp dụng quy định từ 01/07/2023 <span
+                                style="color: red;">(Mới nhất)</span></div>
+                        <div class="d-flex list-salary">
+                            <div>
+                                <p>Lương cơ sở:</p> <span>{{salary_basic | number: '1.0-0'}}đ</span>
+                            </div>
+                            <div>
+                                <p>Giảm trừ gia cảnh bản thân:</p> <span>{{tax_reduce | number: '1.0-0'}}đ</span>
+                            </div>
+                            <div>
+                                <p>Người phụ thuộc:</p> <span>{{person_reduce | number: '1.0-0'}}đ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-info">
+                        <div style="width: 40%;">
+                            <span style="font-weight: 600; font-size: 15px;">Thu nhập:</span>
+                            <nz-input-group nzSuffix="(VNĐ)">
+                                <input type="text" nz-input class="input-salary" />
+                            </nz-input-group>
+                        </div>
+                        <div style="width: 40%;">
+                            <span style="font-weight: 600; font-size: 15px;">Số người phụ thuộc:</span>
+                            <nz-input-group nzSuffix="(người)">
+                                <input type="number" nz-input [(ngModel)]="number_person" />
+                            </nz-input-group>
+                        </div>
+                    </div>
+                    <div style="display: flex;flex-direction: column;margin-top: 32px">
+                        <span style="font-weight: 600; font-size: 15px; margin-bottom: 10px;">Mức lương đóng bảo
+                            hiểm:</span>
+                        <nz-radio-group nzName="radiogroup" [(ngModel)]="value_bhxh"
+                            style="display: flex; justify-content: space-between; align-items: center;">
+                            <label nz-radio nzValue="A">
+                                <span style="font-weight: 600; font-size: 15px;">Trên lương chính thức:</span>
+                            </label>
+                            <label nz-radio nzValue="B">
+                                <div style="display: flex;align-items: center;">
+                                    <span style="font-weight: 600; font-size: 15px; margin-right: 8px;">Khác:</span>
+                                    <nz-input-group nzSuffix="(VNĐ)">
+                                        <input type="text" nz-input class="input-bhxh" />
+                                    </nz-input-group>
+                                </div>
+                            </label>
+                        </nz-radio-group>
+                    </div>
+                    <div style="display: flex;flex-direction: column;margin-top: 32px">
+                        <span style="font-weight: 600; font-size: 15px; margin-bottom: 10px;">Vùng:</span>
+                        <nz-radio-group nzName="radiogroup" [(ngModel)]="value_area"
+                            style="display: flex; justify-content: space-between; align-items: center;">
+                            <label nz-radio nzValue="1">
+                                <span style="font-weight: 600; font-size: 15px;">I</span>
+                            </label>
+                            <label nz-radio nzValue="2">
+                                <span style="font-weight: 600; font-size: 15px;">II</span>
+                            </label>
+                            <label nz-radio nzValue="3">
+                                <span style="font-weight: 600; font-size: 15px;">III</span>
+                            </label>
+                            <label nz-radio nzValue="4">
+                                <span style="font-weight: 600; font-size: 15px;">IV</span>
+                            </label>
+                        </nz-radio-group>
+                    </div>
+
+
+                    <div>
+                        <button (click)="caculate('gross')" class="btn my-2 my-sm-0 sign-up">Gross -> Net</button>
+                        <div>
+                            bhxh: {{bhxh | number: '1.0-0'}} <br>
+                            bhyt: {{bhyt | number: '1.0-0'}} <br>
+                            bhtn: {{bhtn | number: '1.0-0'}} <br>
+                            Thu nhập trước thuế: {{salary_before_tax | number: '1.0-0'}} <br>
+
+                            <br>
+                            Thu nhập chịu thuế: {{salary_after_tax | number: '1.0-0'}}
+
+                            <br>
+                            Giảm trừ người phụ thuộc : {{(number_person * person_reduce) | number: '1.0-0'}}
+                            <br>
+                            Thuế thu nhập cá nhân 5% {{tax_total | number: '1.0-0'}}
+                            <br>
+                            Lương net: {{net | number: '1.0-0'}} <br>
+                            Lương gross: {{gross | number: '1.0-0'}}
+                        </div>
+                        <button (click)="caculate('net')" class="btn my-2 my-sm-0 sign-up">Net -> Gross</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="qa">
+                <h1 class="title">
+                    Các câu hỏi thường gặp (FAQs)
+                </h1>
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let item of data" (opened)="item.expand = true"
+                        (closed)="item.expand = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{item.title}}
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p> {{item.answer}}</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -6,6 +6,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   imports: [
     MatButtonModule,
@@ -15,7 +16,8 @@ import { MatSelectModule } from '@angular/material/select';
     ScrollingModule,
     MatProgressSpinnerModule,
     DragDropModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule
 
   ],
   exports: [
@@ -26,7 +28,8 @@ import { MatSelectModule } from '@angular/material/select';
     ScrollingModule,
     MatProgressSpinnerModule,
     DragDropModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule
   ]
 })
 

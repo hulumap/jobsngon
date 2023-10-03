@@ -11,6 +11,8 @@ import { TopHiringCompanyComponent } from './components/top-hiring-company/top-h
 import { OutstandingJobComponent } from './components/outstanding-job/outstanding-job.component';
 import { PromisingIndustryComponent } from './components/promising-industry/promising-industry.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ViewJobModule } from '../components/view-job/view-job.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -26,7 +28,7 @@ const routes: Routes = [
     JobsngonHelpComponent,
     TopHiringCompanyComponent,
     OutstandingJobComponent,
-    PromisingIndustryComponent
+    PromisingIndustryComponent,
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     CarouselModule,
+    ViewJobModule,
     RouterModule.forChild(routes),
-  ]
+  ],
 })
 export class HomeModule { }

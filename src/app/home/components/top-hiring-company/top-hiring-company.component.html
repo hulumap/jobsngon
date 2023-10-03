@@ -12,18 +12,22 @@
                         <ng-template carouselSlide>
                             <div class="fr-main">
                                 <div style="height: 132px; text-align: center;">
-                                    <img [src]="item.company.logo" alt="" style="height: 100%;
+                                    <img [src]="item.logo" alt="" style="height: 100%;
                                     object-fit: contain;">
                                 </div>
                                 <div style="margin-top: 32px;">
                                     <div class="company-name">
-                                        {{item.company.name}}
+                                        {{item.name}}
                                     </div>
                                 </div>
                                 <div style="margin-top: 32px;">
+                                    <!-- <div class="position">
+                                        <span nz-icon nzType="form" nzTheme="outline" style="margin-right: 8px;"></span>
+                                        Xem thêm
+                                    </div> -->
                                     <div class="position">
-                                        <!-- <span nz-icon nzType="form" nzTheme="outline" style="margin-right: 8px;"></span> -->
-                                       Xem thêm
+                                        <span nz-icon nzType="form" nzTheme="outline" style="margin-right: 8px;"></span>
+                                        <span>{{item.jobs?.length}} vị trí đang tuyển</span>
                                     </div>
                                 </div>
                             </div>
@@ -32,24 +36,6 @@
                     </ng-container>
                 </owl-carousel-o>
             </div>
-            <!-- <div class="col-6 col-sm-6 col-md-4 col-lg-2" *ngFor="let item of company" style="padding: 0;">
-                <div class="fr-main">
-                    <div style="height: 132px; text-align: center;">
-                        <img [src]="item.company.logo" alt="" style="height: 100%;
-                        object-fit: contain;">
-                    </div>
-                    <div style="margin-top: 32px;">
-                        <div class="company-name">
-                            {{item.company.name}}
-                        </div>
-                    </div>
-                    <div style="margin-top: 32px;">
-                        <div class="position">
-                            <span nz-icon nzType="form" nzTheme="outline" style="margin-right: 8px;"></span> 10 vị trí đang tuyển
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Jobsngon } from 'src/app/service/jobsngon.service';
 
@@ -8,6 +8,7 @@ import { Jobsngon } from 'src/app/service/jobsngon.service';
   styleUrls: ['./similar-job.component.scss']
 })
 export class SimilarJobComponent implements OnInit {
+  @Input() job_company: any = []
 
   jobs: any = [
     {
@@ -127,12 +128,12 @@ export class SimilarJobComponent implements OnInit {
   constructor(private jobsngon: Jobsngon, private router: Router) { }
 
   ngOnInit(): void {
-    this.totalPages = Math.ceil(this.jobs.length / this.pageSize);
-    this.showJobs = this.jobsngon.paginateArray(this.jobs, this.currentPage, this.pageSize)
-    console.log(this.totalPages)
+    this.totalPages = Math.ceil(this.job_company.jobs.length / this.pageSize);
+    this.showJobs = this.jobsngon.paginateArray(this.job_company.jobs, this.currentPage, this.pageSize)
   }
 
   gotoJobDetail(job) {
-    this.router.navigate(['/viec-lam', job.name]);
+    let url = this.router.serializeUrl(this.router.createUrlTree([`/viec-lam/${job.link}`]));
+    window.open(url, '_blank');
   }
 }

@@ -3,15 +3,15 @@
         <div class="col-8">
             <div class="fr-input">
                 <h1 class="title">
-                    Công cụ tính lương Gross sang Net và ngược lại [Chuẩn 2023]
+                    Công cụ tính lương Gross sang Net
                 </h1>
-                <p>
+                <!-- <p>
                     Áp dụng mức giảm trừ gia cảnh mới nhất 11 triệu đồng/tháng (132 triệu đồng/năm) với nguời nộp
                     thuế và 4,4 triệu đồng/tháng với mỗi người phụ thuộc (Theo Nghị quyết số 954/2020/UBTVQH14)
                     <br> <br>
                     Áp dụng <span style="color: #009900;">mức lương tối thiểu vùng</span> mới nhất có hiệu lực từ ngày
                     01/07/2022 (Theo điều 3, Nghị định 38/2022/NĐ-CP)
-                </p>
+                </p> -->
                 <div class="form">
                     <div class="salary-calculate">
                         <div style="font-size: 15px;font-weight: 600;">Áp dụng quy định từ 01/07/2023 <span
@@ -79,27 +79,84 @@
                         </nz-radio-group>
                     </div>
 
-
-                    <div>
-                        <button (click)="caculate('gross')" class="btn my-2 my-sm-0 sign-up">Gross -> Net</button>
+                    <div
+                        style="display: flex; justify-content: center;border-top: 1px solid lightgray; margin-top: 16px; padding: 16px;">
+                        <button (click)="caculate('gross')" class="btn-caculate my-2 my-sm-0 sign-up">Tính
+                            lương</button>
+                    </div>
+                    <div class="result" *ngIf="net !== 0">
                         <div>
-                            bhxh: {{bhxh | number: '1.0-0'}} <br>
-                            bhyt: {{bhyt | number: '1.0-0'}} <br>
-                            bhtn: {{bhtn | number: '1.0-0'}} <br>
-                            Thu nhập trước thuế: {{salary_before_tax | number: '1.0-0'}} <br>
-
-                            <br>
-                            Thu nhập chịu thuế: {{salary_after_tax | number: '1.0-0'}}
-
-                            <br>
-                            Giảm trừ người phụ thuộc : {{(number_person * person_reduce) | number: '1.0-0'}}
-                            <br>
-                            Thuế thu nhập cá nhân 5% {{tax_total | number: '1.0-0'}}
-                            <br>
-                            Lương net: {{net | number: '1.0-0'}} <br>
-                            Lương gross: {{gross | number: '1.0-0'}}
+                            <table style="width:100%">
+                                <tr style="background-color: #ededed;">
+                                    <th>Lương GROSS</th>
+                                    <th>Bảo hiểm</th>
+                                    <th>Thuế TNCN</th>
+                                    <th>Lương NET</th>
+                                </tr>
+                                <tr>
+                                    <td>{{gross | number: '1.0-0'}}</td>
+                                    <td>- {{bhxh + bhyt + bhtn| number: '1.0-0'}}</td>
+                                    <td>- {{tax_total | number: '1.0-0'}}</td>
+                                    <th style="color: #009900;">{{net | number: '1.0-0'}}</th>
+                                </tr>
+                            </table>
                         </div>
-                        <button (click)="caculate('net')" class="btn my-2 my-sm-0 sign-up">Net -> Gross</button>
+                        <div style="margin-top: 24px;">
+                            <span style="color: #009900;">Chi tiết</span>
+                            <div class="detail_title" style="background-color: #ededed;">
+                                <span><strong>Lương GROSS</strong>:</span> <span><strong>{{gross | number:
+                                        '1.0-0'}}</strong></span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Bảo hiểm xã hội (8%)</strong>:</span> <span>-{{bhxh | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Bảo hiểm y tế (1.5%)</strong>:</span> <span>-{{bhyt | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Bảo hiểm thất nghiệp (1%)</strong>:</span> <span>-{{bhtn | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title" style="background-color: #ededed;">
+                                <span><strong>Thu nhập trước thuế</strong>:</span> <span>{{salary_before_tax | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Giảm trừ gia cảnh bản thân</strong>:</span> <span>-{{tax_reduce | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Giảm trừ gia cảnh người phụ thuộc</strong>:</span> <span>-{{(number_person
+                                    * person_reduce) | number: '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title" style="background-color: #ededed;">
+                                <span><strong>Thu nhập chịu thuế</strong>:</span> <span>{{salary_after_tax < 0 ? 0:
+                                        salary_after_tax | number: '1.0-0' }}</span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Thuế thu nhập cá nhân(*)</strong>:</span> <span>-{{tax_total | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title" style="background-color: #ededed;">
+                                <span><strong>Lương NET</strong>:</span> <span><strong>{{net | number:
+                                        '1.0-0'}}</strong></span>
+                            </div>
+                        </div>
+                        <div style="margin-top: 24px;">
+                            <span style="color: #009900;">(*) Chi tiết thuế thu nhập cá nhân</span>
+                            <div class="fr_tax">
+                                <div class="detail_tax" style="background-color: #ededed;">
+                                    <span><strong>Mức chịu thuế</strong></span><span><strong>Thuế suất</strong></span>
+                                    <span><strong>Tiền nộp</strong></span>
+                                </div>
+                                <div class="detail_tax" *ngFor="let item of taxDetails">
+                                    <span>{{item.title}}</span> <span>{{item.taxRate * 100}}%</span>
+                                    <span>{{item.taxAmount | number:'1.0-0'}}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

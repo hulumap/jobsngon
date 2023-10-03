@@ -11,6 +11,7 @@ import domToImage from "dom-to-image";
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Resume } from './resume';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,6 +25,7 @@ export class Jobsngon {
     private titleService: Title,
     private message: NzMessageService,
     private router: Router,
+    private http: HttpClient,
   ) { }
 
 
@@ -472,7 +474,6 @@ export class Jobsngon {
 
   viewOnline(resume, number) { // hàm xem cv online
     let id = this.getUser().uid + number // biến truyên qua dữ liệ online bằng UID + "2" để ẩn hiện các Template
-    console.log(this.nonAccentVietnamese(resume.info.name))
     let url = this.router.serializeUrl(
       this.router.createUrlTree([`/online/${id}/${this.nonAccentVietnamese(resume.info.name)}`])
     );
@@ -512,6 +513,67 @@ export class Jobsngon {
     })
   }
 
+
+  // tương tác trực tiếp trên web
+
+  public getJSON_Jobs(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection('data-json')
+        .doc('jobs')
+        .get().then((snapshots: any) => {
+          let value = snapshots.data();
+          console.log(value)
+          const jobsData = this.http.get(value.link).toPromise(); // Lưu giá trị vào biến
+
+          resolve(jobsData) // Trả về giá trị
+        })
+        .catch((error: any) => {
+          reject(error);
+        });
+    })
+  }
+  public getJSON_Company(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection('data-json')
+        .doc('company')
+        .get().then((snapshots: any) => {
+          let value = snapshots.data();
+          console.log(value)
+          const jobsData = this.http.get(value.link).toPromise(); // Lưu giá trị vào biến
+
+          resolve(jobsData) // Trả về giá trị
+        })
+        .catch((error: any) => {
+          reject(error);
+        });
+    })
+  }
+
+
+  getDetailJobs(link) {
+    return new Promise<any>((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection('jobs')
+        .where('link', '==', link)
+        .get()
+        .then((snapshots) => {
+          let data = snapshots.docs.map((item) => {
+            let id = item.id;
+            return { ...item.data(), id: id };
+          });
+          resolve(data[0]);
+        })
+        .catch((error: any) => {
+          reject(error);
+        });
+    });
+  }
 }
+
 
 

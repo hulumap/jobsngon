@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { NgZorroAntModule } from '../ng-zorro-ant.module';
+import { ViewJobModule } from '../components/view-job/view-job.module';
 
 
 const routes: Routes = [
@@ -16,7 +17,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    JobsComponent,
+    JobsComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +25,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    ViewJobModule,
     RouterModule.forChild(routes),
-  ]
+  ],
 })
 export class JobsModule { }

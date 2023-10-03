@@ -6,13 +6,15 @@
     <h5>Công việc hấp dẫn dành cho bạn</h5>
     <div class="fr-jobs">
         <div class="row" style="padding: 16px;">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let item of showJobs" style="padding: 0;" (click)="gotoJobDetail(item)">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let item of showJobs" style="padding: 0;"
+                (click)="gotoJobDetail(item)">
                 <div class="fr-main">
                     <div class="fr-name">
                         <span class="name">
                             {{item.name}}
                         </span>
-                        <span nz-icon nzType="heart" nzTheme="outline" style="color: #009900;"></span>
+                        <span (click)="openJob(item,$event)" nz-icon nzType="eye" nzTheme="outline"
+                            style="color: #009900;"></span>
                     </div>
                     <div class="fr-info">
                         <div style="width: 20%;">
@@ -28,18 +30,22 @@
                             </div>
                             <div class="info-jobs">
                                 <span class="icon" nz-icon nzType="global" nzTheme="outline"></span>
-                                <span style="font-weight: 700;">{{item.address}}</span>
+                                <span style="font-weight: 700;">{{ item.address.length > 40 ? (item.address.substring(0,
+                                    40) + '...') : item.address }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="panigation">
-                <button class="btn my-2 my-sm-0 login" (click)="previousPage()" [ngClass]="{'disabled': currentPage <= 1}" [disabled]="currentPage <= 1">
+                <button class="btn my-2 my-sm-0 login" (click)="previousPage()"
+                    [ngClass]="{'disabled': currentPage <= 1}" [disabled]="currentPage <= 1">
                     <span nz-icon nzType="left" nzTheme="outline"></span>
                 </button>
-                <span style="margin: 8px;"><span style="color: #009900;">{{currentPage}}</span> / {{totalPages}} trang</span>
-                <button class="btn my-2 my-sm-0 login" (click)="nextPage()" [ngClass]="{'disabled': currentPage >= totalPages}" [disabled]="currentPage >= totalPages">
+                <span style="margin: 8px;"><span style="color: #009900;">{{currentPage}}</span> / {{totalPages}}
+                    trang</span>
+                <button class="btn my-2 my-sm-0 login" (click)="nextPage()"
+                    [ngClass]="{'disabled': currentPage >= totalPages}" [disabled]="currentPage >= totalPages">
                     <span nz-icon nzType="right" nzTheme="outline"></span>
                 </button>
             </div>
@@ -47,3 +53,4 @@
     </div>
 
 </div>
+<app-view-job *ngIf="visible" [visible]="visible" [job]="job" (hide)="close($event)"></app-view-job>

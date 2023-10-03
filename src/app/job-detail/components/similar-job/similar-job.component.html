@@ -9,11 +9,11 @@
                 </div>
                 <div class="fr-info">
                     <div style="width: 20%;">
-                        <img [src]="item.company.logo" alt="" style="width: 64px;">
+                        <img [src]="job_company.logo" alt="" style="width: 64px;">
                     </div>
                     <div style="font-size: 13px;">
                         <div class="company-name">
-                            {{item.company.name}}
+                            {{job_company.name}}
                         </div>
                         <div class="info-jobs">
                             <span class="icon" nz-icon nzType="wallet" nzTheme="outline"></span>
@@ -21,7 +21,7 @@
                         </div>
                         <div class="info-jobs">
                             <span class="icon" nz-icon nzType="global" nzTheme="outline"></span>
-                            <span style="font-weight: 700;">{{item.address}}</span>
+                            <span style="font-weight: 700;">{{ item.address.length > 40 ? (item.address.substring(0, 40) + '...') : item.address }}</span>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Cleave from 'cleave.js';
+import { NzMessageService } from 'ng-zorro-antd/message';
 @Component({
   selector: 'app-caculate-salary',
   templateUrl: './caculate-salary.component.html',
@@ -63,7 +64,7 @@ export class CaculateSalaryComponent implements OnInit {
   tax_total: any = 0
   salary_before_tax: any = 0 // thu nhập trước thueesF
   salary_after_tax: any = 0 // thu nhập chịu thuế
-  constructor() { }
+  constructor(private message: NzMessageService,) { }
 
   ngOnInit(): void {
   }
@@ -84,45 +85,98 @@ export class CaculateSalaryComponent implements OnInit {
   }
 
   caculate(value) {
-    let salary = parseInt(this.cleaveSalary.getRawValue());
-    this.gross = 0
-    this.net = 0
-    if (value == 'gross') {
-      this.gross = salary
-      this.caculateBh()
-      // tax 
-      this.salary_before_tax = this.gross - (this.bhxh + this.bhyt + this.bhtn)
-      this.salary_after_tax = this.salary_before_tax - this.tax_reduce - (this.number_person * this.person_reduce)
-      this.tax_total = this.caculateTax(this.salary_after_tax)
-      this.net = this.gross - (this.bhxh + this.bhyt + this.bhtn + this.tax_total)
-    }
-    else {
-      this.net = salary
-      // this.salary_before_tax = this.net + (this.number_person * this.person_reduce)
-      // bh
-      // if (this.value_bhxh == 'A') {
-      //   let value = this.gross <= 36000000 ? this.gross : 36000000
-      //   this.bhxh = 0.08 * value
-      //   ///  // tính lại thằng này theo mức lương vùng và lương tổng
-      //   this.bhtn = 936000
-      //   this.bhyt = 0.015 * value
-      // }
-      // else {
-      //   let input_bhxh = parseInt(this.cleaveBhxh.getRawValue())
-      //   this.bhxh = input_bhxh * 0.08
-      //   this.bhtn = 0.01 * input_bhxh
-      //   this.bhyt = 0.015 * input_bhxh
-      // }
 
-      // tax 
-      // this.salary_before_tax = this.gross - (this.bhxh + this.bhyt + this.bhtn)
-      // this.salary_after_tax = this.salary_before_tax - this.tax_reduce - (this.number_person * this.person_reduce)
-      // this.tax_total = this.caculateTax(this.salary_after_tax)
-      this.gross = this.net + ((0.08 * this.gross) + 936000 + (0.01 * this.gross))
+    let salary = parseInt(this.cleaveSalary.getRawValue());
+    if (salary) {
+      this.gross = 0
+      this.net = 0
+      if (value == 'gross') {
+        this.gross = salary
+        this.caculateBh(this.gross)
+        // tax 
+        this.salary_before_tax = this.gross - (this.bhxh + this.bhyt + this.bhtn)
+        this.salary_after_tax = this.salary_before_tax - this.tax_reduce - (this.number_person * this.person_reduce)
+        let value_tax = this.caculateTax(this.salary_after_tax)
+        this.tax_total = value_tax.tax
+        this.taxDetails = value_tax.taxDetails
+        this.net = this.gross - (this.bhxh + this.bhyt + this.bhtn + this.tax_total)
+      }
+      else {
+        this.net = salary
+
+        let gross
+
+        if (this.net > 11000000) {
+
+          // const netSalaryAfterDeductions = this.net - (this.tax_reduce);
+          // let taxToPay = 0;
+
+          // for (let bracket of this.taxBrackets) {
+          //   if (netSalaryAfterDeductions <= bracket.maxIncome) {
+          //     taxToPay += (netSalaryAfterDeductions - bracket.minIncome) * bracket.taxRate;
+          //     break;
+          //   } else {
+          //     taxToPay += (bracket.maxIncome - bracket.minIncome) * bracket.taxRate;
+          //   }
+          // }
+
+          // const salaryBeforeTax = netSalaryAfterDeductions + taxToPay;
+          // console.log(salaryBeforeTax);
+
+
+
+          // gross = this.net + this.bhxh + this.bhyt + this.bhtn
+
+          // x: th nhập trước thuế
+          // net = x - (0.05x- 0.05*11)
+          // net = 0.95x + 550000
+          // net = (1-%ta*x) + (%ta*x * (this.tax_reduce + (this.number_person * this.person_reduce)
+
+
+          // this.salary_before_tax = (this.net - ((this.tax_reduce + (this.number_person * this.person_reduce)*%tax)) / 1-%tax
+
+          // this.salary_before_tax = (this.net - 550000) / 0.95
+          // gross = this.salary_before_tax / 0.895
+          // this.gross = gross
+          // this.caculateBh(gross)
+          // this.salary_after_tax = this.salary_before_tax - this.tax_reduce - (this.number_person * this.person_reduce)
+          // this.tax_total = this.caculateTax(this.salary_after_tax)
+          // this.gross = gross + this.tax_total
+        } else {
+          gross = this.net / 0.895 // th: chưa có thuế và lương tính bh nhỏ hơn giá trị quy định
+          this.caculateBh(gross)
+          // let gross = this.net + this.bhtn + this.bhxh + this.bhyt
+          this.salary_before_tax = gross - (this.bhxh + this.bhyt + this.bhtn)
+          this.salary_after_tax = this.salary_before_tax - this.tax_reduce - (this.number_person * this.person_reduce)
+          this.tax_total = this.caculateTax(this.salary_after_tax)
+          this.gross = gross + this.tax_total
+        }
+      }
+    } else {
+     this.message.info("Vui lòng nhập lương")
     }
+
+
   }
 
-  caculateBh() {
+
+
+  taxBrackets = [
+    { minIncome: 0, maxIncome: 5000000, taxRate: 0.05, title: "Đến 5 triệu VNĐ" },
+    { minIncome: 5000001, maxIncome: 10000000, taxRate: 0.10, title: "Trên 5 triệu VNĐ đến 10 triệu VNĐ	" },
+    { minIncome: 10000001, maxIncome: 18000000, taxRate: 0.15, title: "Trên 10 triệu VNĐ đến 18 triệu VNĐ" },
+    { minIncome: 18000001, maxIncome: 32000000, taxRate: 0.20, title: "Trên 18 triệu VNĐ đến 32 triệu VNĐ" },
+    { minIncome: 32000001, maxIncome: 52000000, taxRate: 0.25, title: "Trên 32 triệu VNĐ đến 52 triệu VNĐ" },
+    { minIncome: 52000001, maxIncome: 80000000, taxRate: 0.30, title: "Trên 52 triệu VNĐ đến 80 triệu VNĐ" },
+    { minIncome: 80000001, maxIncome: Infinity, taxRate: 0.35, title: "Trên 80 triệu VNĐ" },
+  ];
+  // Hàm tính toán lương GROSS từ lương NET
+  calculateGrossSalary(netSalary: number) {
+
+  }
+
+
+  caculateBh(value_caculate_bh) {
     let value_bhtn
     if (this.value_area == "1") value_bhtn = 936000
     if (this.value_area == "2") value_bhtn = 832000
@@ -130,9 +184,9 @@ export class CaculateSalaryComponent implements OnInit {
     if (this.value_area == "4") value_bhtn = 650000
 
     if (this.value_bhxh == 'A') {
-      let value = this.gross <= 36000000 ? this.gross : 36000000
+      let value = value_caculate_bh <= 36000000 ? value_caculate_bh : 36000000
       this.bhxh = 0.08 * value
-      this.bhtn = (this.gross * 0.01) > value_bhtn ? value_bhtn : (this.gross * 0.01)
+      this.bhtn = (value_caculate_bh * 0.01) > value_bhtn ? value_bhtn : (value_caculate_bh * 0.01)
       this.bhyt = 0.015 * value
     }
     else {
@@ -143,33 +197,29 @@ export class CaculateSalaryComponent implements OnInit {
     }
   }
 
-  caculateTax(income) {
-    let tax = 0;
-    const taxDetails: { minIncome: number, maxIncome: number, taxRate: number, taxAmount: number }[] = [];
-    // Xác định các mức thuế và mức thuế tương ứng
-    const taxBrackets = [
-      { minIncome: 0, maxIncome: 5000000, taxRate: 0.05 },
-      { minIncome: 5000001, maxIncome: 10000000, taxRate: 0.10 },
-      { minIncome: 10000001, maxIncome: 18000000, taxRate: 0.15 },
-      { minIncome: 18000001, maxIncome: 32000000, taxRate: 0.20 },
-      { minIncome: 32000001, maxIncome: 52000000, taxRate: 0.25 },
-      { minIncome: 52000001, maxIncome: 80000000, taxRate: 0.30 },
-      { minIncome: 80000001, maxIncome: Infinity, taxRate: 0.35 },
-    ];
 
-    // Tính thuế dựa trên thu nhập
-    for (let bracket of taxBrackets) {
+  taxDetails: any = []
+
+  caculateTax(income) {
+    let data = {
+      tax: 0,
+      taxDetails: []
+    }
+    for (let bracket of this.taxBrackets) {
       if (income > bracket.minIncome) {
         const taxableAmount = Math.min(income, bracket.maxIncome) - bracket.minIncome;
-        tax += taxableAmount * bracket.taxRate;
+        data.tax += taxableAmount * bracket.taxRate;
         const taxAmount = taxableAmount * bracket.taxRate;
         // Làm tròn số tiền thuế tới 2 chữ số thập phân
         const roundedTaxAmount = parseFloat(taxAmount.toFixed(0));
-        taxDetails.push({ ...bracket, taxAmount: roundedTaxAmount });
-        console.log(taxDetails)
+        data.taxDetails.push({ ...bracket, taxAmount: roundedTaxAmount });
+      } else {
+        // Nếu thu nhập không vượt qua thu nhập tối thiểu cho phạm vi thuế,
+        // thêm thông tin về phạm vi thuế vào mảng taxDetails với số tiền thuế là 0.
+        data.taxDetails.push({ ...bracket, taxAmount: 0 });
       }
     }
 
-    return tax;
+    return data;
   }
 }

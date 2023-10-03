@@ -20,6 +20,10 @@ textarea::-webkit-scrollbar-thumb {
     background-color: var(--ion-color-hu-green);
     outline: 1px solid slategrey;
 }
+pre {
+    font-family: "Quicksand", sans-serif !important;
+    white-space: pre-line;
+  }
 
 .edit {
     display: flex;

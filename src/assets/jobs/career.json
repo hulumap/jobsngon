@@ -1,72 +1,86 @@
 [
     {
-        "name":"Cấp quản lý",
+        "name": "Cấp quản lý",
         "id": 1,
-        "link":"cap-quan-ly"
+        "color": "#0069DB",
+        "link": "cap-quan-ly"
     },
     {
-        "name":"Kế toán",
+        "name": "Kế toán",
         "id": 2,
-        "link":"ke-toan"
+        "color": "#ffe2e2",
+        "link": "ke-toan"
     },
     {
-        "name":"Phiên dịch viên",
+        "name": "Phiên dịch viên",
         "id": 3,
-        "link":"phien-bien-dich"
+        "color": "#99f3bd",
+        "link": "phien-bien-dich"
     },
     {
-        "name":"Kinh doanh/ Bán hàng",
+        "name": "Kinh doanh/ Bán hàng",
         "id": 4,
-        "link":"kinh-doanh-ban-hang"
+        "color": "#ff91b3",
+        "link": "kinh-doanh-ban-hang"
     },
     {
-        "name":"Kỹ thuật cơ khí - điện",
+        "name": "Kỹ thuật cơ khí - điện",
         "id": 5,
-        "link":"ky-thuat-co-khi-dien"
+        "color": "##f9f7f7",
+        "link": "ky-thuat-co-khi-dien"
     },
     {
-        "name":"QC - QA - ISO",
+        "name": "QC - QA - ISO",
         "id": 6,
-        "link":"qa-qc-iso"
+        "color": "#a5dee5",
+        "link": "qa-qc-iso"
     },
     {
-        "name":"Quản lý sản xuất",
+        "name": "Quản lý sản xuất",
         "id": 7,
-        "link":"quan-ly-san-xuat"
+        "color": "#30e3ca",
+        "link": "quan-ly-san-xuat"
     },
     {
-        "name":"Thu mua",
+        "name": "Thu mua",
         "id": 8,
-        "link":"thu-mua"
+        "color": "#f5e2e2",
+        "link": "thu-mua"
     },
     {
-        "name":"Xuất nhập khẩu",
+        "name": "Xuất nhập khẩu",
         "id": 9,
-        "link":"xuat-nhap-khau"
+        "color": "#ffe2e6",
+        "link": "xuat-nhap-khau"
     },
     {
-        "name":"Thiết kế/ PLC, CAD",
+        "name": "Thiết kế/ PLC, CAD",
         "id": 10,
-        "link":"thiet-ke-plc-cad"
+        "color": "#efe2e2",
+        "link": "thiet-ke-plc-cad"
     },
     {
-        "name":"HR - GA",
+        "name": "HR - GA",
         "id": 11,
-        "link":"hr-ga"
+        "color": "#eee2e2",
+        "link": "hr-ga"
     },
     {
-        "name":"IT - Phần mềm",
+        "name": "IT - Phần mềm",
         "id": 12,
-        "link":"it-phan-mem"
+        "color": "#efe2f2",
+        "link": "it-phan-mem"
     },
     {
-        "name":"IT - Phần cứng",
+        "name": "IT - Phần cứng",
         "id": 13,
-        "link":"it-phan-cung"
+        "color": "#00e2e0",
+        "link": "it-phan-cung"
     },
     {
-        "name":"Ngành ngề khác",
+        "name": "Ngành ngề khác",
         "id": 60,
-        "link":"nganh-nghe-khac"
+        "color": "#0092e2",
+        "link": "nganh-nghe-khac"
     }
 ]

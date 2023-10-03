@@ -48,6 +48,7 @@
             margin: 8px;
             box-shadow: 0 4px 15px 0 rgba(168, 178, 186, .35);
             cursor: pointer;
+
             .fr-name {
                 display: flex;
                 justify-content: space-between;
@@ -75,6 +76,10 @@
                     display: flex;
                     align-items: center;
                     margin-top: 4px;
+                    white-space: nowrap;
+                    // text-overflow: ellipsis;
+                    // width: 65%;
+                    // overflow: hidden;
 
                     .icon {
                         margin-right: 4px;
@@ -83,6 +88,7 @@
                 }
             }
         }
+
         .fr-main:hover {
             border-color: #009900;
         }

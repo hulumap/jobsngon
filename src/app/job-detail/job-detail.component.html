@@ -1,14 +1,15 @@
-<div style="width: 100%; background-color: #f6f8fc;;">
+<div style="height: 100%;" *ngIf="!hide">
+    <nz-spin class="loading"></nz-spin>
+</div>
+<div style="width: 100%; background-color: #f6f8fc;;" *ngIf="hide">
     <div class="wrapper-container">
         <div class="row info">
             <div class="col-12 col-sm-4 col-md-2 col-lg-2">
-                <img style="width: 100%; object-fit: contain;"
-                    src="https://cdn-new.topcv.vn/unsafe/150x/filters:format(webp)/https://static.topcv.vn/company_logos/091b52d6f858563e1379c0e4e05d7842-6321adf8db2dd.jpg"
-                    alt="">
+                <img style="width: 100%; object-fit: contain;" src="{{job.company.logo}}" alt="">
             </div>
             <div class="col-12 col-sm-8 col-md-10 col-lg-10 info-text">
-                <h3>CÔNG TY TNHH JOBS NGON VIỆT NAM</h3>
-                <h2>Nhân Viên Kế Toán</h2>
+                <h3>{{job.company.name}}</h3>
+                <h2> {{job.name}}</h2>
                 <div style="display: flex; justify-content: space-between; margin: 8px;">
                     <div style="display: flex;
                     align-items: center; width: 33%;
@@ -24,7 +25,7 @@
                         <img src="https://vieclam24h.vn/img/job-detail-v3/icon-coin.png" alt=""
                             style="width: 38px; margin-right: 8px;">
                         <span style="font-size: 16px; color: gray; margin-right: 8px;">Mức lương:</span> <span
-                            style="font-size: 16px; font-weight: 800; color: #009900;">8 triệu - 10 triệu</span>
+                            style="font-size: 16px; font-weight: 800; color: #009900;"> {{job.salary}}</span>
                     </div>
                     <div style="display: flex;
                     align-items: center; width: 33%;
@@ -64,8 +65,8 @@
 
                 </div>
                 <div style="padding-top: 16px; display: flex;">
-                    <button (click)="openUpcv()" class="btn my-2 my-sm-0 send"><span nz-icon nzType="send" nzTheme="outline"
-                            style="margin-right: 8px;"></span> Ứng Tuyển</button>
+                    <button (click)="openUpcv()" class="btn my-2 my-sm-0 send"><span nz-icon nzType="send"
+                            nzTheme="outline" style="margin-right: 8px;"></span> Ứng Tuyển</button>
                 </div>
             </div>
         </div>
@@ -86,34 +87,19 @@
                     <div class="description">
                         <h3>Mô tả công việc</h3>
                         <pre>
-                            - Participate in building and developing product of Web applications for both Front-end and Back-end.
-                            - Provide estimation for the tasks given and report transparently to project lead on any issue faced.
-                            - Take responsibility for ensuring the given tasks are completed on time with high quality.
-                            - Contribute ideas to make the app better and easier to use
-                            - Logical thinking, problem solving, learning attitude and team work skills.
-                            - Planning and suggesting your ideas to project team.
+                           {{job.description}}
                         </pre>
                     </div>
                     <div class="description">
                         <h3>Yêu cầu công việc</h3>
                         <pre>
-                            - Participate in building and developing product of Web applications for both Front-end and Back-end.
-                            - Provide estimation for the tasks given and report transparently to project lead on any issue faced.
-                            - Take responsibility for ensuring the given tasks are completed on time with high quality.
-                            - Contribute ideas to make the app better and easier to use
-                            - Logical thinking, problem solving, learning attitude and team work skills.
-                            - Planning and suggesting your ideas to project team.
+                            {{job.require}}
                         </pre>
                     </div>
                     <div class="description">
                         <h3>Quyền lợi</h3>
                         <pre>
-                            - Participate in building and developing product of Web applications for both Front-end and Back-end.
-                            - Provide estimation for the tasks given and report transparently to project lead on any issue faced.
-                            - Take responsibility for ensuring the given tasks are completed on time with high quality.
-                            - Contribute ideas to make the app better and easier to use
-                            - Logical thinking, problem solving, learning attitude and team work skills.
-                            - Planning and suggesting your ideas to project team.
+                            {{job.benefit}}
                         </pre>
                     </div>
                     <div class="description">
@@ -123,9 +109,7 @@
                         ">
                             <img src="https://vieclam24h.vn/img/job-detail-v3/icon-coin.png" alt=""
                                 style="width: 38px; margin-right: 8px;">
-                            <span style="font-size: 16px; color: gray; margin-right: 8px;"> TP.HCM, 24A Trần Bình Trọng
-                                P5,
-                                Bình Thạnh</span>
+                            <span style="font-size: 16px; color: gray; margin-right: 8px;"> {{job.address}}</span>
                         </div>
                     </div>
                 </div>
@@ -140,9 +124,9 @@
                         letter-spacing: -.2px;
                         line-height: 28px;
                         margin: 0;
-                        padding-left: 10px;">Việc làm tương tự</h2>
+                        padding-left: 10px;">Việc làm cùng công ty</h2>
                     <div>
-                        <app-similar-job></app-similar-job>
+                        <app-similar-job [job_company]="job.company"></app-similar-job>
                     </div>
 
                 </div>

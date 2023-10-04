@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Jobsngon } from 'src/app/service/jobsngon.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class TopHiringCompanyComponent implements OnInit {
   };
   company: any = []
 
-  constructor(private jobsngon: Jobsngon) { }
+  constructor(private jobsngon: Jobsngon, private router: Router) { }
 
   ngOnInit(): void {
     this.getCompany()
@@ -35,6 +36,10 @@ export class TopHiringCompanyComponent implements OnInit {
         console.log(data)
         this.company = data
       }, err => console.log(err))
+  }
+
+  gotoCompanyDetail(company) {
+    this.router.navigate(['/cong-ty', company.link]);
   }
 
 

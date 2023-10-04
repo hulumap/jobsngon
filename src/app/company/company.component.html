@@ -6,15 +6,16 @@
     <div class="wrapper-container">
         <div class="fr-list">
             <div class="fr-jobs">
-                <div class="row" style="padding: 8px;">
-                    <div class="col-4" *ngFor="let item of jobs" style="padding: 0;" (click)="gotoJobDetail(item)">
+                <nz-skeleton [nzActive]="true" *ngIf="!loading"></nz-skeleton>
+                <div *ngIf="loading"  class="row" style="padding: 8px;">
+                    <div class="col-4" *ngFor="let item of company" style="padding: 0;" (click)="gotoJobDetail(item)">
                         <div class="fr-main">
                             <div class="fr-info">
                                 <div style="width: 25%;">
                                     <img [src]="item.logo" alt="" style="width: 90%;">
                                 </div>
                                 <div
-                                    style="width: 75%; display: flex; flex-direction: column; justify-content: center;">
+                                    style="width: 75%; display: flex; justify-content: center;">
                                     <div class="job-name">
                                         <span>
                                             {{item.name}}
@@ -35,7 +36,7 @@
                                 <button class="btn my-2 my-sm-0 view-job"><span nz-icon nzType="double-right"
                                         nzTheme="outline"></span> Xem công ty</button>
                                 <button style="border-color: lightgrey;" class="btn my-2 my-sm-0 view-job"><span nz-icon
-                                        nzType="gift" nzTheme="outline"></span> 10 công việc</button>
+                                        nzType="gift" nzTheme="outline"></span> {{item.jobs ? item.jobs.length : 0}} công việc</button>
                             </div>
                         </div>
                     </div>

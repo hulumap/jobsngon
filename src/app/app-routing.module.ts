@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./job-detail/job-detail.module').then(m => m.JobDetailModule),
   },
   {
+    path: 'cong-ty/:link',
+    loadChildren: () => import('./detail-company/detail-company.module').then(m => m.DetailCompanyModule),
+  },
+  {
     path: 'cong-ty',
     loadChildren: () => import('./company/company.module').then(m => m.CompanyModule)
   },

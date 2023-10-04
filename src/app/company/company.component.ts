@@ -8,47 +8,28 @@ import { Jobsngon } from '../service/jobsngon.service';
   styleUrls: ['./company.component.scss']
 })
 export class CompanyComponent implements OnInit {
-  jobs: any = [
-    {
-      name: "CÔNG TY TNHH JOBS NGON VIỆT NAM",
-      logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png",
-      address: "TPHCM",
-      size: "300 nhân viên",
-    },
-    {
-      name: "CÔNG TY TNHH JOBS NGON VIỆT NAM CÔNG TY TNHH JOBS NGON VIỆT NAM",
-      logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png",
-      address: "TPHCM",
-      size: "300 nhân viên",
-    },
-    {
-      name: "CÔNG TY TNHH JOBS NGON VIỆT NAM",
-      logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png",
-      address: "TPHCM",
-      size: "300 nhân viên",
-    },
-    {
-      name: "CÔNG TY TNHH JOBS NGON VIỆT NAM",
-      logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png",
-      address: "TPHCM",
-      size: "300 nhân viên",
-    },
-    {
-      name: "CÔNG TY TNHH JOBS NGON VIỆT NAM",
-      logo: "https://jobsngon.com/wp-content/uploads/2022/10/jobsngon-300x300.png",
-      address: "TPHCM",
-      size: "300 nhân viên",
-    },
-  ]
-
+  company: any = []
+  loading: boolean = false
   showJobs: any = []
   constructor(private jobsngon: Jobsngon, private router: Router) { }
 
   ngOnInit(): void {
+    this.getCompany()
   }
 
-  gotoJobDetail(job) {
-    this.router.navigate(['/viec-lam', job.name]);
+  gotoJobDetail(company) {
+    this.router.navigate(['/cong-ty', company.link]);
   }
 
+  getCompany() {
+    this.jobsngon.getJSON_Company()
+      .then((data) => {
+        this.loading = true
+        this.company = data
+        console.log(this.company)
+      }, err => {
+        this.loading = true
+        console.log(err)
+      })
+  }
 }

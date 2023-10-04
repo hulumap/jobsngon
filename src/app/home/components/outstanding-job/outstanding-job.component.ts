@@ -62,4 +62,9 @@ export class OutstandingJobComponent implements OnInit {
     this.visible = event;
   }
 
+  gotoDetailCompany(company, event) {
+    event.stopPropagation()
+    this.router.navigate(['/cong-ty', company.link]);
+  }
+
 }

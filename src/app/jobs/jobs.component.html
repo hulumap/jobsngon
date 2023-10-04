@@ -57,12 +57,13 @@
         </div>
     </div>
     <div class="wrapper-container">
-        <h3 style="margin: 16px 0px 0px 0px;">Kết quả tìm kiếm</h3>
+        <h3>Kết quả tìm kiếm</h3>
         <nz-skeleton [nzActive]="true" *ngIf="!loading"></nz-skeleton>
         <div class="fr-list" *ngIf="loading">
             <div class="fr-jobs">
-                <div class="row" style="padding: 8px;">
-                    <div class="col-9" *ngFor="let item of showJobs" style="padding: 0;" (click)="gotoJobDetail(item)">
+                <div class="row">
+                    <div class="col-12" style="padding: 0; display: flex; justify-content: center;"
+                        *ngFor="let item of showJobs" (click)="gotoJobDetail(item)">
                         <div class="fr-main">
                             <div class="fr-info">
                                 <div style="width: 15%;">
@@ -79,7 +80,8 @@
                                             <span style="font-weight: 700;">{{item.salary}}</span>
                                         </div>
                                     </div>
-                                    <div class="company-name">
+                                    <div class="company-name" style="cursor: pointer;"
+                                        (click)="gotoDetailCompany(item.company, $event)">
                                         {{item.company.name}}
                                     </div>
                                     <div class="job-name">

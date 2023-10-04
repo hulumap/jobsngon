@@ -28,7 +28,7 @@ export class JobsComponent implements OnInit {
   }
   showJobs: any = []
   currentPage = 1;
-  pageSize = 5;
+  pageSize = 25;
   totalPages: any = 0
   loading: boolean = false
   constructor(private jobsngon: Jobsngon, private router: Router, private route: ActivatedRoute) {
@@ -176,6 +176,11 @@ export class JobsComponent implements OnInit {
 
   close(event): void {
     this.visible = event;
+  }
+
+  gotoDetailCompany(company, event) {
+    event.stopPropagation()
+    this.router.navigate(['/cong-ty', company.link]);
   }
 
 }

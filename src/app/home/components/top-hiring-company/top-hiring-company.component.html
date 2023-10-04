@@ -10,7 +10,7 @@
                 <owl-carousel-o [options]="carouselOptions">
                     <ng-container class="item" *ngFor="let item of company">
                         <ng-template carouselSlide>
-                            <div class="fr-main">
+                            <div class="fr-main" (click)="gotoCompanyDetail(item)">
                                 <div style="height: 132px; text-align: center;">
                                     <img [src]="item.logo" alt="" style="height: 100%;
                                     object-fit: contain;">
@@ -27,7 +27,7 @@
                                     </div> -->
                                     <div class="position">
                                         <span nz-icon nzType="form" nzTheme="outline" style="margin-right: 8px;"></span>
-                                        <span>{{item.jobs?.length}} vị trí đang tuyển</span>
+                                        <span>{{item.jobs ? item.jobs.length : 0}} vị trí đang tuyển</span>
                                     </div>
                                 </div>
                             </div>

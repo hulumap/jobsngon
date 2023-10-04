@@ -2,7 +2,8 @@
     //height: 100%;
     // background: transparent linear-gradient(179deg, #edfff5, #fff) 0 0 no-repeat padding-box;
     max-width: 1230px;
-    padding-top: 64px;
+    width: 500px;
+    padding-top: 32px;
     padding-bottom: 64px;
     margin: auto;
     border-radius: 5px;
@@ -12,16 +13,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 64px;
+        padding: 64px;
         background: transparent linear-gradient(179deg, #edfff5, #fff) 0 0 no-repeat padding-box;
         //justify-content: center;
-       // padding: 16px;
-       box-shadow: 0 4px 8px 0 rgba(168, 178, 186, 0.3);
+        // padding: 16px;
+        box-shadow: 0 4px 8px 0 rgba(168, 178, 186, 0.3);
     }
 
 }
 
-.img {
-    height: 640px;
-    background-image: url(https://jobsngon.com/wp-content/uploads/2023/04/cowomen-ZKHksse8tUU-unsplash-1.jpg);
-}
+// .img {
+//     height: 640px;
+//     background-image: url(https://jobsngon.com/wp-content/uploads/2023/04/cowomen-ZKHksse8tUU-unsplash-1.jpg);
+// }

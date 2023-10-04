@@ -1,0 +1,199 @@
+<div style="height: 100%;" *ngIf="!hide">
+    <nz-spin class="loading"></nz-spin>
+</div>
+<div nz-row style="width: 100%; background-color: #f5f5f5;" *ngIf="hide">
+    <div class="header">
+        <!-- <div class="banner" [ngStyle]="{'background-image': 'url(' + company.cover + ')'}"></div> -->
+        <div class="logo">
+            <div>
+                <img class="img"
+                    [src]="company.logo ? company.logo : 'https://jobsngon.com/wp-content/uploads/2022/10/jobsngon.png'" />
+            </div>
+            <div style="padding: 8px; margin-left: 32px; color: white;">
+                <strong class="title" style="font-size: 32px;">{{company.name}}</strong>
+                <div>
+                    <div style="display: flex; align-items: center; font-size: 15px;">
+                        <span nz-icon nzType="global" nzTheme="outline"></span>
+                        <span style="margin-left: 8px;">{{ company.address.length > 120 ?
+                            (company.address.substring(0,
+                            120) + '...') : company.address }}</span>
+                    </div>
+
+                    <div style="display: flex; align-items: center;font-size: 15px">
+                        <span nz-icon nzType="team" nzTheme="outline"></span>
+                        <span style="margin-left: 8px;">{{company.size}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="intro">
+            <h2>Giới Thiệu</h2>
+            <div nz-row>
+                <!-- <div class="col-intro" nz-col nzXs="24" nzSm="8" nzMd="8" nzLg="8" nzXl="8">
+                    <span [ngStyle]="{'color': company.color}" style="font-size: 85px; margin-bottom: 16px;" nz-icon
+                        nzType="calendar" nzTheme="outline"></span>
+                    <span style="font-weight: 800; font-size: 36px; margin-bottom: 16px;">{{company.year}}</span>
+                    <span style="color: #999; font-size: 19px">Năm thành lập công ty</span>
+                </div>
+                <div nz-col class="col-intro" nzXs="24" nzSm="8" nzMd="8" nzLg="8" nzXl="8">
+                    <span [ngStyle]="{'color': company.color}" style="font-size: 85px; margin-bottom: 16px;" nz-icon
+                        nzType="team" nzTheme="outline"></span>
+                    <span style="font-weight: 800; font-size: 36px; margin-bottom: 16px;">{{company.size}}</span>
+                    <span style="color: #999; font-size: 19px">Quy mô</span>
+                </div>
+                <div nz-col class="col-intro" nzXs="24" nzSm="8" nzMd="8" nzLg="8" nzXl="8">
+                    <span [ngStyle]="{'color': company.color}" style="font-size: 85px; margin-bottom: 16px;" nz-icon
+                        nzType="reconciliation" nzTheme="outline"></span>
+                    <span style="font-weight: 800; font-size: 36px; margin-bottom: 16px;">{{company.age}}</span>
+                    <span style="color: #999; font-size: 19px">Tuổi trung bình</span>
+                </div> -->
+            </div>
+            <p style="font-size: 16px;">{{company.about}}</p>
+        </div>
+    </div>
+
+    <div class="box">
+        <div nz-row>
+            <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="24" style="padding: 0px 0 0;">
+                <div class="intro" style="height: 100%;">
+                    <h2>Tuyển dụng</h2>
+                    <div class="fr-list" *ngIf="showJobs.length != 0">
+                        <div class="fr-jobs">
+                            <div class="row" style="padding: 8px;">
+                                <div class="col-12" *ngFor="let item of showJobs" style="padding: 0;"
+                                    (click)="gotoJobDetail(item)">
+                                    <div class="fr-main">
+                                        <div class="fr-info">
+                                            <div style="width: 15%;">
+                                                <img [src]="company.logo" alt="" style="width: 75%;">
+                                            </div>
+                                            <div
+                                                style="width: 85%; display: flex; flex-direction: column; justify-content: center;">
+                                                <div class="job-name">
+                                                    <span>
+                                                        {{item.name}}
+                                                    </span>
+                                                    <div class="salary">
+                                                        <span class="icon" nz-icon nzType="dollar"
+                                                            nzTheme="outline"></span>
+                                                        <span style="font-weight: 700;">{{item.salary}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="company-name">
+                                                    {{company.name}}
+                                                </div>
+                                                <div class="job-name">
+                                                    <div class="salary">
+                                                        <span class="icon" nz-icon nzType="global"
+                                                            nzTheme="outline"></span>
+                                                        <span class=address>{{ item.address.length > 100 ?
+                                                            (item.address.substring(0,
+                                                            100) + '...') : item.address }}</span>
+                                                    </div>
+                                                    <span (click)="openJob(item,$event)">
+                                                        <button class="btn my-2 my-sm-0 view-job">Xem nhanh</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="panigation">
+                            <button class="btn my-2 my-sm-0 login" (click)="previousPage()"
+                                [ngClass]="{'disabled': currentPage <= 1}" [disabled]="currentPage <= 1">
+                                <span nz-icon nzType="left" nzTheme="outline"></span>
+                            </button>
+                            <span style="margin: 8px;"><span style="color: #009900;">{{currentPage}}</span> /
+                                {{totalPages}}
+                                trang</span>
+                            <button class="btn my-2 my-sm-0 login" (click)="nextPage()"
+                                [ngClass]="{'disabled': currentPage >= totalPages}"
+                                [disabled]="currentPage >= totalPages">
+                                <span nz-icon nzType="right" nzTheme="outline"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="showJobs.length ==0">
+                        Hiện tại chưa có việc tuyển dụng nào!
+                    </div>
+                </div>
+            </div>
+            <!-- <div class=" box">
+                        <div class="intro">
+                            <h2>Chính sách phúc lợi</h2>
+                            <div nz-row>
+                                <div class="col-intro" nz-col nzXs="24" nzSm="8" nzMd="8" nzLg="8" nzXl="8"
+                                    style="padding: 16px;">
+                                    <div class="polici">
+                                        <span [ngStyle]="{'color': company.color}"
+                                            style="font-size: 48px; margin-bottom: 16px;" nz-icon nzType="team"
+                                            nzTheme="outline"></span>
+                                        <span style="font-weight: 800; font-size: 15px; margin-bottom: 16px;">Chính sách
+                                            phát
+                                            triển</span>
+                                        <span style="color: #999; font-size: 17px; overflow: auto;">
+                                            {{company.policy}}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-intro" nz-col nzXs="24" nzSm="8" nzMd="8" nzLg="8" nzXl="8"
+                                    style="padding: 16px;">
+                                    <div class="polici">
+                                        <span [ngStyle]="{'color': company.color}"
+                                            style="font-size: 48px; margin-bottom: 16px;" nz-icon nzType="rise"
+                                            nzTheme="outline"></span>
+                                        <span style="font-weight: 800; font-size: 15px; margin-bottom: 16px;">Cơ hội
+                                            thăng
+                                            tiến</span>
+                                        <span style="color: #999; font-size: 17px; overflow: auto;">
+                                            {{company.development}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-intro" nz-col nzXs="24" nzSm="8" nzMd="8" nzLg="8" nzXl="8"
+                                    style="padding: 16px;">
+                                    <div class="polici">
+                                        <span [ngStyle]="{'color': company.color}"
+                                            style="font-size: 48px; margin-bottom: 16px;" nz-icon nzType="money-collect"
+                                            nzTheme="outline"></span>
+                                        <span style="font-weight: 800; font-size: 15px; margin-bottom: 16px;">Lương,
+                                            thưởng, lợi
+                                            nhuận</span>
+                                        <span
+                                            style="color: #999; font-size: 17px; overflow: auto;">{{company.salary}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+            <!-- <div class="contact" nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12" nzXl="12">
+                <div class="intro">
+                    <h2>Liên hệ</h2>
+                    <div nz-row>
+                        <div nz-col nzSpan="24">
+                            <span style="font-size: 16px;" nz-icon nzType="phone" nzTheme="outline"></span>
+                            {{company.phone}}
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <span style="font-size: 16px;" nz-icon nzType="environment" nzTheme="outline"></span>
+                            {{company.address}}
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <span style="font-weight: 700;">Bản đồ</span>
+                            <iframe *ngIf="company.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                                style="width: 100%;" [src]="map" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<app-view-job *ngIf="visible" [visible]="visible" [job]="job" (hide)="close($event)"></app-view-job>

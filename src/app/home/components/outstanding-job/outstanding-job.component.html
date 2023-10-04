@@ -21,7 +21,7 @@
                             <img [src]="item.company.logo" alt="" style="width: 64px;">
                         </div>
                         <div style="font-size: 13px;">
-                            <div class="company-name">
+                            <div class="company-name" style="cursor: pointer;" (click)="gotoDetailCompany(item.company, $event)">
                                 {{item.company.name}}
                             </div>
                             <div class="info-jobs">

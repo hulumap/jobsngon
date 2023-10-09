@@ -1,0 +1,46 @@
+<div class="wrapper-container">
+    <!-- <h4>Hạt giống tâm hồn</h4> -->
+    <div class="row" style="padding: 8px; height: 100%;">
+        <div class="col-5" style="height: 100%;">
+            <div class="menu">
+                <div class="row">
+                    <div class="col-12" *ngFor="let item of table" (click)="selectLetter(item)">
+                        <nz-list nzItemLayout="horizontal">
+                            <nz-list-item style="border-bottom: 1px solid lightgray;">
+                                <nz-list-item-meta nzAvatar="{{item.img}}">
+                                    <nz-list-item-meta-title>
+                                        <a [style.color]="index == item.index ? '#6d22e6': ''">{{ item.name }} {{item.index}}</a>
+                                    </nz-list-item-meta-title>
+                                    <nz-list-item-meta-description>
+                                        {{ item.sub }}
+                                    </nz-list-item-meta-description>
+                                </nz-list-item-meta>
+                            </nz-list-item>
+                        </nz-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-7" style="height: 100%;">
+            <h4>{{title}}</h4>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12" *ngFor="let item of show" (click)="openRead(item)">
+                        <nz-list nzItemLayout="horizontal">
+                            <nz-list-item style="border-bottom: 1px solid lightgray;">
+                                <nz-list-item-meta nzAvatar="{{item.img}}">
+                                    <nz-list-item-meta-title>
+                                        <a>{{ item.name }}</a>
+                                    </nz-list-item-meta-title>
+                                    <nz-list-item-meta-description>
+                                        {{ item.author }}
+                                    </nz-list-item-meta-description>
+                                </nz-list-item-meta>
+                            </nz-list-item>
+                        </nz-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

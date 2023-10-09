@@ -1,0 +1,36 @@
+.title {
+    margin: auto;
+    // padding: 16px;
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    font-size: 25.6px;
+    color: #6d22e6
+}
+
+.author {
+    width: 100%;
+    text-align: end;
+    padding-bottom: 8px;
+    font-size: 16px;
+}
+
+.quote {
+    text-align: justify;
+    min-height: 80px;
+    width: 100%;
+    padding-bottom: 55px;
+
+    p {
+        padding: 16px;
+        border-radius: 8px;
+        background-color: beige;
+        font-size: 16px;
+    }
+}
+
+.icon {
+    font-size: 24px;
+    color: red;
+    cursor: pointer;
+}

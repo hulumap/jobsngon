@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-letters',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LettersComponent implements OnInit {
   title: any = "Đọc thư"
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.router.navigate(['doc-thu'])
   }
 
   setTitle(title) {

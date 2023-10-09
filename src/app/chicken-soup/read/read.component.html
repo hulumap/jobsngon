@@ -1,0 +1,15 @@
+<div style="padding: 8px;">
+    <div style="text-align: end;">
+        <span (click)="close()" class="icon" nz-icon nzType="close" nzTheme="outline"></span>
+    </div>
+    <h4 class='title'>{{data.name}}</h4>
+    <div style="padding: 16px; text-align: justify; font-size: 15px;" [innerHTML]="data.contentEn">
+    </div>
+    <h5 class="author"> - <i>{{data.author == '' ? 'Source Unknown': data.author}}</i></h5>
+    <div class="quote">
+        <p>
+            {{(data.title === '' ? "Gratitude is not only the greatest of virtues, but the parent of allthe others" :
+            data.title)}}
+        </p>
+    </div>
+</div>

@@ -1,0 +1,147 @@
+<div class="wrapper-container">
+    <div class="row" style="padding: 8px;">
+        <div class="col-8">
+            <div class="fr-input">
+                <h1 class="title">
+                    Công cụ tính lương thuế TNCN
+                </h1>
+                <div class="form">
+                    <div class="salary-calculate">
+                        <div style="font-size: 15px;font-weight: 600;">Áp dụng quy định từ 01/07/2023 <span
+                                style="color: red;">(Mới nhất)</span></div>
+                        <div class="d-flex list-salary">
+                            <div>
+                                <p>Lương cơ sở:</p> <span>{{salary_basic | number: '1.0-0'}}đ</span>
+                            </div>
+                            <div>
+                                <p>Giảm trừ gia cảnh bản thân:</p> <span>{{tax_reduce | number: '1.0-0'}}đ</span>
+                            </div>
+                            <div>
+                                <p>Người phụ thuộc:</p> <span>{{person_reduce | number: '1.0-0'}}đ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-info">
+                        <div style="width: 40%;">
+                            <span style="font-weight: 600; font-size: 15px;">Thu nhập (GROSS):</span>
+                            <nz-input-group nzSuffix="(VNĐ)">
+                                <input type="text" nz-input class="input-salary"  placeholder="VD: 20.000.000 VND"/>
+                            </nz-input-group>
+                        </div>
+                        <div style="width: 40%;">
+                            <span style="font-weight: 600; font-size: 15px;">Số người phụ thuộc:</span>
+                            <nz-input-group nzSuffix="(người)">
+                                <input type="number" nz-input [(ngModel)]="number_person" />
+                            </nz-input-group>
+                        </div>
+                    </div>
+                    <div style="display: flex;flex-direction: column;margin-top: 32px">
+                        <span style="font-weight: 600; font-size: 15px; margin-bottom: 10px;">Mức lương đóng bảo
+                            hiểm:</span>
+                        <nz-radio-group nzName="radiogroup" [(ngModel)]="value_bhxh"
+                            style="display: flex; justify-content: space-between; align-items: center;">
+                            <label nz-radio nzValue="A">
+                                <span style="font-weight: 600; font-size: 15px;">Trên lương chính thức:</span>
+                            </label>
+                            <label nz-radio nzValue="B">
+                                <div style="display: flex;align-items: center;">
+                                    <span style="font-weight: 600; font-size: 15px; margin-right: 8px;">Khác:</span>
+                                    <nz-input-group nzSuffix="(VNĐ)">
+                                        <input type="text" nz-input class="input-bhxh" />
+                                    </nz-input-group>
+                                </div>
+                            </label>
+                        </nz-radio-group>
+                    </div>
+                    <div style="display: flex;flex-direction: column;margin-top: 32px">
+                        <span style="font-weight: 600; font-size: 15px; margin-bottom: 10px;">Vùng:</span>
+                        <nz-radio-group nzName="radiogroup" [(ngModel)]="value_area"
+                            style="display: flex; justify-content: space-between; align-items: center;">
+                            <label nz-radio nzValue="1">
+                                <span style="font-weight: 600; font-size: 15px;">I</span>
+                            </label>
+                            <label nz-radio nzValue="2">
+                                <span style="font-weight: 600; font-size: 15px;">II</span>
+                            </label>
+                            <label nz-radio nzValue="3">
+                                <span style="font-weight: 600; font-size: 15px;">III</span>
+                            </label>
+                            <label nz-radio nzValue="4">
+                                <span style="font-weight: 600; font-size: 15px;">IV</span>
+                            </label>
+                        </nz-radio-group>
+                    </div>
+
+                    <div
+                        style="display: flex; justify-content: center;border-top: 1px solid lightgray; margin-top: 16px; padding: 16px;">
+                        <button (click)="caculate('gross')" class="btn-caculate my-2 my-sm-0 sign-up">Tính
+                            Thuế</button>
+                    </div>
+                    <div class="result" *ngIf="net !== 0">
+                        <div style="margin-top: 24px;">
+                            <div class="detail_title" style="background-color: #ededed;">
+                                <span><strong>Lương GROSS</strong>:</span> <span><strong>{{gross | number:
+                                        '1.0-0'}}</strong></span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Bảo hiểm xã hội (8%)</strong>:</span> <span>-{{bhxh | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Bảo hiểm y tế (1.5%)</strong>:</span> <span>-{{bhyt | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Bảo hiểm thất nghiệp (1%)</strong>:</span> <span>-{{bhtn | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title" style="background-color: #ededed;">
+                                <span><strong>Thu nhập trước thuế</strong>:</span> <span>{{salary_before_tax | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Giảm trừ gia cảnh bản thân</strong>:</span> <span>-{{tax_reduce | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Giảm trừ gia cảnh người phụ thuộc</strong>:</span> <span>-{{(number_person
+                                    * person_reduce) | number: '1.0-0'}}</span>
+                            </div>
+                            <div class="detail_title" style="background-color: #ededed;">
+                                <span><strong>Thu nhập chịu thuế</strong>:</span> <span>{{salary_after_tax < 0 ? 0:
+                                        salary_after_tax | number: '1.0-0' }}</span>
+                            </div>
+                            <div class="detail_title">
+                                <span><strong>Thuế thu nhập cá nhân(*)</strong>:</span> <span>-{{tax_total | number:
+                                    '1.0-0'}}</span>
+                            </div>
+                            <!-- <div class="detail_title" style="background-color: #ededed;">
+                                <span><strong>Lương NET</strong>:</span> <span><strong>{{net | number:
+                                        '1.0-0'}}</strong></span>
+                            </div> -->
+                        </div>
+                        <div style="margin-top: 24px;">
+                            <span style="color: #009900;">(*) Chi tiết thuế thu nhập cá nhân</span>
+                            <div class="fr_tax">
+                                <div class="detail_tax" style="background-color: #ededed;">
+                                    <span><strong>Mức chịu thuế</strong></span><span><strong>Thuế suất</strong></span>
+                                    <span><strong>Tiền nộp</strong></span>
+                                </div>
+                                <div class="detail_tax" *ngFor="let item of taxDetails">
+                                    <span>{{item.title}}</span> <span>{{item.taxRate * 100}}%</span>
+                                    <span>{{item.taxAmount | number:'1.0-0'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div [innerHTML]="data" style="padding: 32px 8px 32px 8px;">
+
+            </div>
+        </div>
+    </div>
+
+</div>

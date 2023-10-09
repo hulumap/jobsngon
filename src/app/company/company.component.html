@@ -8,10 +8,10 @@
             <div class="fr-jobs">
                 <nz-skeleton [nzActive]="true" *ngIf="!loading"></nz-skeleton>
                 <div *ngIf="loading"  class="row" style="padding: 8px;">
-                    <div class="col-4" *ngFor="let item of company" style="padding: 0;" (click)="gotoJobDetail(item)">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let item of company" style="padding: 0;" (click)="gotoJobDetail(item)">
                         <div class="fr-main">
                             <div class="fr-info">
-                                <div style="width: 25%;">
+                                <div style="width: 25%; margin: auto;">
                                     <img [src]="item.logo" alt="" style="width: 90%;">
                                 </div>
                                 <div
@@ -26,7 +26,8 @@
                                         </div>
                                         <div class="salary">
                                             <span class="icon" nz-icon nzType="global" nzTheme="outline"></span>
-                                            <span class=address>{{item.address}}</span>
+                                            <span class=address>{{ item.address.length > 100 ? (item.address.substring(0,
+                                                100) + '...') : item.address }}</span>
                                         </div>
 
                                     </div>

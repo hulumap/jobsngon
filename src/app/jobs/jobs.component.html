@@ -62,7 +62,7 @@
         <div class="fr-list" *ngIf="loading">
             <div class="fr-jobs">
                 <div class="row">
-                    <div class="col-12" style="padding: 0; display: flex; justify-content: center;"
+                    <div class="col-12" style="display: flex; justify-content: center;"
                         *ngFor="let item of showJobs" (click)="gotoJobDetail(item)">
                         <div class="fr-main">
                             <div class="fr-info">
@@ -90,7 +90,7 @@
                                             <span class=address>{{ item.address.length > 75 ? (item.address.substring(0,
                                                 75) + '...') : item.address }}</span>
                                         </div>
-                                        <span (click)="openJob(item,$event)">
+                                        <span class="view-job" (click)="openJob(item,$event)">
                                             <button class="btn my-2 my-sm-0 view-job">Xem nhanh</button>
                                         </span>
                                     </div>

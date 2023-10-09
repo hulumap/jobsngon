@@ -1,0 +1,62 @@
+.theme1 {
+    width: 100%;
+
+    .out {
+        width: 100%;
+        height: 100%;
+        // background-color: var(--ion-color-hu-brown);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        border: 1px solid;
+
+        // position: absolute;
+        // bottom: 50px;
+        .in {
+            width: 98%;
+            height: 98%;
+            align-items: center;
+            // background-color: var(--ion-color-hu-green);
+            display: flex;
+            border-radius: 16px;
+            cursor: pointer;
+
+            .icon {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                font-size: 24px;
+            }
+
+            .stt {
+                font-family: cursive;
+                color: rgb(109, 34, 230);
+                font-weight: lighter;
+                font-size: 1.4rem;
+                margin: auto;
+            }
+
+            p {
+                margin: 0;
+                // height: 50%;
+                font-size: 16px;
+                text-align: justify;
+                padding: 5%;
+                font-weight: 500;
+
+                sub {
+                    font-size: 2.2rem;
+                }
+            }
+
+            img {
+                height: 200px;
+                width: 200px;
+                margin-top: 16px;
+            }
+
+            flex-direction: column;
+        }
+    }
+}

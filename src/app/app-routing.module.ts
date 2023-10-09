@@ -28,6 +28,14 @@ const routes: Routes = [
     loadChildren: () => import('./caculate-salary/caculate-salary.module').then(m => m.CaculateSalaryModule)
   },
   {
+    path: 'tinh-thue-TNCN',
+    loadChildren: () => import('./caculate-tax/caculate-tax.module').then(m => m.CaculateTaxModule)
+  },
+  {
+    path: 'doc-thu',
+    loadChildren: () => import('./letters/letters.module').then(m => m.LettersModule)
+  },
+  {
     path: 'mau-cv',
     loadChildren: () => import('./template/template.module').then(m => m.TemplateModule)
   },

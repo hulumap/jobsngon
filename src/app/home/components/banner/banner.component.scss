@@ -1,15 +1,19 @@
 .banner-image {
-    background-image: url('https://freec.asia/_next/static/image/_/_/packages/optimal-page/wrapper/home/assets/img/hero-bg.2380e96d80b27db77a176d33b9d46801.png');
+    background-image: url('../../../../assets/img/banner.png');
+    background-repeat: no-repeat;
 
     @media (max-width: 768px) {
-        background-image: none;
+        // background-image: none;
         height: auto;
+        background-size: inherit;
+
+        .title {
+            text-align: center;
+        }
     }
 
-    background-position: bottom center;
-    background-size: 1385px 443px;
-    background-color: #cff7d2;
-    height: 500px;
+    background-size: 100% 100%;
+    height: 550px;
 
     .wrapper-container {
         max-width: 1230px;
@@ -34,7 +38,7 @@
             }
 
             .search-jobs {
-                padding-top: 79px;
+                padding-top: 90px;
                 padding-bottom: 68px;
 
                 @media (max-width: 768px) {
@@ -85,6 +89,10 @@
                     @media (max-width: 768px) {
                         width: 100%;
                         height: 54px;
+
+                        input {
+                            font-size: 14px !important;
+                        }
                     }
 
                     span {

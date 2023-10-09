@@ -13,6 +13,7 @@ export class OutstandingJobComponent implements OnInit {
   currentPage = 1;
   pageSize = 12;
   totalPages: any = 0
+  loading: boolean = false
   constructor(private jobsngon: Jobsngon, private router: Router) { }
 
   ngOnInit(): void {
@@ -26,7 +27,11 @@ export class OutstandingJobComponent implements OnInit {
         this.jobs = data
         this.totalPages = Math.ceil(this.jobs.length / this.pageSize);
         this.showJobs = this.jobsngon.paginateArray(this.jobs, this.currentPage, this.pageSize)
-      }, err => console.log(err))
+        this.loading = true
+      }, err => {
+        this.loading = true
+        console.log(err)
+      } )
   }
 
   previousPage() {

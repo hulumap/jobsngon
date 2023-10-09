@@ -11,6 +11,11 @@ nav {
 
     a:hover {
         color: #009900 !important;
+        background-color: transparent !important;
+    }
+
+    li:hover {
+        background-color: transparent !important;
     }
 
     .login {
@@ -41,6 +46,7 @@ nav {
         align-items: center;
         justify-content: center;
         cursor: pointer;
+
         .icon {
             font-size: 22px;
             color: #009900;

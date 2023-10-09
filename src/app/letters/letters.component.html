@@ -1,0 +1,23 @@
+<div class="wrapper-container">
+    <div class="row" style="padding: 8px; height: 100%;">
+        <div class="col-4" style="height: 100%;">
+            <h4>{{title}}</h4>
+            <div class="menu">
+                <div (click)="setTitle('Bức thư hôm nay')" class="title" routerLink="/doc-thu/buc-thu-hom-nay">
+                    Bức thư hôm nay
+                </div>
+                <div (click)="setTitle('Đọc thư')" class="title" routerLink="/doc-thu">
+                    Đọc thư
+                </div>
+                <div (click)="setTitle(' Yêu thích')" class="title" routerLink="/doc-thu/yeu-thich">
+                    Yêu thích
+                </div>
+            </div>
+        </div>
+        <div class="col-8" style="height: 100%;">
+            <div class="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+.wrapper-container {
+    max-width: 1230px;
+    padding-top: 32px !important;
+    height: auto;
+    margin: auto;
+    padding-bottom: 32px;
+    height: 90%;
+
+    h4 {
+        text-align: center;
+        color: #6d22e6;
+        position: absolute;
+        top: 16%;
+        left: 55px;
+        border-bottom: 1px solid;
+    }
+
+    .menu {
+        background-image: url('../../assets//img/999/1.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+        padding: 16px;
+       // border: 1px solid lightgrey;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .title {
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+            font-weight: 700;
+            height: 40px;
+            background-color: #f5cac4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 4px;
+            width: 75%;
+        }
+    }
+
+    .content {
+        background-color: #fdfef9;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+        padding: 16px;
+       // border: 1px solid lightgrey;
+        height: 100%;
+        overflow-y: auto;
+
+    }
+
+    .content::-webkit-scrollbar {
+        width: 4px;
+
+    }
+
+    .content::-webkit-scrollbar-track {
+        --webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .content::-webkit-scrollbar-thumb {
+        background-color: #009900;
+        outline: 1px solid slategrey;
+    }
+}

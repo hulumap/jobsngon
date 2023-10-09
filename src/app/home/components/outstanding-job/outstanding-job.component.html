@@ -5,7 +5,8 @@
     </div>
     <h5>Công việc hấp dẫn dành cho bạn</h5>
     <div class="fr-jobs">
-        <div class="row" style="padding: 16px;">
+        <nz-skeleton [nzActive]="true" *ngIf="!loading"></nz-skeleton>
+        <div class="row" style="padding: 16px;" *ngIf="loading">
             <div class="col-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let item of showJobs" style="padding: 0;"
                 (click)="gotoJobDetail(item)">
                 <div class="fr-main">
@@ -13,7 +14,7 @@
                         <span class="name">
                             {{item.name}}
                         </span>
-                        <span (click)="openJob(item,$event)" nz-icon nzType="eye" nzTheme="outline"
+                        <span class="view-job" (click)="openJob(item,$event)" nz-icon nzType="eye" nzTheme="outline"
                             style="color: #009900;"></span>
                     </div>
                     <div class="fr-info">

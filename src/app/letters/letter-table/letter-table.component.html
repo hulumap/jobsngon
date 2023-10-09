@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-6" *ngFor="let item of show" (click)="gotoLetters(item)">
+        <nz-list nzItemLayout="horizontal">
+            <nz-list-item style="border-bottom: 1px solid lightgray;">
+                <nz-list-item-meta nzAvatar="{{item.img}}">
+                    <nz-list-item-meta-title>
+                        <a>Bức thư thứ {{ item.name }}</a>
+                    </nz-list-item-meta-title>
+                    <nz-list-item-meta-description>
+                        {{ item.sub }}
+                    </nz-list-item-meta-description>
+                </nz-list-item-meta>
+            </nz-list-item>
+        </nz-list>
+    </div>
+</div>

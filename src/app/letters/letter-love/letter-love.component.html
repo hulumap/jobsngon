@@ -1,0 +1,18 @@
+<div style="height: 100%">
+    <owl-carousel-o [options]="carouselOptions">
+        <ng-container class="item" *ngFor="let item of char">
+            <ng-template carouselSlide>
+                <div class="theme1">
+                    <div class='out'>
+                        <div class="in">
+                            <span [style.color]="item.status ? 'red':'' " (click)='$event.stopPropagation();saveFavorite(item)' class="icon" nz-icon nzType="heart" nzTheme="outline"></span>
+                            <img  [src]="item.img" alt="">
+                            <span class="stt">#{{item.id+1}}</span>
+                            <p style="font-size: 16px !important;"><sub>‘‘</sub>{{item.title}}.<sub>’’</sub></p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+</div>

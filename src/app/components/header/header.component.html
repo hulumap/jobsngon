@@ -1,6 +1,6 @@
 <nav class="navbar  navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">
-        <img src="assets/logo.svg" alt="" style="height: 45px;">
+        <img src="assets/logo.svg" alt="" style="height: 54px;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
         aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation"
@@ -19,8 +19,25 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink="/cong-ty">Công Ty</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" routerLink="/tinh-luong">Tính lương</a>
+            </li> -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Công cụ
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" routerLink="/tinh-luong">Tính lương GROSS->NET</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" routerLink="/tinh-thue-TNCN">TÍnh thuế TNCN</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" routerLink="/doc-thu">Đọc thư</a></li>
+                </ul>
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0" *ngIf="!isLogin">

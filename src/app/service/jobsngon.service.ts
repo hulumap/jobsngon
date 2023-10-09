@@ -29,6 +29,57 @@ export class Jobsngon {
   ) { }
 
 
+  // local storage 
+
+
+  public addData(key: string, data: any) {
+    let a = JSON.parse(localStorage.getItem(key))
+    if (!a) localStorage.setItem(key, JSON.stringify([data]));
+    else {
+      a.push(data)
+      localStorage.setItem(key, JSON.stringify(a));
+    }
+  }
+  /**
+  * Get Value
+  */
+  public getData(key: string): any {
+    return JSON.parse(localStorage.getItem(key));
+  }
+  /**
+   * delete Value
+   */
+  public deleteData(key: string, data: any) {
+    let a = JSON.parse(localStorage.getItem(key))
+    if (a) {
+      for (let i = 0; i < a.length; i++) {
+        if (a[i].id == data) {
+          a.splice(i, 1);
+        }
+      }
+      localStorage.setItem(key, JSON.stringify(a));
+    }
+  }
+  /**
+  * delete Value
+  */
+  public deleteQuote(key: string, data: any) {
+    let a = JSON.parse(localStorage.getItem(key))
+    if (a) {
+      for (let i = 0; i < a.length; i++) {
+        if (a[i].title == data) {
+          a.splice(i, 1);
+        }
+      }
+      localStorage.setItem(key, JSON.stringify(a));
+    }
+  }
+  /**
+  * update Value
+  */
+
+
+
   // local /
   setTitle(title) {
     this.titleService.setTitle(title);
@@ -71,6 +122,27 @@ export class Jobsngon {
         })
         .catch((err) => rejects(err));
     });
+  }
+
+  /**
+   * delete Value
+   */
+  public deleteLocalDataId(collection: string, data: any) {
+    return new Promise((resolve, rejects) => {
+      this.getLocalData(collection)
+        .then((a) => {
+          if (a) {
+            for (let i = 0; i < a.length; i++) {
+              if (a[i].id == data) {
+                a.splice(i, 1);
+              }
+            }
+            this.setLocalData(collection, JSON.stringify(a));
+            resolve(true)
+          }
+        }, err => rejects(false))
+    });
+
   }
 
   clearLocal(collection?) {

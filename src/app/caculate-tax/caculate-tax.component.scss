@@ -1,0 +1,153 @@
+.wrapper-container {
+    max-width: 1230px;
+    padding-top: 32px !important;
+    height: auto;
+    margin: auto;
+    padding-bottom: 32px;
+
+    .fr-input {
+        box-shadow: -1px 1px 6px rgba(0, 0, 0, .05);
+        padding: 16px;
+        border: 1px solid lightgrey;
+
+        .title {
+            color: #00b14f;
+            font-size: 25px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            margin: 0 0 16px;
+
+        }
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .form {
+        .list-salary {
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            justify-content: space-between;
+            margin-top: 12px;
+            padding: 16px;
+
+            p {
+                color: #333;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+            }
+
+            span {
+                color: #009900 !important;
+                font-size: 18px;
+                font-style: normal;
+                line-height: 20px;
+                font-weight: 700;
+            }
+        }
+
+        nz-input-group {
+            margin-top: 8px;
+        }
+
+
+        .input-info {
+            margin-top: 32px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-caculate {
+            font-weight: 600;
+            background: #009900;
+            color: white;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid lightgray;
+            cursor: pointer;
+        }
+
+        .result {
+            table {
+                th {
+                    font-weight: bold;
+                    padding: 6px;
+                    text-align: center;
+                }
+
+                td {
+                    text-align: center;
+                    padding: 6px;
+                }
+            }
+
+            .detail_title {
+                display: flex;
+                padding: 6px;
+                border-top: 1px solid lightgray;
+
+                span {
+                    width: 50%;
+                    text-align: end;
+                }
+            }
+
+            .fr_tax {
+                display: flex;
+                padding: 6px;
+                border-top: 1px solid lightgray;
+                flex-direction: column;
+            }
+
+            .detail_tax {
+                display: flex;
+                width: 100%;
+                padding: 6px;
+                border-top: 1px solid lightgray;
+
+                span {
+                    width: 33.33%;
+                    text-align: end;
+                }
+            }
+        }
+    }
+
+    .qa {
+        padding: 16px;
+
+        p {
+            font-size: 15px;
+            color: #009900;
+            font-weight: 500;
+        }
+
+        .title {
+            color: #00b14f;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            margin: 0 0 16px;
+
+        }
+
+        mat-panel-title {
+            font-weight: 700 !important;
+        }
+    }
+
+    input {
+        padding: 4px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: end;
+    }
+}
+

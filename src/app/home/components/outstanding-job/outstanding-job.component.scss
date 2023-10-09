@@ -59,6 +59,12 @@
                     font-weight: 700;
                     text-transform: capitalize;
                 }
+
+                @media (max-width: 768px) {
+                    .view-job {
+                        display: none;
+                    }
+                }
             }
 
             .fr-info {

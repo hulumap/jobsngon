@@ -1,9 +1,9 @@
 <nz-tabset nzType="card">
-    <nz-tab nzTitle="Danh sách Cv">
+    <nz-tab nzTitle="Danh sách CV mẫu">
         <div nz-row class="row">
             <div nz-row style="width: 100%;">
                 <div (click)="gotoTemplate(item.path)" class='col' nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8"
-                    nzXl="8" *ngFor="let item of cv;">
+                    nzXl="8" *ngFor="let item of data;">
                     <nz-card nzHoverable [nzCover]="coverTemplate">
                         <nz-card-meta nzTitle="Miễn phí" [nzDescription]="item.name"></nz-card-meta>
                         <div nz-row *ngIf="item.type ==1">
@@ -39,19 +39,41 @@
             </div>
         </div> -->
         <div style="padding: 16px">
-            <div style="display: flex; justify-content: flex-end;align-items: center; padding: 16px;">
+            <div style="display: flex; justify-content: flex-end;align-items: center;">
                 <input id="id_change_cv" class="input-enter" placeholder="Chọn CV" nz-input type="file"
                     (change)="selectFileDown($event)" style="display: none;" />
                 <button (click)="changeCv()" nz-button nzType="default"
                     style="display: flex;align-items: center;height: 40px;border-radius: 5px">
                     <i *ngIf="loadingDown" nz-icon nzType="loading" nzTheme="outline"></i>
                     <i *ngIf="!loadingDown" nz-icon nzType="download" nzTheme="outline"></i>
-                    <span *ngIf="!loadingDown">Thay đổi CV</span>
+                    <span *ngIf="!loadingDown">Tải CV mới</span>
                 </button>
 
             </div>
             <div style="height: 90vh;">
-                <iframe style="height:100%; width: 100%;" [src]="file_cv" frameborder="0"></iframe>
+                <div style="text-align: center;" *ngIf="!user.cvs">Chưa có cv!</div>
+                <div class="row" *ngIf="user.cvs">
+                    <div class="col-12" *ngFor="let item of user.cvs; let i = index">
+                        <div class="name">
+                            <div style="color: #009900;">
+                                <strong>{{item.name}}</strong>
+                            </div>
+                            <div style="display: flex;">
+                                <button nz-button (click)="viewCV(item)"
+                                    style="display: flex;align-items: center;height: 40px;border-radius: 5px; margin: 4px;background-color: beige;">
+                                    <i nz-icon nzType="eye" nzTheme="outline"></i>
+                                    <span>Xem</span>
+                                </button>
+                                <button nz-button nzType="default" (click)="deleteCV(i)"
+                                    style="display: flex;align-items: center;height: 40px;border-radius: 5px;margin: 4px; color: red;">
+                                    <i nz-icon nzType="close" nzTheme="outline"></i>
+                                    <span>Xoá</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <iframe style="height:100%; width: 100%;" [src]="file_cv" frameborder="0"></iframe> -->
             </div>
         </div>
     </nz-tab>

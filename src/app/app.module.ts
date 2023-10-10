@@ -34,7 +34,7 @@ import { FooterComponent } from './components/footer/footer.component';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.pro),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,

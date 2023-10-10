@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { NgZorroAntModule } from '../ng-zorro-ant.module';
 import { ListCvComponent } from './list-cv/list-cv.component';
+import { ViewCvComponent } from './view-cv/view-cv.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,8 @@ const routes: Routes = [
   declarations: [
     AccountComponent,
     InfoComponent,
-    ListCvComponent
+    ListCvComponent,
+    ViewCvComponent
   ],
   imports: [
     CommonModule,

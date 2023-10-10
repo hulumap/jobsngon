@@ -26,8 +26,9 @@ export class Jobsngon {
     private message: NzMessageService,
     private router: Router,
     private http: HttpClient,
-  ) { }
-
+  ) { 
+    this.switchLanguage('vi');
+  }
 
   // local storage 
 

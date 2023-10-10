@@ -28,4 +28,15 @@
             }
         }
     }
+
+    .name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* justify-content: center; */
+        border: 1px solid lightgray;
+        padding: 8px;
+        border-radius: 5px;
+        margin: 8px;
+    }
 }

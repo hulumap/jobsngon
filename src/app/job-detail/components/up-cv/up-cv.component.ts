@@ -10,7 +10,7 @@ import { Jobsngon } from 'src/app/service/jobsngon.service';
   styleUrls: ['./up-cv.component.scss']
 })
 export class UpCvComponent implements OnInit {
-  file_cv:any ="A"
+  file_cv: any = "A"
   user: any = ""
   constructor(
     private jobsngon: Jobsngon,
@@ -28,13 +28,15 @@ export class UpCvComponent implements OnInit {
     this.jobsngon.getLocalData('user')
       .then((user) => {
         if (user) this.user = user
-        else this.router.navigate([''])
-      }, err => this.router.navigate(['']))
+        // else this.router.navigate([''])
+      }, err => {
+
+      })
   }
   submit() {
 
   }
-  changeCv(){
+  changeCv() {
 
   }
 

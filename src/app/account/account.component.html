@@ -1,6 +1,6 @@
 <div class="wrapper-container">
     <div class="row" style="padding: 16px;">
-        <div class="col-12 col-sm-3 col-md-3 col-lg-3" >
+        <div class="col-12 col-sm-3 col-md-3 col-lg-3">
             <div class="fr-info">
                 <h3>Tài khoản</h3>
                 <div>
@@ -14,7 +14,8 @@
                         <span nz-icon nzType="read" nzTheme="outline" style="margin-right: 12px;"></span> <span>Cv của
                             bạn</span>
                     </span>
-                    <span class="line">
+                    <span class="line" nz-popconfirm nzPopconfirmTitle="Đang xuất?" nzPopconfirmPlacement="bottom"
+                        (nzOnConfirm)="logout()">
                         <span nz-icon nzType="logout" nzTheme="outline" style="margin-right: 12px;"></span> <span>Đăng
                             xuất</span>
                     </span>

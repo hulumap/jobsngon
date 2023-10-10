@@ -6,12 +6,13 @@
                 <div [style.color]="title == 'Đọc thư' ? '#6d22e6': ''" (click)="setTitle('Đọc thư')" class="title" routerLink="/doc-thu">
                     Đọc thư
                 </div>
-                <div  [style.color]="title == 'Yêu thích' ? '#6d22e6': ''" (click)="setTitle('Yêu thích')" class="title" routerLink="/doc-thu/yeu-thich">
-                    Yêu thích
-                </div>
                 <div [style.color]="title == 'Bức thư hôm nay' ? '#6d22e6': ''" (click)="setTitle('Bức thư hôm nay')" class="title" routerLink="/doc-thu/buc-thu-hom-nay">
                     Bức thư hôm nay
                 </div>
+                <div  [style.color]="title == 'Yêu thích' ? '#6d22e6': ''" (click)="setTitle('Yêu thích')" class="title" routerLink="/doc-thu/yeu-thich">
+                    Yêu thích
+                </div>
+               
             </div>
         </div>
         <div class="col-8" style="height: 100%;">

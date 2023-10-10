@@ -28,7 +28,7 @@ export class JobsComponent implements OnInit {
   }
   showJobs: any = []
   currentPage = 1;
-  pageSize = 25;
+  pageSize = 5;
   totalPages: any = 0
   loading: boolean = false
   constructor(private jobsngon: Jobsngon, private router: Router, private route: ActivatedRoute) {
@@ -65,35 +65,37 @@ export class JobsComponent implements OnInit {
   // Hàm để lọc các công việc dựa trên nhiều trường, bao gồm cả trường "name"
   filterJobs(filters: Partial<any>): any[] {
     return this.jobs.filter((job) => {
+      let isMatch = true; // Assume it's a match by default
+
       // Duyệt qua từng trường trong filters
       for (const key in filters) {
         if (filters.hasOwnProperty(key)) {
           const filterValue = filters[key];
           const jobValue = job[key];
 
-          // Kiểm tra xem "name" có tồn tại và không rỗng
-          if (filters.name !== undefined && filters.name !== "") {
-            const filterName = this.jobsngon.changeAlias(filters.name);
+          // Check if the filter key is "name" and not empty
+          if (key === 'name' && typeof filterValue === 'string' && filterValue.trim() !== "") {
+            const filterName = this.jobsngon.changeAlias(filterValue);
             const jobName = this.jobsngon.changeAlias(job.name);
 
             if (!jobName.includes(filterName)) {
-              return false; // Không khớp, loại bỏ công việc này
+              isMatch = false; // Name doesn't match, set isMatch to false
             }
-          }
-          else {
+          } else {
+            // Handle other filter conditions here
             if (typeof filterValue === 'string' && typeof jobValue === 'string') {
               if (!jobValue.toLowerCase().includes(filterValue.toLowerCase())) {
-                return false; // Không khớp, loại bỏ công việc này
+                isMatch = false; // Other conditions don't match, set isMatch to false
               }
             } else if (filterValue !== jobValue) {
-              return false; // Không khớp, loại bỏ công việc này
+              isMatch = false; // Other conditions don't match, set isMatch to false
             }
           }
         }
       }
 
-      // Nếu tất cả các trường đều khớp, giữ lại công việc này
-      return true;
+      // Return true only if all conditions match
+      return isMatch;
     });
   }
 
@@ -152,12 +154,13 @@ export class JobsComponent implements OnInit {
   search() {
     this.jobsngon.getJSON_Jobs()
       .then((data) => {
+        this.currentPage = 1
         this.jobs = data
         let jobsFilter = this.filterJobs(this.removeFieldsWithAllValue(this.filter))
         console.log(this.removeFieldsWithAllValue(this.filter), jobsFilter)
         this.router.navigate(['/tim-viec-lam']);
-        this.totalPages = Math.ceil(jobsFilter.length / 10);
-        this.showJobs = this.jobsngon.paginateArray(jobsFilter, 1, 10)
+        this.totalPages = Math.ceil(jobsFilter.length / this.pageSize);
+        this.showJobs = this.jobsngon.paginateArray(jobsFilter, this.currentPage, this.pageSize)
         this.loading = true
       }, err => {
         this.loading = true

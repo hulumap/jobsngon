@@ -1,6 +1,15 @@
 export const environment = {
-  production: true,
-  firebase: {
+  production: false,
+  dev: {
+    apiKey: "AIzaSyA2mPex5J2y1hIo6dA-WsFJC9G3AE4p2bM",
+    authDomain: "viethas-web-sales-template.firebaseapp.com",
+    projectId: "viethas-web-sales-template",
+    storageBucket: "viethas-web-sales-template.appspot.com",
+    messagingSenderId: "665273351863",
+    appId: "1:665273351863:web:855ad022f28a7c041fd732",
+    measurementId: "G-3PFBJYTKF5"
+  },
+  pro: {
     apiKey: "AIzaSyBYrnTdoD4qtuvCD0pIeEiNJw_3nvRzs_k",
     authDomain: "jobsngon-a8d52.firebaseapp.com",
     projectId: "jobsngon-a8d52",
@@ -8,12 +17,5 @@ export const environment = {
     messagingSenderId: "1053083536854",
     appId: "1:1053083536854:web:3383d60a8c61110fa9e877",
     measurementId: "G-W9XQ3ZWZZQ"
-    // apiKey: "AIzaSyCPKeNHF6a5RJ6m8IFhWM3ETOqlQa5kGT8",
-    // authDomain: "share-cv-75b81.firebaseapp.com",
-    // projectId: "share-cv-75b81",
-    // storageBucket: "share-cv-75b81.appspot.com",
-    // messagingSenderId: "799416211016",
-    // appId: "1:799416211016:web:061be2590b6c45471e6a7d",
-    // measurementId: "G-HJW4JBHC3C"
   }
 };

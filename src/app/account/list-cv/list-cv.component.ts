@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Jobsngon } from 'src/app/service/jobsngon.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewCvComponent } from '../view-cv/view-cv.component';
 @Component({
   selector: 'app-list-cv',
   templateUrl: './list-cv.component.html',
   styleUrls: ['./list-cv.component.scss']
 })
 export class ListCvComponent implements OnInit {
+  user: any = {}
   loadingDown: boolean = false;
   data: any = [
     {
@@ -46,15 +51,26 @@ export class ListCvComponent implements OnInit {
       type: 2
     },
   ]
-  cv: any = []
-  a: any = "https://firebasestorage.googleapis.com/v0/b/jobsngon-a8d52.appspot.com/o/cv-partner%2FLA%20CAM%20LOAN.pdf69bf?alt=media&token=e77d41cb-f077-4f1b-9a7e-a8c3a556bc6e"
-  file_cv: any = "https://firebasestorage.googleapis.com/v0/b/jobsngon-a8d52.appspot.com/o/cv-partner%2FLA%20CAM%20LOAN.pdf69bf?alt=media&token=e77d41cb-f077-4f1b-9a7e-a8c3a556bc6e"
-  constructor(private router: Router, private sanitizer: DomSanitizer) { }
+  constructor(private router: Router,
+    private sanitizer: DomSanitizer,
+    private jobsngon: Jobsngon,
+    private message: NzMessageService,
+    public dialog: MatDialog,) { }
 
   ngOnInit(): void {
-    this.cv = this.data
-    this.file_cv = this.sanitizer.bypassSecurityTrustResourceUrl(this.a)
-    console.log(this.file_cv)
+    this.getInfo()
+  }
+
+  getInfo() {
+    this.jobsngon.getLocalData('user')
+      .then((user) => {
+        if (user) {
+          this.user = user
+          console.log(this.user.cvs)
+        }
+
+        else this.router.navigate([''])
+      }, err => this.router.navigate(['']))
   }
 
   gotoTemplate(path) {
@@ -62,15 +78,76 @@ export class ListCvComponent implements OnInit {
   }
 
   selectFileDown(event) {
-
+    let data_cv: any = {}
+    const file = event.target.files.item(0);
+    console.log(event.target.files.item(0))
+    data_cv.name = file.name
+    let size = file.size
+    if (size <= 500000) {
+      this.loadingDown = true;
+      this.jobsngon
+        .uploadFile(file, `/cv-users-upload`)
+        .then(
+          (downloadURL) => {
+            this.message.create('success', 'Tải CV thành công');
+            this.loadingDown = false;
+            data_cv.link = downloadURL
+            if (!this.user.cvs) {
+              this.user.cvs = []
+            }
+            this.user.cvs.push(data_cv)
+            this.update()
+            //this.jobsngon.deleteFile(this.user.cvs); // xóa file ban đầu đã chọn
+          },
+          (error) => {
+            this.loadingDown = false;
+            this.message.create('warning', 'Tải CV thất bại, vui lòng thử lại');
+            console.log(error);
+          }
+        )
+        .catch((err) => {
+          this.loadingDown = false;
+          this.message.create('warning', 'Tải CV thất bại, vui lòng thử lại');
+          console.log(err);
+        });
+    } else this.message.create('warning', 'Tải file < 500Kb');
   }
 
   viewCVView() {
 
   }
 
+  viewCV(item) {
+    const dialogRef = this.dialog.open(ViewCvComponent, {
+      width: '90%',
+      maxWidth: '100%',
+      data: item.link,
+      height: '90%',
+      // data: item,
+      //disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+
+    });
+  }
+
+  deleteCV(index) {
+    this.user.cvs.splice(index, 1);
+    this.update()
+  }
+
   changeCv() {
     document.getElementById("id_change_cv").click()
+  }
+
+  update() {
+    this.jobsngon.updateInfo({ cvs: this.user.cvs })
+      .then(() => {
+        //this.message.create('success', 'Cập nhật thành công');
+        this.jobsngon.setLocalData("user", this.user)
+      }, err => {
+        // this.message.create('success', 'Cập nhật thất bại, vui lòng đăng nhập lại');
+      })
   }
 
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntModule } from '../../ng-zorro-ant.module';
 import { ViewJobComponent } from './view-job.component';
+import { UpCvModule } from '../up-cv/up-cv.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ViewJobComponent } from './view-job.component';
         CommonModule,
         NgZorroAntModule,
         FormsModule,
+        UpCvModule,
         ReactiveFormsModule,
     ],
     exports: [ViewJobComponent]

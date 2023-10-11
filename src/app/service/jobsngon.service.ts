@@ -30,6 +30,21 @@ export class Jobsngon {
     this.switchLanguage('vi');
   }
 
+
+  sort_Date(dataArr, sort = 'asc' || 'desc') {
+    if (sort == 'asc') {
+      let asc = dataArr.sort((a, b) => {
+        return b.date_created.seconds * 1000 - a.date_created.seconds * 1000;
+      });
+      return asc;
+    } else {
+      let desc = dataArr.sort((a, b) => {
+        return a.date_created.seconds * 1000 - b.date_created.seconds * 1000;
+      });
+      return desc;
+    }
+  }
+
   // local storage 
 
 

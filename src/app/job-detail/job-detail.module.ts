@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { NgZorroAntModule } from '../ng-zorro-ant.module';
+import { UpCvModule } from '../components/up-cv/up-cv.module';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    UpCvModule,
     RouterModule.forChild(routes),
   ]
 })

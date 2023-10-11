@@ -5,11 +5,11 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Jobsngon } from 'src/app/service/jobsngon.service';
 
 @Component({
-  selector: 'app-up-cv',
-  templateUrl: './up-cv.component.html',
-  styleUrls: ['./up-cv.component.scss']
+  selector: 'app-submit-cv-user',
+  templateUrl: './submit-cv-user.component.html',
+  styleUrls: ['./submit-cv-user.component.scss']
 })
-export class UpCvComponent implements OnInit {
+export class SubmitCvUserComponent implements OnInit {
   file_cv: any
   user: any = ""
   constructor(
@@ -17,7 +17,7 @@ export class UpCvComponent implements OnInit {
     private router: Router,
     private message: NzMessageService,
     public dialog: MatDialog,
-    public dialogRef: MatDialogRef<UpCvComponent>,
+    public dialogRef: MatDialogRef<SubmitCvUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
@@ -77,7 +77,6 @@ export class UpCvComponent implements OnInit {
   selectFileDown(event) {
     let data_cv: any = {}
     const file = event.target.files.item(0);
-    console.log(event.target.files.item(0))
     data_cv.name = file.name
     data_cv.default = false
     let size = file.size

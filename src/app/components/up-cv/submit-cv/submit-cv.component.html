@@ -1,0 +1,48 @@
+<div nz-col nzSpan="24" class="body">
+    <div>
+        <div nz-row style="display: flex; justify-content: space-between;border-bottom: 1px solid lightgray">
+            <h2 style="font-weight: bold; font-size: 16px;">
+                Bạn đang ứng tuyển <span style="color: #009900;">{{data.name}}</span> tại {{data.address}}</h2>
+        </div>
+        <div nz-row class="line-input">
+            <div style="width:25%;"><b class="label">Họ và tên</b></div>
+            <input [(ngModel)]="user.name" style="width: 75%;" type="text" nz-input placeholder="Họ và tên" />
+        </div>
+        <div nz-row class="line-input">
+            <div style="width:25%;"><b class="label">Email</b></div>
+            <input [(ngModel)]="user.email" style="width: 75%;" type="text" nz-input placeholder="Email" />
+        </div>
+        <div nz-row class="line-input">
+            <div style="width:25%;"><b class="label">Điện thoại</b></div>
+            <input [(ngModel)]="user.phone" style="width: 75%;" type="text" nz-input placeholder="Điện thoại" />
+        </div>
+        <div nz-row class="line-input">
+            <input id="id_change_cv_up" class="input-enter" placeholder="Chọn CV" nz-input type="file"
+                (change)="selectFileDown($event)" style="display: none;" accept=".pdf, .doc, .docx"/>
+            <div style="width:25%;"><b class="label">CV của bạn</b></div>
+            <button (click)="changeCv()" nz-button nzType="default"
+                style="display: flex;align-items: center;height: 40px;border-radius: 5px">
+                <i *ngIf="loadingDown" nz-icon nzType="loading" nzTheme="outline"></i>
+                <i *ngIf="!loadingDown" nz-icon nzType="download" nzTheme="outline"></i>
+                <span *ngIf="!loadingDown">Chọn tệp</span>
+                
+            </button>
+            <span style="color: #8f8e8e;font-size: 12px; margin-left: 8px;">Hỗ trợ định dạng *.doc, *.docx, *.pdf, và <
+                1MB</span>
+        </div>
+        <div nz-row class="line-input">
+            <div style="width:25%;"><b class="label"></b></div>
+            <div style="width: 75%; padding: 8px; background-color: #f5f5f5; border-radius: 5px;">
+                <span>{{show_file}}</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="submit" nz-row
+        style="width: 100%; display: flex; align-items: center; margin-top: 16px; justify-content: flex-end;">
+        <span style="margin-right: 16px; cursor: pointer;" [mat-dialog-close]="false" nz-button>Huỷ</span>
+        <button (click)="submit()" class="btn my-2 my-sm-0 send">
+            Nộp CV
+        </button>
+    </div>
+</div>

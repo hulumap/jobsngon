@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { UpCvComponent } from './components/up-cv/up-cv.component';
 import { Jobsngon } from '../service/jobsngon.service';
 import career from '../../assets/jobs/career.json'
+import { SubmitCvUserComponent } from '../components/up-cv/submit-cv-user/submit-cv-user.component';
+import { SubmitCvComponent } from '../components/up-cv/submit-cv/submit-cv.component';
 @Component({
   selector: 'app-job-detail',
   templateUrl: './job-detail.component.html',
   styleUrls: ['./job-detail.component.scss']
 })
 export class JobDetailComponent implements OnInit {
-  user: any = {}
+  user: any
   exp: any = [{ link: 'chua-co-kinh-nghiem', name: "Chưa có kinh nghiệm" }, { link: 'duoi-1-nam', name: "Dưới 1 năm" }, { link: '1-nam', name: "1 năm" }, { link: '2-nam', name: "2 năm" }, { link: '3-nam', name: "3 năm" }, { link: '4-nam', name: "4 năm" }, { link: '5-nam', name: "5 năm" }, { link: 'tren-5-nam', name: "trên 5 năm" }]
   sex: any = [{ link: "nam", name: "Nam" }, { link: "nu", name: "Nữ" }, { link: "khong-yeu-cau", name: "Không yêu cầu" }]
   level: any = [{ link: 'nhan-vien', name: "Nhân viên" }, { link: 'truong-nhom', name: "Trưởng nhóm" }, { link: 'truong-pho-phong', name: "Trưởng/ Phó phòng" }, { link: 'quan-ly-giam-sat', name: "Quản lý/ Giám sát" }, { link: 'pho-giam-doc', name: "Phó giám đốc" }, { link: 'giam-doc', name: "Giám đốc" }, { link: 'thuc-tap-sinh', name: "Thực tập sinh" }]
@@ -63,7 +64,8 @@ export class JobDetailComponent implements OnInit {
 
 
   openUpcv() {
-    const dialogRef = this.dialog.open(UpCvComponent, {
+    let submit:any = this.user ? SubmitCvUserComponent : SubmitCvComponent
+    const dialogRef = this.dialog.open(submit, {
       width: '40%',
       maxWidth: '100%',
       // height: '60%',

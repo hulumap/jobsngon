@@ -26,7 +26,7 @@ export class JobApplyComponent implements OnInit {
       .then((user) => {
         if (user) {
           this.user = user
-          this.showJobs = this.user.jobs
+          this.showJobs = this.jobsngon.sort_Date(this.user.jobs, 'asc')
         }
         else this.router.navigate([''])
       }, err => this.router.navigate(['']))
@@ -58,7 +58,7 @@ export class JobApplyComponent implements OnInit {
     this.router.navigate(['/cong-ty', company.link]);
   }
 
-  openCv(link,event) {
+  openCv(link, event) {
     event.stopPropagation()
     const dialogRef = this.dialog.open(ViewCvComponent, {
       width: '90%',

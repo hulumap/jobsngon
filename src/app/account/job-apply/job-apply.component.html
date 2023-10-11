@@ -1,5 +1,6 @@
 <div nz-row style="padding: 16px; display: flex; justify-content: space-between; padding: 8px;">
-    <h2 style="font-weight: bold; font-size: 16px;">Đã ứng tuyển <b style="color: #009900;">{{showJobs.length}}</b> việc làm</h2>
+    <h2 style="font-weight: bold; font-size: 16px;">Đã ứng tuyển <b style="color: #009900;">{{showJobs.length}}</b> việc
+        làm</h2>
 </div>
 <div style="display: flex;align-items: center;justify-content: center;; height: 90vh;" *ngIf="!user.jobs">Chưa ứng tuyển
     việc làm nào!</div>
@@ -34,10 +35,13 @@
                                         75) + '...') : item.address }}</span>
                                 </div>
                             </div>
-                            <div style="cursor: pointer;font-style: italic;display: flex;align-items: center;justify-content: end;"
+                            <div style="cursor: pointer;font-style: italic;display: flex;align-items: center;justify-content: space-between; margin: 4px;"
                                 (click)="openCv(item.file_down, $event)">
-                                <span class="icon" nz-icon nzType="eye" nzTheme="outline"></span>
-                                Xem CV đã ứng tuyển
+                                <span>Ngày ứng tuyển: {{item.date_created.seconds*1000 | date:'dd/MM/yyyy' }}</span>
+                                <span style="display: flex;align-items: center;">
+                                    <span class="icon" nz-icon nzType="eye" nzTheme="outline"></span>
+                                    Xem CV đã ứng tuyển
+                                </span>
                             </div>
                         </div>
                     </div>

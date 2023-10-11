@@ -1,0 +1,40 @@
+.body {
+    height: 100%;
+    padding: 16px;
+
+    .line-input {
+        width: 100%;
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        margin-top: 16px;
+    }
+
+    .submit {
+        button {
+            font-weight: 600;
+            background: #009900;
+            color: white;
+            padding: 12px 22px 12px 22px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button:hover {
+            color: white !important;
+        }
+    }
+}
+
+
+input {
+    padding: 15px;
+    border-radius: 5px !important;
+    font-weight: 700;
+}
+
+// label:hover {
+//     color: #009900;
+// }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Jobsngon } from 'src/app/service/jobsngon.service';
+import { ViewCvComponent } from '../view-cv/view-cv.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-job-apply',
@@ -13,7 +15,7 @@ export class JobApplyComponent implements OnInit {
   currentPage = 1;
   pageSize = 5;
   totalPages: any = 0
-  constructor(private jobsngon: Jobsngon, private router: Router) { }
+  constructor(private jobsngon: Jobsngon, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getInfo()
@@ -54,6 +56,21 @@ export class JobApplyComponent implements OnInit {
   gotoDetailCompany(company, event) {
     event.stopPropagation()
     this.router.navigate(['/cong-ty', company.link]);
+  }
+
+  openCv(link,event) {
+    event.stopPropagation()
+    const dialogRef = this.dialog.open(ViewCvComponent, {
+      width: '90%',
+      maxWidth: '100%',
+      data: link,
+      height: '90%',
+      // data: item,
+      //disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+
+    });
   }
 
 }

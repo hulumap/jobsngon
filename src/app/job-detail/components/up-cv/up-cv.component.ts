@@ -52,7 +52,7 @@ export class UpCvComponent implements OnInit {
       link: this.data.company.link
     }
     let job: any = { ...this.data }
-      job.file_down = this.file_cv.link,
+    job.file_down = this.file_cv.link,
       job.date_created = new Date(),
       job.company = company
     if (!this.user.jobs) {
@@ -63,13 +63,62 @@ export class UpCvComponent implements OnInit {
     this.jobsngon.applyCv(cv, this.user.jobs)
       .then(() => {
         console.log("ok")
-      }, err=> {
-        
+      }, err => {
+
       })
 
   }
   changeCv() {
+    document.getElementById("id_change_cv_up").click()
+  }
 
+  loadingDown: boolean = false
+  selectFileDown(event) {
+    let data_cv: any = {}
+    const file = event.target.files.item(0);
+    console.log(event.target.files.item(0))
+    data_cv.name = file.name
+    data_cv.default = false
+    let size = file.size
+    if (size <= 500000) {
+      this.loadingDown = true;
+      this.jobsngon
+        .uploadFile(file, `/cv-users-upload`)
+        .then(
+          (downloadURL) => {
+            this.message.create('success', 'Tải CV thành công');
+            this.loadingDown = false;
+            data_cv.link = downloadURL
+            if (!this.user.cvs) {
+              this.user.cvs = []
+            }
+            this.user.cvs.push(data_cv)
+            this.update()
+            this.file_cv = data_cv
+            //this.jobsngon.deleteFile(this.user.cvs); // xóa file ban đầu đã chọn
+          },
+          (error) => {
+            this.loadingDown = false;
+            this.message.create('warning', 'Tải CV thất bại, vui lòng thử lại');
+            console.log(error);
+          }
+        )
+        .catch((err) => {
+          this.loadingDown = false;
+          this.message.create('warning', 'Tải CV thất bại, vui lòng thử lại');
+          console.log(err);
+        });
+    } else this.message.create('warning', 'Tải file < 500Kb');
+  }
+
+  update() {
+    this.jobsngon.updateInfo({ cvs: this.user.cvs })
+      .then(() => {
+        //this.message.create('success', 'Cập nhật thành công');
+        this.jobsngon.setLocalData("user", this.user)
+      }, err => {
+        // this.message.create('success', 'Cập nhật thất bại, vui lòng đăng nhập lại');
+      })
   }
 
   // selectCV(event) {

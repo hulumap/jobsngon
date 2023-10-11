@@ -18,11 +18,14 @@
             <input [(ngModel)]="user.phone" style="width: 75%;" type="text" nz-input placeholder="Điện thoại" />
         </div>
         <div nz-row class="line-input">
+            <input id="id_change_cv_up" class="input-enter" placeholder="Chọn CV" nz-input type="file"
+                (change)="selectFileDown($event)" style="display: none;" />
             <div style="width:25%;"><b class="label">CV của bạn</b></div>
             <button (click)="changeCv()" nz-button nzType="default"
                 style="display: flex;align-items: center;height: 40px;border-radius: 5px">
-                <i nz-icon nzType="download" nzTheme="outline"></i>
-                <span>Chọn tệp</span>
+                <i *ngIf="loadingDown" nz-icon nzType="loading" nzTheme="outline"></i>
+                <i *ngIf="!loadingDown" nz-icon nzType="download" nzTheme="outline"></i>
+                <span *ngIf="!loadingDown">Chọn tệp</span>
             </button>
             <span style="color: #8f8e8e;font-size: 12px; margin-left: 8px;">Hỗ trợ định dạng *.doc, *.docx, *.pdf, và <
                     1MB</span>

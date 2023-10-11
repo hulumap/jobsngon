@@ -61,6 +61,11 @@
                 <div style="padding-top: 16px; display: flex;">
                     <button (click)="openUpcv()" class="btn my-2 my-sm-0 send"><span nz-icon nzType="send"
                             nzTheme="outline" style="margin-right: 8px;"></span> Ứng Tuyển</button>
+
+                    <span style="display: flex; align-items: center; margin-left: 8px;" *ngIf="apply">
+                        <i>Bạn đã ứng tuyển việc này ào ngày </i>
+                        <span style="color: #009900; margin-left: 8px;">{{apply.date_created.seconds*1000 | date:'dd/MM/yyyy' }}</span>
+                    </span>
                 </div>
             </div>
         </div>

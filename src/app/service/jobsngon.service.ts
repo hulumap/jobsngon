@@ -26,7 +26,7 @@ export class Jobsngon {
     private message: NzMessageService,
     private router: Router,
     private http: HttpClient,
-  ) { 
+  ) {
     this.switchLanguage('vi');
   }
 
@@ -645,6 +645,43 @@ export class Jobsngon {
           reject(error);
         });
     });
+  }
+
+
+  /**
+  * Lưu ý : tạo danh sách khách hàng sales
+  * @param value
+  */
+  addCV(value) {
+    let data = { ...value };
+    data.date = new Date();
+    return new Promise((resolve, reject) => {
+      this.afs
+        .collection('cvs')
+        .add(data)
+        .then((obj: any) => {
+          resolve(obj.id);
+        })
+        .catch((error: any) => {
+          reject(error);
+        });
+    });
+  }
+
+
+  //** Hàm này dành cho apply cv */
+
+  applyCv(cv, jobs) {
+    return Promise.all([this.updateInfo({ jobs: jobs }), this.addCV(cv)])
+      .then(results => {
+        const setResult = results[0]; // Kết quả của setLocalCV
+        const getResult = results[1]; // Kết quả của getLocalCV
+        console.log('Set Local CV Result:', setResult);
+        console.log('Get Local CV Result:', getResult);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   }
 }
 

@@ -7,20 +7,25 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgZorroAntModule } from '../ng-zorro-ant.module';
 import { ListCvComponent } from './list-cv/list-cv.component';
 import { ViewCvComponent } from './view-cv/view-cv.component';
+import { JobApplyComponent } from './job-apply/job-apply.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AccountComponent,
     children: [
+      // {
+      //   path: '',
+      //   redirectTo: '',
+      //   pathMatch: 'full',
+      // },
       {
         path: '',
-        redirectTo: 'thong-tin',
-        pathMatch: 'full',
+        component: InfoComponent,
       },
       {
-        path: 'thong-tin',
-        component: InfoComponent,
+        path: 'viec-lam-da-ung-tuyen',
+        component: JobApplyComponent,
       },
       {
         path: 'cv',
@@ -39,7 +44,8 @@ const routes: Routes = [
     AccountComponent,
     InfoComponent,
     ListCvComponent,
-    ViewCvComponent
+    ViewCvComponent,
+    JobApplyComponent
   ],
   imports: [
     CommonModule,

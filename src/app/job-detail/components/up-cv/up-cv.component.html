@@ -2,9 +2,7 @@
     <div>
         <div nz-row style="display: flex; justify-content: space-between;border-bottom: 1px solid lightgray">
             <h2 style="font-weight: bold; font-size: 16px;">
-                Bạn đang ứng tuyển <span style="color: #009900;">Securities MTS (Mobile Trading Securities) Screen Mid
-                    Developer</span> tại DaouKiwoom
-                Innovation</h2>
+                Bạn đang ứng tuyển <span style="color: #009900;">{{data.name}}</span> tại {{data.address}}</h2>
         </div>
         <div nz-row class="line-input">
             <div style="width:25%;"><b class="label">Họ và tên</b></div>
@@ -26,19 +24,21 @@
                 <i nz-icon nzType="download" nzTheme="outline"></i>
                 <span>Chọn tệp</span>
             </button>
-            <span style="color: #8f8e8e;font-size: 12px; margin-left: 8px;">Hỗ trợ định dạng *.doc, *.docx, *.pdf, và < 2MB</span>
+            <span style="color: #8f8e8e;font-size: 12px; margin-left: 8px;">Hỗ trợ định dạng *.doc, *.docx, *.pdf, và <
+                    1MB</span>
 
         </div>
         <div nz-row class="line-input">
             <div style="width:25%;"><b class="label"></b></div>
             <div style="width: 75%; padding: 6px; background-color: #f5f5f5; border-radius: 5px;">
                 <nz-radio-group [(ngModel)]="file_cv">
-                    <label nz-radio nzValue="A">Lý quang nghĩa </label>
+                    <label *ngFor="let item of user.cvs" nz-radio [nzValue]="item">{{item.name}}</label>
                 </nz-radio-group>
             </div>
         </div>
     </div>
-    <div class="submit" nz-row style="width: 100%; display: flex; align-items: center; margin-top: 16px; justify-content: flex-end;">
+    <div class="submit" nz-row
+        style="width: 100%; display: flex; align-items: center; margin-top: 16px; justify-content: flex-end;">
         <span style="margin-right: 16px; cursor: pointer;" [mat-dialog-close]="false" nz-button>Huỷ</span>
         <button (click)="submit()" class="btn my-2 my-sm-0 send">
             Nộp CV

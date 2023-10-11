@@ -8,10 +8,6 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
-    path: "**",
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-  },
-  {
     path: 'tim-viec-lam',
     loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule),
   },
@@ -48,7 +44,7 @@ const routes: Routes = [
     loadChildren: () => import('./template/template.module').then(m => m.TemplateModule)
   },
   {
-    path: 'tai-khoan',
+    path: 'thong-tin',
     loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
     canActivate: [AuthGuard]
   },
@@ -59,7 +55,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  }
+  },
+  {
+    path: "**",
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+  },
 ];
 
 @NgModule({

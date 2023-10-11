@@ -59,14 +59,25 @@
                                 <strong>{{item.name}}</strong>
                             </div>
                             <div style="display: flex;">
-                                <button nz-button (click)="viewCV(item)"
+                                <button nz-button *ngIf="item.default"
                                     style="display: flex;align-items: center;height: 40px;border-radius: 5px; margin: 4px;background-color: beige;">
-                                    <i nz-icon nzType="eye" nzTheme="outline"></i>
+                                    <span style="color: #009900;" nz-icon nzType="star" nzTheme="outline"></span>
+                                    <span>CV chính</span>
+                                </button>
+                                <button *ngIf="!item.default" nz-button (click)="setDefault(item)"
+                                    style="display: flex;align-items: center;height: 40px;border-radius: 5px; margin: 4px;background-color: beige;">
+                                    <span nz-icon nzType="star" nzTheme="outline"></span>
+                                    <span>Đặt làm CV chính</span>
+                                </button>
+                                <button nz-button (click)="viewCV(item)"
+                                    style="display: flex;align-items: center;height: 40px;border-radius: 5px; margin: 4px;background-color: beige; color: #009900;">
+                                    <!-- <i nz-icon nzType="eye" nzTheme="outline"></i> -->
                                     <span>Xem</span>
                                 </button>
-                                <button nz-button nzType="default" (click)="deleteCV(i)"
+                                <button nz-popconfirm nzPopconfirmTitle="Xoá CV này?" nzPopconfirmPlacement="bottom"
+                                    (nzOnConfirm)="deleteCV(i)" nz-button nzType="default"
                                     style="display: flex;align-items: center;height: 40px;border-radius: 5px;margin: 4px; color: red;">
-                                    <i nz-icon nzType="close" nzTheme="outline"></i>
+                                    <!-- <i nz-icon nzType="close" nzTheme="outline"></i> -->
                                     <span>Xoá</span>
                                 </button>
                             </div>

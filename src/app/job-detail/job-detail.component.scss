@@ -4,11 +4,12 @@
     height: auto;
     margin: auto;
     padding-bottom: 32px;
-    
+
     .info {
         box-shadow: 0 2px 4px 0 rgba(168, 178, 186, .35);
         padding: 16px;
         background-color: white;
+
         .info-text {
             display: flex;
             flex-direction: column;
@@ -40,6 +41,7 @@
 
     .description {
         margin-top: 20px;
+
         h3 {
             color: #212f3f;
             font-size: 16px;
@@ -49,6 +51,18 @@
             line-height: 24px;
             //margin: 0;
         }
+    }
+
+    .title {
+        border-left: 6px solid #00b14f;
+        color: #212f3f;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: -.2px;
+        line-height: 28px;
+        margin: 0;
+        padding-left: 10px;
     }
 }
 

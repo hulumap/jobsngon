@@ -66,7 +66,8 @@ export class ListCvComponent implements OnInit {
       .then((user) => {
         if (user) {
           this.user = user
-          console.log(this.user.cvs)
+          this.user.cvs.sort((a, b) => (b.default ? 1 : -1) - (a.default ? 1 : -1));
+         // console.log(this.user.cvs)
         }
 
         else this.router.navigate([''])
@@ -82,6 +83,7 @@ export class ListCvComponent implements OnInit {
     const file = event.target.files.item(0);
     console.log(event.target.files.item(0))
     data_cv.name = file.name
+    data_cv.default = false
     let size = file.size
     if (size <= 500000) {
       this.loadingDown = true;
@@ -134,6 +136,20 @@ export class ListCvComponent implements OnInit {
   deleteCV(index) {
     this.user.cvs.splice(index, 1);
     this.update()
+  }
+
+  setDefault(item) {
+    // Đặt tất cả các đối tượng trong mảng có thuộc tính "default" thành false
+    this.user.cvs.forEach(obj => obj.default = false);
+
+    // Tìm đối tượng trong mảng có thuộc tính "name" và "ink" giống với đối tượng đầu vào,
+    // và đặt thuộc tính "default" của đối tượng này thành true
+    const matchingObject = this.user.cvs.find(obj => obj.name === item.name && obj.link === item.link);
+    if (matchingObject) {
+      matchingObject.default = true;
+    }
+    this.update()
+    
   }
 
   changeCv() {

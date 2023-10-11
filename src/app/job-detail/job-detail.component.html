@@ -14,26 +14,23 @@
                     <div style="display: flex;
                     align-items: center; width: 33%;
                     ">
-                        <img src="https://vieclam24h.vn/img/job-detail-v3/icon-coin.png" alt=""
-                            style="width: 38px; margin-right: 8px;">
+                        <img src="/assets/icon/number.svg" alt="" style="width: 18px; margin-right: 8px;">
                         <span style="font-size: 16px; color: gray; margin-right: 8px;">Số lượng:</span> <span
-                            style="font-size: 16px; font-weight: 800;">1</span>
+                            style="font-size: 16px; font-weight: 800;">{{job.number ? job.number : 1}}</span>
                     </div>
                     <div style="display: flex;
                     align-items: center; width: 33%;
                     ">
-                        <img src="https://vieclam24h.vn/img/job-detail-v3/icon-coin.png" alt=""
-                            style="width: 38px; margin-right: 8px;">
+                        <img src="/assets/icon/salary.svg" alt="" style="width: 18px; margin-right: 8px;">
                         <span style="font-size: 16px; color: gray; margin-right: 8px;">Mức lương:</span> <span
                             style="font-size: 16px; font-weight: 800; color: #009900;"> {{job.salary}}</span>
                     </div>
                     <div style="display: flex;
                     align-items: center; width: 33%;
                     ">
-                        <img src="https://vieclam24h.vn/img/job-detail-v3/icon-coin.png" alt=""
-                            style="width: 38px; margin-right: 8px;">
-                        <span style="font-size: 16px; color: gray; margin-right: 8px;">Địa điểm:</span> <span
-                            style="font-size: 16px; font-weight: 800;">TPHCM</span>
+                        <img src="/assets/icon/level.svg" alt="" style="width: 18px; margin-right: 8px;">
+                        <span style="font-size: 16px; color: gray; margin-right: 8px;">Cấp bậc:</span> <span
+                            style="font-size: 16px; font-weight: 800;">{{job.level}}</span>
                     </div>
 
                 </div>
@@ -41,26 +38,23 @@
                     <div style="display: flex;
                     align-items: center; width: 33%;
                     ">
-                        <img src="https://vieclam24h.vn/img/job-detail-v3/icon-coin.png" alt=""
-                            style="width: 38px; margin-right: 8px;">
+                        <img src="/assets/icon/career.svg" alt="" style="width: 18px; margin-right: 8px;">
                         <span style="font-size: 16px; color: gray; margin-right: 8px;">Ngành nghề:</span> <span
-                            style="font-size: 16px; font-weight: 800;">Kinh doanh</span>
+                            style="font-size: 16px; font-weight: 800;">{{job.career}}</span>
                     </div>
                     <div style="display: flex;
                     align-items: center; width: 33%;
                     ">
-                        <img src="https://vieclam24h.vn/img/job-detail-v3/icon-coin.png" alt=""
-                            style="width: 38px; margin-right: 8px;">
+                        <img src="/assets/icon/exp.svg" alt="" style="width: 18px; margin-right: 8px;">
                         <span style="font-size: 16px; color: gray; margin-right: 8px;">Kinh nghiệm:</span> <span
-                            style="font-size: 16px; font-weight: 800; color: #009900;">2 năm</span>
+                            style="font-size: 16px; font-weight: 800; color: #009900;">{{job.exp}}</span>
                     </div>
                     <div style="display: flex;
                     align-items: center; width: 33%;
                     ">
-                        <img src="https://vieclam24h.vn/img/job-detail-v3/icon-coin.png" alt=""
-                            style="width: 38px; margin-right: 8px;">
+                        <img src="/assets/icon/sex.svg" alt="" style="width: 18px; margin-right: 8px;">
                         <span style="font-size: 16px; color: gray; margin-right: 8px;">Giới tính:</span> <span
-                            style="font-size: 16px; font-weight: 800;">Nam</span>
+                            style="font-size: 16px; font-weight: 800;">{{job.sex}}</span>
                     </div>
 
                 </div>
@@ -74,15 +68,7 @@
             <div class="col-12 col-sm-8 col-md-8 col-lg-8" style="padding: 0; background-color: white;">
                 <div style="box-shadow: 0 2px 4px 0 rgba(168, 178, 186, .35); padding: 32px;">
                     <div style="display: flex; align-items: center;">
-                        <h2 style="border-left: 6px solid #00b14f;
-                        color: #212f3f;
-                        font-size: 20px;
-                        font-style: normal;
-                        font-weight: 700;
-                        letter-spacing: -.2px;
-                        line-height: 28px;
-                        margin: 0;
-                        padding-left: 10px;">Chi tiết tuyển dụng</h2>
+                        <h2 class="title">Chi tiết tuyển dụng</h2>
                     </div>
                     <div class="description">
                         <h3>Mô tả công việc</h3>
@@ -107,8 +93,7 @@
                         <div style="display: flex;
                         align-items: center;
                         ">
-                            <img src="https://vieclam24h.vn/img/job-detail-v3/icon-coin.png" alt=""
-                                style="width: 38px; margin-right: 8px;">
+                            <img src="/assets/icon/number.svg" alt="" style="width: 18px; margin-right: 8px;">
                             <span style="font-size: 16px; color: gray; margin-right: 8px;"> {{job.address}}</span>
                         </div>
                     </div>
@@ -116,15 +101,7 @@
             </div>
             <div class="col-12 col-sm-4 col-md-4 col-lg-4" style="padding-top: 24px;">
                 <div>
-                    <h2 style="border-left: 6px solid #00b14f;
-                        color: #212f3f;
-                        font-size: 20px;
-                        font-style: normal;
-                        font-weight: 700;
-                        letter-spacing: -.2px;
-                        line-height: 28px;
-                        margin: 0;
-                        padding-left: 10px;">Việc làm cùng công ty</h2>
+                    <h2 class="title">Việc làm cùng công ty</h2>
                     <div>
                         <app-similar-job [job_company]="job.company"></app-similar-job>
                     </div>

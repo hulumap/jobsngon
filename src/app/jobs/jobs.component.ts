@@ -10,10 +10,10 @@ import career from '../../assets/jobs/career.json'
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
-  exp: any = [{ id: 0, name: "Chưa có kinh nghiệm" }, { id: 1, name: "Dưới 1 năm" }, { id: 2, name: "1 năm" }, { id: 3, name: "2 năm" }, { id: 4, name: "3 năm" }, { id: 4, name: "4 năm" }, { id: 5, name: "5 năm" }, { id: 6, name: "trên 5 năm" }]
-  sex: any = [{ id: 1, name: "Nam" }, { id: 2, name: "Nữ" }, { id: 3, name: "Khác" }]
+  exp: any = [{ link: 'chua-co-kinh-nghiem', name: "Chưa có kinh nghiệm" }, { link: 'duoi-1-nam', name: "Dưới 1 năm" }, { link: '1-nam', name: "1 năm" }, { link: '2-nam', name: "2 năm" }, { link: '3-nam', name: "3 năm" }, { link: '4-nam', name: "4 năm" }, { link: '5-nam', name: "5 năm" }, { link: 'tren-5-nam', name: "trên 5 năm" }]
+  sex: any = [{ link: "nam", name: "Nam" }, { link: "nu", name: "Nữ" }, { link: "khong-yeu-cau", name: "Không yêu cầu" }]
   lang: any = lang
-  level: any = [{ id: 0, name: "Nhân viên" }, { id: 1, name: "Truỏng nhóm" }, { id: 2, name: "Trưởng/ Phó phòng" }, { id: 3, name: "Quản lý/ Giám sát" }, { id: 4, name: "Phó giám đốc" }, { id: 5, name: "Giám đốc" }, { id: 6, name: "Thực tập sinh" }]
+  level: any = [{ link: 'nhan-vien', name: "Nhân viên" }, { link: 'truong-nhom', name: "Trưởng nhóm" }, { link: 'truong-pho-phong', name: "Trưởng/ Phó phòng" }, { link: 'quan-ly-giam-sat', name: "Quản lý/ Giám sát" }, { link: 'pho-giam-doc', name: "Phó giám đốc" }, { link: 'giam-doc', name: "Giám đốc" }, { link: 'thuc-tap-sinh', name: "Thực tập sinh" }]
   address: any = address
   career: any = career
   jobs: any = []

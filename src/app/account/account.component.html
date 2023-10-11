@@ -4,13 +4,17 @@
             <div class="fr-info">
                 <h3>Tài khoản</h3>
                 <div>
-                    <span class="line" routerLink="/tai-khoan/thong-tin"
-                        [ngStyle]="{'background-color': getLastPath() == '/tai-khoan/thong-tin' ? '#cff7cf': ''}">
+                    <span class="line" routerLink="/thong-tin"
+                        [ngStyle]="{'background-color': getLastPath() == '/thong-tin' ? '#cff7cf': ''}">
                         <span nz-icon nzType="user" nzTheme="outline" style="margin-right: 12px;"></span> <span>Tài
                             khoản của bạn</span>
                     </span>
-                    <span class="line" routerLink="/tai-khoan/cv"
-                        [ngStyle]="{'background-color': getLastPath() == '/tai-khoan/cv' ? '#cff7cf': ''}">
+                    <span class="line" routerLink="/thong-tin/viec-lam-da-ung-tuyen"
+                    [ngStyle]="{'background-color': getLastPath() == '/thong-tin/viec-lam-da-ung-tuyen' ? '#cff7cf': ''}">
+                    <span nz-icon nzType="container" nzTheme="outline" style="margin-right: 12px;"></span> <span>Việc làm đã ứng tuyển</span>
+                </span>
+                    <span class="line" routerLink="/thong-tin/cv"
+                        [ngStyle]="{'background-color': getLastPath() == '/thong-tin/cv' ? '#cff7cf': ''}">
                         <span nz-icon nzType="read" nzTheme="outline" style="margin-right: 12px;"></span> <span>Cv của
                             bạn</span>
                     </span>

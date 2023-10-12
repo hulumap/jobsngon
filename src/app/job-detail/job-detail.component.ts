@@ -25,6 +25,7 @@ export class JobDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (screen.width < 600) this.isMobile = true
     this.getDetailJob()
   }
 
@@ -34,8 +35,7 @@ export class JobDetailComponent implements OnInit {
       .then((user) => {
         if (user) {
           this.user = user
-          this.apply = this.user.jobs.filter(item => item.link == this.job.link)[0]
-          console.log(this.apply)
+          if (this.user.jobs) this.apply = this.user.jobs.filter(item => item.link == this.job.link)[0]
         }
       }, err => {
         console.log(err)
@@ -62,13 +62,16 @@ export class JobDetailComponent implements OnInit {
     });
   }
 
+  isMobile = false;
 
   openUpcv() {
-    let submit:any = this.user ? SubmitCvUserComponent : SubmitCvComponent
+    let submit: any = this.user ? SubmitCvUserComponent : SubmitCvComponent
+    let width: any = this.isMobile ? '95%' : '40%'
+    //let height: any = this.isMobile ? '90%' : ' '
     const dialogRef = this.dialog.open(submit, {
-      width: '40%',
+      width: width,
       maxWidth: '100%',
-      // height: '60%',
+      //  height: height,
       data: this.job,
       //disableClose: true,
     });

@@ -9,6 +9,7 @@ import { Jobsngon } from '../service/jobsngon.service';
   styleUrls: ['./detail-company.component.scss']
 })
 export class DetailCompanyComponent implements OnInit {
+  isMobile: boolean = false
   showJobs: any = []
   company: any = {}
   hide: boolean = false
@@ -24,6 +25,7 @@ export class DetailCompanyComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDetailCompany()
+    if (screen.width < 600) this.isMobile = true
   }
 
   getDetailCompany() {
@@ -31,7 +33,7 @@ export class DetailCompanyComponent implements OnInit {
       this.jobsngon.getJSON_Company()
         .then((company) => {
           this.company = company.filter((item) => item.link == routeParam.link)[0]
-          this.totalPages = Math.ceil((this.company.jobs ? this.company.jobs.length: 0) / this.pageSize);
+          this.totalPages = Math.ceil((this.company.jobs ? this.company.jobs.length : 0) / this.pageSize);
           this.showJobs = this.jobsngon.paginateArray(this.company.jobs ? this.company.jobs : [], this.currentPage, this.pageSize)
           this.hide = true
         })
@@ -63,7 +65,7 @@ export class DetailCompanyComponent implements OnInit {
   visible = false;
   job: any = {}
   openJob(item, event): void {
-    let data = {...item}
+    let data = { ...item }
     data.company = this.company
     event.stopPropagation()
     this.visible = true;

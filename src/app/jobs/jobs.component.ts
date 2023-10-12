@@ -28,7 +28,7 @@ export class JobsComponent implements OnInit {
   }
   showJobs: any = []
   currentPage = 1;
-  pageSize = 5;
+  pageSize = 20;
   totalPages: any = 0
   loading: boolean = false
   constructor(private jobsngon: Jobsngon, private router: Router, private route: ActivatedRoute) {
@@ -36,7 +36,7 @@ export class JobsComponent implements OnInit {
       if (params) {
         if (params.key) this.filter.name = params.key
         if (params.page) this.currentPage = parseInt(params.page)
-        if (params.lang) this.filter.code_lang = this.lang.find(item => item.link == params.lang).id
+        if (params.lang) this.filter.code_lang = this.lang.find(item => item.link == params.lang).link
         if (params.address) this.filter.code_address = this.address.find(item => item.link == params.address).link
         if (params.career) this.filter.code_career = this.career.find(item => item.link == params.career).link
       }

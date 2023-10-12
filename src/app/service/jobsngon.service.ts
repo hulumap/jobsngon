@@ -242,9 +242,23 @@ export class Jobsngon {
   }
 
   paginateArray<T>(array: T[], page: number, pageSize: number): T[] {
+    let sortArr = this.shuffleArray(array);
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
-    return array.slice(startIndex, endIndex);
+    return sortArr.slice(startIndex, endIndex)
+
+  }
+
+  shuffleArray(array: any[]): any[] {
+    const shuffledArray = [...array]; // Tạo một bản sao của mảng ban đầu
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      // Hoán đổi vị trí của hai phần tử
+      const temp = shuffledArray[i];
+      shuffledArray[i] = shuffledArray[j];
+      shuffledArray[j] = temp;
+    }
+    return shuffledArray;
   }
 
 

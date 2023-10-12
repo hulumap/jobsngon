@@ -31,7 +31,7 @@ export class OutstandingJobComponent implements OnInit {
       }, err => {
         this.loading = true
         console.log(err)
-      } )
+      })
   }
 
   previousPage() {

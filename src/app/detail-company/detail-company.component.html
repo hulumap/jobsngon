@@ -62,12 +62,44 @@
                     <h2>Tuyển dụng</h2>
                     <div class="fr-list" *ngIf="showJobs.length != 0">
                         <div class="fr-jobs">
-                            <div class="row" style="padding: 8px;">
+                            <div class="row" style="padding: 8px;" *ngIf="isMobile">
+                                <div class="col-12" *ngFor="let item of showJobs" style="padding: 0;"
+                                    (click)="gotoJobDetail(item)">
+                                    <div class="fr-main">
+                                        <div class="fr-name">
+                                            <span style="font-size: 16px;font-weight: 700;">
+                                                {{item.name}}
+                                            </span>
+                                        </div>
+                                        <div class="fr-info">
+                                            <div style="width: 20%; display: flex; align-items: center;">
+                                                <img [src]="company.logo" alt="" style="width: 64px;">
+                                            </div>
+                                            <div style="font-size: 13px;">
+                                                <div class="company-name">
+                                                    {{company.name}}
+                                                </div>
+                                                <div class="info-jobs">
+                                                    <span class="icon" nz-icon nzType="wallet" nzTheme="outline"></span>
+                                                    <span style="font-weight: 700;">{{item.salary}}</span>
+                                                </div>
+                                                <div class="info-jobs">
+                                                    <span class="icon" nz-icon nzType="global" nzTheme="outline"></span>
+                                                    <span style="font-weight: 700;">{{ item.address.length > 40 ?
+                                                        (item.address.substring(0, 40) + '...') : item.address }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- desktop -->
+                            <div class="row" style="padding: 8px;" *ngIf="!isMobile">
                                 <div class="col-12" *ngFor="let item of showJobs" style="padding: 0;"
                                     (click)="gotoJobDetail(item)">
                                     <div class="fr-main">
                                         <div class="fr-info">
-                                            <div style="width: 15%;">
+                                            <div style="width: 15%; display: flex; align-items: center;">
                                                 <img [src]="company.logo" alt="" style="width: 75%;">
                                             </div>
                                             <div
@@ -93,7 +125,7 @@
                                                             (item.address.substring(0,
                                                             100) + '...') : item.address }}</span>
                                                     </div>
-                                                    <span (click)="openJob(item,$event)">
+                                                    <span class="hide-mobile" (click)="openJob(item,$event)">
                                                         <button class="btn my-2 my-sm-0 view-job">Xem nhanh</button>
                                                     </span>
                                                 </div>
@@ -101,8 +133,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                         <div class="panigation">

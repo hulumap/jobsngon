@@ -48,7 +48,7 @@
             object-fit: contain;
             width: 140px;
             height: 140px;
-           // border: 1px solid lightgray;
+            // border: 1px solid lightgray;
             border-radius: 5px;
             margin: auto;
         }
@@ -141,6 +141,10 @@
                         color: #009900;
                         font-size: 14px;
 
+                        // @media (max-width: 768px) {
+                        //     display: none;
+                        // }
+
                         .icon {
                             margin-right: 4px;
                             color: gray;
@@ -210,5 +214,11 @@
                 /* Không cho hover hoặc sự kiện click */
             }
         }
+    }
+}
+
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none;
     }
 }

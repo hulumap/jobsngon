@@ -4,6 +4,11 @@
     height: auto;
     margin: auto;
     padding-bottom: 32px;
+    overflow-x: hidden;
+
+    @media (max-width: 768px) {
+        padding-top: 14px !important;
+    }
 
     .info {
         box-shadow: 0 2px 4px 0 rgba(168, 178, 186, .35);
@@ -37,7 +42,54 @@
         }
     }
 
+    .mobile {
+        box-shadow: 0 2px 4px 0 rgba(168, 178, 186, .35);
+        background-color: white;
+        padding: 24px;
 
+        .info-mobile {
+            display: flex;
+
+            h3 {
+                font-size: 16px;
+            }
+
+            h2 {
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+
+        .detail-info {
+            margin-top: 12px;
+
+            .detail-item {
+                display: flex;
+                align-items: center;
+                margin: 4px;
+
+                .title-code {
+                    color: gray;
+                    margin-right: 8px;
+                }
+
+                span {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+
+
+    .detail-job {
+        margin-top: 32px;
+
+        @media (max-width: 768px) {
+            margin-top: 14px;
+        }
+
+    }
 
     .description {
         margin-top: 20px;
@@ -70,4 +122,25 @@ pre {
     font-family: "Quicksand", sans-serif !important;
     white-space: pre-line;
     font-size: 15px;
+}
+
+.submit-mobile {
+    position: fixed;
+    bottom: -8px;
+    z-index: 99;
+    width: 100%;
+    padding: 8px;
+    background-color: white;
+
+    .send-mobile {
+        font-weight: 600;
+        background: #009900;
+        width: 100%;
+        color: white;
+        padding: 12px 22px 12px 22px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

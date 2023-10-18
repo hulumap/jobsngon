@@ -21,5 +21,7 @@ export class FooterComponent implements OnInit {
   gotoJobsAddress(value) {
     this.router.navigate(['/tim-viec-lam'], { queryParams: { address: value } });
   }
-
+  openNtd() {
+    window.open('https://khachhang.jobsngon.com/', "_blank")
+  }
 }

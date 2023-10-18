@@ -46,11 +46,9 @@ export class TemplateComponent implements OnInit {
       type: 2
     },
   ]
-  cv: any = []
   constructor(private router: Router, private jobsngon: Jobsngon) { }
 
   ngOnInit(): void {
-    this.cv = this.data
   }
 
   gotoTemplate(path) {

@@ -5,7 +5,7 @@
         </div>
         <div nz-row style="width: 100%;">
             <div (click)="gotoTemplate(item.path)" class='col' nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" nzXl="8"
-                *ngFor="let item of cv;">
+                *ngFor="let item of data;">
                 <nz-card nzHoverable [nzCover]="coverTemplate">
                     <nz-card-meta nzTitle="Miễn phí" [nzDescription]="item.name"></nz-card-meta>
                     <div nz-row *ngIf="item.type ==1">

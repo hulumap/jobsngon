@@ -9,11 +9,41 @@
 
     <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="!isLogin">
                 <a class="nav-link" routerLink="/tim-viec-lam">Tìm Việc</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item dropdown" *ngIf="isLogin">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Việc làm
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" routerLink="/tim-viec-lam">TÌm việc</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" routerLink="/thong-tin/viec-lam-da-ung-tuyen">Việc làm đã ứng tuyển</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" routerLink="/thong-tin/viec-lam-da-ung-tuyen">Việc làm đã lưu</a></li>
+                </ul>
+            </li>
+            <li class="nav-item" *ngIf="!isLogin">
                 <a class="nav-link" routerLink="/mau-cv">Tạo CV</a>
+            </li>
+            <li class="nav-item dropdown" *ngIf="isLogin">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                   Hồ sơ
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" routerLink="/thong-tin">Quản lý thông tin</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" routerLink="/thong-tin/cv">Quản lý Cv</a></li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/cong-ty">Công Ty</a>
@@ -36,9 +66,9 @@
                         <hr class="dropdown-divider">
                     </li>
                     <li><a class="dropdown-item" routerLink="/doc-thu">Đọc thư</a></li>
-                    <li>
+                    <!-- <li>
                         <hr class="dropdown-divider">
-                    </li>
+                    </li> -->
                     <!-- <li><a class="dropdown-item" routerLink="/hat-giong-tam-hon">Hạt giống tâm hồn</a></li> -->
                 </ul>
             </li>

@@ -10,7 +10,7 @@ import { Jobsngon } from 'src/app/service/jobsngon.service';
 export class HeaderComponent implements OnInit {
   public isCollapsed = true;
   public isLogin: boolean = false
-  public user: any = {}
+  public user: any
   public title: any = ""
   constructor(private jobsngon: Jobsngon) {
   }
@@ -31,12 +31,10 @@ export class HeaderComponent implements OnInit {
     this.jobsngon.onAuthStateChanged()
       .then((user: any) => {
         if (user) {
-          // console.log(user)
           this.user = user
           this.isLogin = true
         }
       })
-
   }
 
   /** Hiển thị lời chào theo thời gian */

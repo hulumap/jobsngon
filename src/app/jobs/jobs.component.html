@@ -1,6 +1,6 @@
 <div style="width: 100%; background-color: #f6f8fc;;">
     <div class="wraper-search">
-        <div class="fr-two-search">
+        <div class="fr-two-search" *ngIf="!isMobile">
             <div class="fr-search">
                 <div style="width: 35%; padding-right: 4px;">
                     <nz-input-group style="color: #000;
@@ -32,38 +32,91 @@
                 <div style="width: 25%;">
                     <nz-select nzShowSearch nzPlaceHolder="Tất cả ngôn ngữ" [(ngModel)]="filter.code_lang">
                         <nz-option nzLabel="Tất cả ngôn ngữ" nzValue="all"></nz-option>
-                        <nz-option *ngFor="let item of lang" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
+                        <nz-option *ngFor="let item of lang" [nzLabel]="item.name" [nzValue]="item.link"></nz-option>
                     </nz-select>
                 </div>
                 <div style="width: 25%;">
                     <nz-select nzShowSearch nzPlaceHolder="Tất cả cấp bậc" [(ngModel)]="filter.code_level">
                         <nz-option nzLabel="Tất cả cấp bậc" nzValue="all"></nz-option>
-                        <nz-option *ngFor="let item of level" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
+                        <nz-option *ngFor="let item of level" [nzLabel]="item.name" [nzValue]="item.link"></nz-option>
                     </nz-select>
                 </div>
                 <div style="width: 25%;">
                     <nz-select nzShowSearch nzPlaceHolder="Tất cả giới tinh" [(ngModel)]="filter.code_sex">
                         <nz-option nzLabel="Tất cả giới tính" nzValue="all"></nz-option>
-                        <nz-option *ngFor="let item of sex" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
+                        <nz-option *ngFor="let item of sex" [nzLabel]="item.name" [nzValue]="item.link"></nz-option>
                     </nz-select>
                 </div>
                 <div style="width: 25%;">
                     <nz-select nzShowSearch nzPlaceHolder="Tất cả kinh nghiệm" [(ngModel)]="filter.code_exp">
                         <nz-option nzLabel="Tất cả kinh nghiệm" nzValue="all"></nz-option>
-                        <nz-option *ngFor="let item of exp" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
+                        <nz-option *ngFor="let item of exp" [nzLabel]="item.name" [nzValue]="item.link"></nz-option>
                     </nz-select>
                 </div>
             </div>
         </div>
+
+        <div class="fr-two-search-mobile" *ngIf="isMobile">
+            <div>
+                <div style="width: 100%; padding-right: 4px; display: flex; align-items: center;">
+                    <div style="width: 100%;">
+                        <nz-input-group style="color: #000;border-radius: 4px;padding: 12px;"
+                            [nzPrefix]="prefixTemplateUser">
+                            <input (keyup)="checkKey($event)" [(ngModel)]="filter.name" type="text" nz-input
+                                placeholder="Tìm việc làm mà bạn muốn ứng tuyển…" />
+                        </nz-input-group>
+                        <ng-template #prefixTemplateUser><span nz-icon nzType="search"
+                                nzTheme="outline"></span></ng-template>
+                    </div>
+                    <span (click)="showFilter($event)"
+                        style="position: absolute;z-index: 999;right: 32px; font-size: 18px;" nz-icon nzType="filter"
+                        nzTheme="outline"></span>
+                </div>
+                <div style="width: 100%; text-align: center; margin-top: 16px;">
+                    <button (click)="searchMobile()" class="btn-search">Tìm kiếm</button>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <div class="wrapper-container">
+    <div class="wrapper-container" *ngIf="!filter_mobie">
         <h3>Kết quả tìm kiếm</h3>
         <nz-skeleton [nzActive]="true" *ngIf="!loading"></nz-skeleton>
         <div class="fr-list" *ngIf="loading">
             <div class="fr-jobs">
-                <div class="row">
-                    <div class="col-12" style="display: flex; justify-content: center;"
-                        *ngFor="let item of showJobs" (click)="gotoJobDetail(item)">
+                <div class="row" style="padding: 16px;" *ngIf="isMobile">
+                    <div class="col-12" *ngFor="let item of showJobs" (click)="gotoJobDetail(item)">
+                        <div class="fr-main">
+                            <div class="fr-name">
+                                <span style="font-size: 16px;font-weight: 700;">
+                                    {{item.name}}
+                                </span>
+                            </div>
+                            <div class="fr-info">
+                                <div style="width: 20%; display: flex; align-items: center;">
+                                    <img [src]="item.company.logo" alt="" style="width: 64px;">
+                                </div>
+                                <div style="font-size: 13px;">
+                                    <div class="company-name">
+                                        {{item.company.name}}
+                                    </div>
+                                    <div class="info-jobs">
+                                        <span class="icon" nz-icon nzType="wallet" nzTheme="outline"></span>
+                                        <span style="font-weight: 700;">{{item.salary}}</span>
+                                    </div>
+                                    <div class="info-jobs">
+                                        <span class="icon" nz-icon nzType="global" nzTheme="outline"></span>
+                                        <span style="font-weight: 700;">{{ item.address.length > 40 ?
+                                            (item.address.substring(0, 40) + '...') : item.address }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="!isMobile">
+                    <div class="col-12" style="display: flex; justify-content: center;" *ngFor="let item of showJobs"
+                        (click)="gotoJobDetail(item)">
                         <div class="fr-main">
                             <div class="fr-info">
                                 <div style="width: 15%;display: flex; align-items: center;">
@@ -118,3 +171,45 @@
 </div>
 
 <app-view-job *ngIf="visible" [visible]="visible" [job]="job" (hide)="close($event)"></app-view-job>
+
+<div  class="filter-fr-mobile"
+    *ngIf="filter_mobie">
+    <div class="fr-sub-search-mobile">
+        <div class="item-filter">
+            <nz-select nzShowSearch nzPlaceHolder="Tất cả nghề nghiệp" [(ngModel)]="filter.code_career">
+                <nz-option nzLabel="Tất cả nghề nghiệp" nzValue="all"></nz-option>
+                <nz-option *ngFor="let item of career" [nzLabel]="item.name" [nzValue]="item.link"></nz-option>
+            </nz-select>
+        </div>
+        <div class="item-filter">
+            <nz-select nzShowSearch nzPlaceHolder="Tất cả địa điểm" [(ngModel)]="filter.code_address">
+                <nz-option nzLabel="Tất cả địa điểm" nzValue="all"></nz-option>
+                <nz-option *ngFor="let item of address" [nzLabel]="item.name" [nzValue]="item.link"></nz-option>
+            </nz-select>
+        </div>
+        <div class="item-filter">
+            <nz-select nzShowSearch nzPlaceHolder="Tất cả ngôn ngữ" [(ngModel)]="filter.code_lang">
+                <nz-option nzLabel="Tất cả ngôn ngữ" nzValue="all"></nz-option>
+                <nz-option *ngFor="let item of lang" [nzLabel]="item.name" [nzValue]="item.link"></nz-option>
+            </nz-select>
+        </div>
+        <div class="item-filter">
+            <nz-select nzShowSearch nzPlaceHolder="Tất cả cấp bậc" [(ngModel)]="filter.code_level">
+                <nz-option nzLabel="Tất cả cấp bậc" nzValue="all"></nz-option>
+                <nz-option *ngFor="let item of level" [nzLabel]="item.name" [nzValue]="item.link"></nz-option>
+            </nz-select>
+        </div>
+        <div class="item-filter">
+            <nz-select nzShowSearch nzPlaceHolder="Tất cả giới tinh" [(ngModel)]="filter.code_sex">
+                <nz-option nzLabel="Tất cả giới tính" nzValue="all"></nz-option>
+                <nz-option *ngFor="let item of sex" [nzLabel]="item.name" [nzValue]="item.link"></nz-option>
+            </nz-select>
+        </div>
+        <div class="item-filter">
+            <nz-select nzShowSearch nzPlaceHolder="Tất cả kinh nghiệm" [(ngModel)]="filter.code_exp">
+                <nz-option nzLabel="Tất cả kinh nghiệm" nzValue="all"></nz-option>
+                <nz-option *ngFor="let item of exp" [nzLabel]="item.name" [nzValue]="item.link"></nz-option>
+            </nz-select>
+        </div>
+    </div>
+</div>

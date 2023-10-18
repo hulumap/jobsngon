@@ -35,6 +35,7 @@ import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 @NgModule({
   exports: [
     NzIconModule,
@@ -71,7 +72,8 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
     NzTimePickerModule,
     NzTimelineModule,
     NzToolTipModule,
-    NzPopoverModule
+    NzPopoverModule,
+    NzBackTopModule
   ]
 })
 export class NgZorroAntModule { }

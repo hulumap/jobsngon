@@ -26,7 +26,7 @@ export class CompanyComponent implements OnInit {
       .then((data) => {
         this.loading = true
         this.company = data
-        console.log(this.company)
+       // console.log(this.company)
       }, err => {
         this.loading = true
         console.log(err)

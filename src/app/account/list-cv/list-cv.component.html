@@ -53,7 +53,7 @@
             <div style="height: 90vh;">
                 <div style="text-align: center;" *ngIf="!user.cvs">Chưa có cv!</div>
                 <div class="row" *ngIf="user.cvs">
-                    <div class="col-12" *ngFor="let item of user.cvs; let i = index">
+                    <div class="col-12" *ngFor="let item of user.cvs; let i = index" style="padding: 0;">
                         <div class="name">
                             <div style="color: #009900;">
                                 <strong>{{item.name}}</strong>

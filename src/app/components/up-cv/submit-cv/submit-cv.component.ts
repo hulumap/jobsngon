@@ -10,9 +10,18 @@ import { Jobsngon } from 'src/app/service/jobsngon.service';
   styleUrls: ['./submit-cv.component.scss']
 })
 export class SubmitCvComponent implements OnInit {
-  show_file: any = "LY NGHIA.pdf"
-  file_cv: any = ""
-  user: any = {}
+  show_file: any = ""
+  user: any = {
+    name: "",
+    email: "",
+    phone: "",
+    type: 5,
+    salary_expect: "",
+    file_down: "",
+    date_work: new Date(),
+    date_created: new Date(),
+    uid_customer: this.data.uid_customer ? this.data.uid_customer : this.data.id_company
+  }
   constructor(
     private jobsngon: Jobsngon,
     private router: Router,
@@ -25,18 +34,11 @@ export class SubmitCvComponent implements OnInit {
   }
 
   submit() {
-    let cv = {
-      name: this.user.name,
-      email: this.user.email,
-      phone: this.user.phone ? this.user.phone : "",
-      type: 5,
-      date_created: new Date(),
-      file_down: this.file_cv,
-      uid_customer: this.data.uid_customer ? this.data.uid_customer : this.data.id_company
-    }
+    let cv = { ...this.user }
+    cv.date_work = new Date(this.user.date_work)
     if (cv.name == "" || cv.phone == "" || cv.email == "" || cv.file_down == "") this.message.create('warning', 'Vui lòng nhập đầy đủ thông tin');
     else {
-      console.log(cv)
+      //console.log(cv)
       this.jobsngon.addCV(cv)
         .then(() => {
           this.message.create('success', 'Đã apply thành công!');
@@ -63,7 +65,7 @@ export class SubmitCvComponent implements OnInit {
           (downloadURL) => {
             this.message.create('success', 'Tải CV thành công');
             this.loadingDown = false;
-            this.file_cv = downloadURL
+            this.user.file_down = downloadURL
           },
           (error) => {
             this.loadingDown = false;

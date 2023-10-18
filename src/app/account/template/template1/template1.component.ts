@@ -21,15 +21,16 @@ export class Template1Component implements OnInit {
 
   getResume() { // hàm lấy dữ liệu cho CV
     this.hide = true // biến bắt dữ liệu chưa về kịp
-    this.jobsngon.getResumeOnline('ZvMLicojhUN6EXCD0wHWvaBU0P12')
-    .then((data)=> {
+    // this.jobsngon.getResumeOnline('ksbHmGHQf1aUHYFg38CDZmpdpJw1')
+    // .then((data)=> {
+    //   this.resume = data
+    //   console.log(this.resume)
+    //   this.hide = false
+    // })
+    this.jobsngon.getResume('jp').then((data) => {
       this.resume = data
       this.hide = false
-    })
-    // this.jobsngon.getResume('jp').then((data) => {
-    //   this.resume = data
-    //   this.hide = false
-    // }, err => console.log(err))
+    }, err => console.log(err))
   }
 
   setDefault() {

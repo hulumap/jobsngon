@@ -56,7 +56,7 @@ export class TemplateComponent implements OnInit {
   gotoTemplate(path) {
     this.jobsngon.getLocalData('user')
       .then((data) => {
-        if (data) this.router.navigate(['tai-khoan/cv'])
+        if (data) this.router.navigate(['thong-tin/cv'])
         else this.router.navigate(['login'])
       }, err => this.router.navigate(['login']))
   }

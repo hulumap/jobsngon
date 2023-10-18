@@ -1,4 +1,8 @@
 .body {
     height: 100%;
     padding: 16px;
+
+    @media (max-width: 768px) {
+        margin-top: 16px;
+    }
 }

@@ -16,37 +16,37 @@ export class ListCvComponent implements OnInit {
   data: any = [
     {
       name: 'Mẫu tiếng nhật chuẩn',
-      path: 'tai-khoan/thiet-ke/mau-1',
+      path: 'thong-tin/thiet-ke/mau-1',
       img: "assets/cv/mau-1.jpg",
       type: 1
     },
     {
       name: 'Năng động, sáng tạo',
-      path: 'tai-khoan/thiet-ke/mau-2',
+      path: 'thong-tin/thiet-ke/mau-2',
       img: "assets/cv/mau-2.jpg",
       type: 2
     },
     {
       name: 'Chuyên nghiệp',
-      path: 'tai-khoan/thiet-ke/mau-3',
+      path: 'thong-tin/thiet-ke/mau-3',
       img: "assets/cv/mau-3.jpg",
       type: 2
     },
     {
       name: 'Đơn giản',
-      path: 'tai-khoan/thiet-ke/mau-4',
+      path: 'thong-tin/thiet-ke/mau-4',
       img: "assets/cv/mau-4.jpg",
       type: 2
     },
     {
       name: 'Mạnh mẽ',
-      path: 'tai-khoan/thiet-ke/mau-5',
+      path: 'thong-tin/thiet-ke/mau-5',
       img: "assets/cv/mau-5.jpg",
       type: 2
     },
     {
       name: 'Cao cấp',
-      path: 'tai-khoan/thiet-ke/mau-6',
+      path: 'thong-tin/thiet-ke/mau-6',
       img: "assets/cv/mau-6.jpg",
       type: 2
     },
@@ -81,7 +81,7 @@ export class ListCvComponent implements OnInit {
   selectFileDown(event) {
     let data_cv: any = {}
     const file = event.target.files.item(0);
-    console.log(event.target.files.item(0))
+    //console.log(event.target.files.item(0))
     data_cv.name = file.name
     data_cv.default = false
     let size = file.size

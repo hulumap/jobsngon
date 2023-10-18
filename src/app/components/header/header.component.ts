@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Jobsngon } from 'src/app/service/jobsngon.service';
 
 @Component({
@@ -11,7 +12,11 @@ export class HeaderComponent implements OnInit {
   public isLogin: boolean = false
   public user: any = {}
   public title: any = ""
-  constructor(private jobsngon: Jobsngon) { }
+  constructor(private jobsngon: Jobsngon) {
+  }
+
+
+
 
   ngOnInit(): void {
     this.checkLogin()

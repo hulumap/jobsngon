@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Jobsngon } from 'src/app/service/jobsngon.service';
-import data from './../../../assets/data/data.json'
+//import data from './../../../assets/data/data.json'
 @Component({
   selector: 'app-letter-content',
   templateUrl: './letter-content.component.html',
   styleUrls: ['./letter-content.component.scss']
 })
 export class LetterContentComponent implements OnInit {
+  data: any
   carouselOptions = {
     items: 1, // Số lượng mục hiển thị trên mỗi slide
     loop: true, // Vòng lặp carousel
@@ -32,31 +33,39 @@ export class LetterContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectLetter(this.index)
+    this.getDataJson()
+  }
+
+  getDataJson() {
+    this.jobsngon.getJsonLetter()
+      .then((value) => {
+        this.data = value
+        this.selectLetter(this.index)
+      })
   }
 
   selectLetter(index) {
     switch (index) {
-      case 0: return this.getData(data.let0)
-      case 1: return this.getData(data.let1)
-      case 2: return this.getData(data.let2)
-      case 3: return this.getData(data.let3)
-      case 4: return this.getData(data.let4)
-      case 5: return this.getData(data.let5)
-      case 6: return this.getData(data.let6)
-      case 7: return this.getData(data.let7)
-      case 8: return this.getData(data.let8)
-      case 9: return this.getData(data.let9)
-      case 10: return this.getData(data.let10)
-      case 11: return this.getData(data.let11)
-      case 12: return this.getData(data.let12)
-      case 13: return this.getData(data.let13)
-      case 14: return this.getData(data.let14)
-      case 15: return this.getData(data.let15)
-      case 16: return this.getData(data.let16)
-      case 17: return this.getData(data.let17)
-      case 18: return this.getData(data.let18)
-      case 19: return this.getData(data.let19)
+      case 0: return this.getData(this.data.let0)
+      case 1: return this.getData(this.data.let1)
+      case 2: return this.getData(this.data.let2)
+      case 3: return this.getData(this.data.let3)
+      case 4: return this.getData(this.data.let4)
+      case 5: return this.getData(this.data.let5)
+      case 6: return this.getData(this.data.let6)
+      case 7: return this.getData(this.data.let7)
+      case 8: return this.getData(this.data.let8)
+      case 9: return this.getData(this.data.let9)
+      case 10: return this.getData(this.data.let10)
+      case 11: return this.getData(this.data.let11)
+      case 12: return this.getData(this.data.let12)
+      case 13: return this.getData(this.data.let13)
+      case 14: return this.getData(this.data.let14)
+      case 15: return this.getData(this.data.let15)
+      case 16: return this.getData(this.data.let16)
+      case 17: return this.getData(this.data.let17)
+      case 18: return this.getData(this.data.let18)
+      case 19: return this.getData(this.data.let19)
       default: this.getData(this.char)
     }
   }

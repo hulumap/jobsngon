@@ -6,7 +6,14 @@
     .row {
         padding: 16px;
         background-color: #fff;
-       // width: 70vw;
+
+        // width: 70vw;
+        @media (max-width: 768px) {
+            h2 {
+                padding: 16px;
+                font-size: 22px;
+            }
+        }
 
         .col {
             // display: flex;

@@ -17,18 +17,27 @@
             <input [(ngModel)]="user.phone" style="width: 75%;" type="text" nz-input placeholder="Điện thoại" />
         </div>
         <div nz-row class="line-input">
+            <div style="width:25%;"><b class="label">Mức lương mong muốn</b></div>
+            <input [(ngModel)]="user.salary_expect" style="width: 75%;" type="text" nz-input
+                placeholder="Vd: 20 triệu" />
+        </div>
+        <div nz-row class="line-input">
+            <div style="width:25%;"><b class="label">Thời gian nhận việc</b></div>
+            <nz-date-picker style="width: 75%;" [(ngModel)]="user.date_work" nzFormat="dd/MM/yyyy"></nz-date-picker>
+        </div>
+        <div nz-row class="line-input">
             <input id="id_change_cv_up" class="input-enter" placeholder="Chọn CV" nz-input type="file"
-                (change)="selectFileDown($event)" style="display: none;" accept=".pdf, .doc, .docx"/>
+                (change)="selectFileDown($event)" style="display: none;" accept=".pdf, .doc, .docx" />
             <div style="width:25%;"><b class="label">CV của bạn</b></div>
             <button (click)="changeCv()" nz-button nzType="default"
                 style="display: flex;align-items: center;height: 40px;border-radius: 5px">
                 <i *ngIf="loadingDown" nz-icon nzType="loading" nzTheme="outline"></i>
                 <i *ngIf="!loadingDown" nz-icon nzType="download" nzTheme="outline"></i>
                 <span *ngIf="!loadingDown">Chọn tệp</span>
-                
+
             </button>
             <span style="color: #8f8e8e;font-size: 12px; margin-left: 8px;">Hỗ trợ định dạng *.doc, *.docx, *.pdf, và <
-                1MB</span>
+                    1MB</span>
         </div>
         <div nz-row class="line-input">
             <div style="width:25%;"><b class="label"></b></div>

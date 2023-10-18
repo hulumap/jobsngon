@@ -12,6 +12,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Resume } from './resume';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+const link_letter: string = "https://firebasestorage.googleapis.com/v0/b/jobsngon-a8d52.appspot.com/o/data-json%2Ftools%2Fdata.json?alt=media&token=dee60799-73a0-4b92-8bb9-f10c6beec8c0"
+const link_soup: string = ""
 @Injectable({
   providedIn: 'root',
 })
@@ -626,7 +628,7 @@ export class Jobsngon {
         .doc('jobs')
         .get().then((snapshots: any) => {
           let value = snapshots.data();
-          console.log(value)
+          // console.log(value)
           const jobsData = this.http.get(value.link).toPromise(); // Lưu giá trị vào biến
 
           resolve(jobsData) // Trả về giá trị
@@ -644,7 +646,7 @@ export class Jobsngon {
         .doc('company')
         .get().then((snapshots: any) => {
           let value = snapshots.data();
-          console.log(value)
+          // console.log(value)
           const jobsData = this.http.get(value.link).toPromise(); // Lưu giá trị vào biến
 
           resolve(jobsData) // Trả về giá trị
@@ -677,6 +679,41 @@ export class Jobsngon {
   }
 
 
+  getJsonLetter(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.getLocalData('letter')
+        .then((value) => {
+          if (value) resolve(value)
+          else {
+            const jobsData = this.http.get(link_letter).toPromise(); // Lưu giá trị vào biến
+            jobsData.then((data) => {
+              this.setLocalData('letter', data)
+            })
+            resolve(jobsData) // Trả về giá trị
+          }
+        })
+    })
+  }
+
+  getJsonSoup(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      return new Promise((resolve, reject) => {
+        this.getLocalData('soup')
+          .then((value) => {
+            if (value) resolve(value)
+            else {
+              const jobsData = this.http.get(link_soup).toPromise(); // Lưu giá trị vào biến
+              jobsData.then((data) => {
+                this.setLocalData('soup', data)
+              })
+              resolve(jobsData) // Trả về giá trị
+            }
+          })
+      })
+    })
+  }
+
+
   /**
   * Lưu ý : tạo danh sách khách hàng sales
   * @param value
@@ -705,8 +742,8 @@ export class Jobsngon {
       .then(results => {
         const setResult = results[0]; // Kết quả của setLocalCV
         const getResult = results[1]; // Kết quả của getLocalCV
-        console.log('Set Local CV Result:', setResult);
-        console.log('Get Local CV Result:', getResult);
+        //console.log('Set Local CV Result:', setResult);
+        // console.log('Get Local CV Result:', getResult);
       })
       .catch(error => {
         console.error('Error:', error);

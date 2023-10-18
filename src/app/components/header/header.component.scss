@@ -60,3 +60,23 @@ nav {
         }
     }
 }
+
+/*** Navbar ***/
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        border: none;
+        margin-top: 0;
+        top: 180%;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 150%;
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}

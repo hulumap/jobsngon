@@ -18,6 +18,15 @@
             <input [(ngModel)]="user.phone" style="width: 75%;" type="text" nz-input placeholder="Điện thoại" />
         </div>
         <div nz-row class="line-input">
+            <div style="width:25%;"><b class="label">Mức lương mong muốn</b></div>
+            <input [(ngModel)]="user.salary_expect" style="width: 75%;" type="text" nz-input
+                placeholder="Vd: 20 triệu" />
+        </div>
+        <div nz-row class="line-input">
+            <div style="width:25%;"><b class="label">Thời gian nhận việc</b></div>
+            <nz-date-picker style="width: 75%;" [(ngModel)]="user.date_work" nzFormat="dd/MM/yyyy"></nz-date-picker>
+        </div>
+        <div nz-row class="line-input">
             <input id="id_change_cv_up" class="input-enter" placeholder="Chọn CV" nz-input type="file"
                 (change)="selectFileDown($event)" style="display: none;" />
             <div style="width:25%;"><b class="label">CV của bạn</b></div>

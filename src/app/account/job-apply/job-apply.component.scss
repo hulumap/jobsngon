@@ -1,7 +1,9 @@
 .fr-list {
     // background: #fff;
     // border-bottom: solid 1px #e8e8e8;
-
+    @media (max-width: 768px) {
+        margin-top: 16px;
+    }
     .fr-jobs {
         padding-bottom: 32px;
         .fr-main {

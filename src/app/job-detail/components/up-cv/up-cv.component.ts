@@ -59,7 +59,7 @@ export class UpCvComponent implements OnInit {
       this.user.jobs = []
     }
     this.user.jobs.push(job)
-    console.log(cv, this.user.jobs)
+    //console.log(cv, this.user.jobs)
     this.jobsngon.applyCv(cv, this.user.jobs)
       .then(() => {
         this.message.create('success', 'Đã apply thành công!');
@@ -77,7 +77,7 @@ export class UpCvComponent implements OnInit {
   selectFileDown(event) {
     let data_cv: any = {}
     const file = event.target.files.item(0);
-    console.log(event.target.files.item(0))
+    //console.log(event.target.files.item(0))
     data_cv.name = file.name
     data_cv.default = false
     let size = file.size

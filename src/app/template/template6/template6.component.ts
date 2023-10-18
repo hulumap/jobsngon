@@ -143,7 +143,7 @@ export class Template6Component implements OnInit {
   showL = null
   showDragL: boolean = false
   hideDataL(data) {
-    console.log(data)
+    //console.log(data)
     data.status = false
   }
   dropL(event: CdkDragDrop<string[]>) {

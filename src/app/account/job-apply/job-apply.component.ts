@@ -26,7 +26,7 @@ export class JobApplyComponent implements OnInit {
       .then((user) => {
         if (user) {
           this.user = user
-          this.showJobs = this.jobsngon.sort_Date(this.user.jobs, 'asc')
+          if (this.user.jobs) this.showJobs = this.jobsngon.sort_Date(this.user.jobs, 'asc')
         }
         else this.router.navigate([''])
       }, err => this.router.navigate(['']))

@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    background: url('https://freec.asia/_next/static/image/_/_/packages/optimal-page/wrapper/home/assets/img/hero-bg.2380e96d80b27db77a176d33b9d46801.png'), linear-gradient(90deg, #373c41, #009900);
+    background: linear-gradient(90deg, #373c41, #009900);
     background-repeat: no-repeat;
     height: 225px;
 
@@ -64,6 +64,28 @@
         }
     }
 
+    .fr-two-search-mobile {
+        width: 100%;
+        padding: 16px;
+        margin: auto;
+
+        .btn-search {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 0;
+            outline: 0;
+            border: none;
+            box-shadow: 0 4px 28px 0 rgba(187, 187, 187, .11);
+            background-color: #00c056;
+            color: #fff;
+            width: 90%;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+
 }
 
 .wrapper-container {
@@ -76,6 +98,7 @@
     .fr-list {
         // background: #fff;
         // border-bottom: solid 1px #e8e8e8;
+        width: 100%;
 
         .fr-jobs {
             .fr-main {
@@ -83,12 +106,12 @@
                 border: 1px solid lightgray;
                 border-radius: 5px;
                 padding: 8px;
-                margin: 8px;
+                margin-bottom: 8px;
                 width: 80%;
 
                 @media (max-width: 768px) {
                     width: 100%;
-                    height: 125px;
+                    //height: 125px;
                 }
 
                 //box-shadow: 0 4px 15px 0 rgba(168, 178, 186, .35);
@@ -199,6 +222,27 @@
                 /* Làm mờ nút */
                 pointer-events: none;
                 /* Không cho hover hoặc sự kiện click */
+            }
+        }
+    }
+}
+
+.filter-fr-mobile {
+    width: 100%;
+   // height: 100%;
+    background-color: white;
+    // position: absolute;
+    z-index: 9999;
+    top: 64px;
+
+    .fr-sub-search-mobile {
+        padding: 16px;
+
+        .item-filter {
+            margin-bottom: 12px;
+            border-bottom: 1px solid lightgray;
+            nz-select {
+                width: 100%;
             }
         }
     }

@@ -35,10 +35,10 @@ const routes: Routes = [
     path: 'doc-thu',
     loadChildren: () => import('./letters/letters.module').then(m => m.LettersModule)
   },
-  {
-    path: 'hat-giong-tam-hon',
-    loadChildren: () => import('./chicken-soup/chicken-soup.module').then(m => m.ChickenSoupModule)
-  },
+  // {
+  //   path: 'hat-giong-tam-hon',
+  //   loadChildren: () => import('./chicken-soup/chicken-soup.module').then(m => m.ChickenSoupModule)
+  // },
   {
     path: 'mau-cv',
     loadChildren: () => import('./template/template.module').then(m => m.TemplateModule)

@@ -12,18 +12,26 @@ p {
     font-size: 14px !important;
     margin: 0 0 4px !important;
 }
-.ant-spin-dot-item { 
+
+.ant-spin-dot-item {
     background-color: #009900 !important;
 }
+
 .ant-list-item-meta-description {
     // color: lightseagreen !important;
     // font-style: italic;
 }
-.ant-avatar { 
+
+.ant-spin-nested-loading>div>.ant-spin .ant-spin-text {
+    color: #009900 !important;
+}
+
+.ant-avatar {
     height: 75px !important;
     width: 75px !important;
 }
-.ant-list-item-meta-title { 
+
+.ant-list-item-meta-title {
     font-weight: 800 !important;
 }
 
@@ -536,21 +544,30 @@ input {
 
 /* ----------------------------------------- */
 
+/* Ẩn thanh cuộn trước khi cuộn */
 html {
     scrollbar-width: none;
-    /* For Firefox */
     -ms-overflow-style: none;
-    /* For Internet Explorer and Edge */
 }
 
+/* Firefox */
 html::-webkit-scrollbar {
-    width: 0px;
-    /* For Chrome, Safari, and Opera */
+    width: 6px;
 }
 
-body {
-    -webkit-overflow-scrolling: touch;
+/* Chrome, Safari, và Opera */
+html::-webkit-scrollbar {
+    width: 6px;
 }
+
+/* Thanh cuộn chiều dọc */
+html::-webkit-scrollbar-thumb {
+    background: #009900;
+    /* Màu của thanh cuộn */
+    border-radius: 10px;
+    /* Độ cong của đỉnh thanh cuộn */
+}
+
 
 .ant-table-pagination.ant-pagination {
     margin: 0 !important;

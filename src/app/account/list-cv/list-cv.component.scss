@@ -1,5 +1,10 @@
 .row {
     padding: 16px;
+
+    @media (max-width: 768px) {
+        padding: 0;
+    }
+
     background-color: #fff;
     // width: 70vw;
 
@@ -30,6 +35,11 @@
     }
 
     .name {
+        @media (max-width: 768px) {
+            display: block;
+            padding: 12px;
+        }
+
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -38,5 +48,11 @@
         padding: 8px;
         border-radius: 5px;
         margin: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    nz-tabset {
+        margin-top: 16px;
     }
 }

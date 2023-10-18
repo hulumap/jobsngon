@@ -31,6 +31,8 @@ export class JobsComponent implements OnInit {
   pageSize = 20;
   totalPages: any = 0
   loading: boolean = false
+  isMobile: boolean = false
+  filter_mobie: boolean = false
   constructor(private jobsngon: Jobsngon, private router: Router, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       if (params) {
@@ -44,6 +46,7 @@ export class JobsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (screen.width < 600) this.isMobile = true
     this.getJobs()
   }
 
@@ -119,7 +122,7 @@ export class JobsComponent implements OnInit {
     if (this.currentPage > 1) {
       this.currentPage = this.currentPage - 1
       let filter = this.filterJobs(this.removeFieldsWithAllValue(this.filter))
-      console.log(this.filter, filter)
+      // console.log(this.filter, filter)
       let param = {
         page: this.currentPage,
         // address: this.address.find(item => item.link == this.filter.code_address).link
@@ -136,7 +139,7 @@ export class JobsComponent implements OnInit {
     if (this.currentPage < this.totalPages) {
       this.currentPage = this.currentPage + 1;
       let filter = this.filterJobs(this.removeFieldsWithAllValue(this.filter))
-      console.log(this.removeFieldsWithAllValue(this.filter))
+      //console.log(this.removeFieldsWithAllValue(this.filter))
       let param = {
         page: this.currentPage,
         //address: this.address.find(item => item.link == this.filter.code_address).link
@@ -157,7 +160,7 @@ export class JobsComponent implements OnInit {
         this.currentPage = 1
         this.jobs = data
         let jobsFilter = this.filterJobs(this.removeFieldsWithAllValue(this.filter))
-        console.log(this.removeFieldsWithAllValue(this.filter), jobsFilter)
+        //console.log(this.removeFieldsWithAllValue(this.filter), jobsFilter)
         this.router.navigate(['/tim-viec-lam']);
         this.totalPages = Math.ceil(jobsFilter.length / this.pageSize);
         this.showJobs = this.jobsngon.paginateArray(jobsFilter, this.currentPage, this.pageSize)
@@ -184,6 +187,18 @@ export class JobsComponent implements OnInit {
   gotoDetailCompany(company, event) {
     event.stopPropagation()
     this.router.navigate(['/cong-ty', company.link]);
+  }
+
+
+  showFilter(event) {
+    event.stopPropagation()
+    this.filter_mobie = !this.filter_mobie
+    console.log(event, this.filter_mobie)
+  }
+
+  searchMobile() {
+    this.filter_mobie = false
+    this.search()
   }
 
 }

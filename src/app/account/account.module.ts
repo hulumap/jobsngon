@@ -8,6 +8,7 @@ import { NgZorroAntModule } from '../ng-zorro-ant.module';
 import { ListCvComponent } from './list-cv/list-cv.component';
 import { ViewCvComponent } from './view-cv/view-cv.component';
 import { JobApplyComponent } from './job-apply/job-apply.component';
+import { JobSavedComponent } from './job-saved/job-saved.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
         component: JobApplyComponent,
       },
       {
+        path: 'viec-lam-da-luu',
+        component: JobSavedComponent,
+      },
+      {
         path: 'cv',
         component: ListCvComponent,
       },
@@ -45,7 +50,8 @@ const routes: Routes = [
     InfoComponent,
     ListCvComponent,
     ViewCvComponent,
-    JobApplyComponent
+    JobApplyComponent,
+    JobSavedComponent
   ],
   imports: [
     CommonModule,

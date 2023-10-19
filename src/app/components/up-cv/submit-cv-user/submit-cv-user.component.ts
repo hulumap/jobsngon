@@ -21,6 +21,7 @@ export class SubmitCvUserComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+    console.log(this.data)
     this.getInfo()
   }
 
@@ -28,7 +29,7 @@ export class SubmitCvUserComponent implements OnInit {
     this.jobsngon.getLocalData('user')
       .then((user) => {
         if (user) {
-          this.user = {...user}
+          this.user = { ...user }
           this.user.date_work = new Date()
           this.file_cv = this.user.cvs.filter(item => item.default)[0]
           this.user.cvs.sort((a, b) => (b.default ? 1 : -1) - (a.default ? 1 : -1));
@@ -47,7 +48,12 @@ export class SubmitCvUserComponent implements OnInit {
       salary_expect: this.user.salary_expect,
       date_work: new Date(this.user.date_work),
       file_down: this.file_cv.link,
-      uid_customer: this.data.uid_customer ? this.data.uid_customer : this.data.id_company
+      uid_customer: this.data.uid_customer ? this.data.uid_customer : this.data.id_company,
+      code_address: this.data.code_address,
+      code_career: this.data.code_career,
+      code_lang: this.data.code_lang,
+      code_exp: this.data.code_exp,
+      id_job: this.data.id
     }
     let company = {
       name: this.data.company.name,
@@ -62,7 +68,7 @@ export class SubmitCvUserComponent implements OnInit {
       this.user.jobs = []
     }
     this.user.jobs.push(job)
-   // console.log(cv, this.user.jobs)
+    // console.log(cv, this.user.jobs)
     this.jobsngon.applyCv(cv, this.user.jobs)
       .then(() => {
         this.message.create('success', 'Đã apply thành công!');

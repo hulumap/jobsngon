@@ -20,7 +20,12 @@ export class SubmitCvComponent implements OnInit {
     file_down: "",
     date_work: new Date(),
     date_created: new Date(),
-    uid_customer: this.data.uid_customer ? this.data.uid_customer : this.data.id_company
+    uid_customer: this.data.uid_customer ? this.data.uid_customer : this.data.id_company,
+    code_address: this.data.code_address,
+    code_career: this.data.code_career,
+    code_lang: this.data.code_lang,
+    code_exp: this.data.code_exp,
+    id_job: this.data.id
   }
   constructor(
     private jobsngon: Jobsngon,

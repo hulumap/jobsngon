@@ -1,15 +1,15 @@
-<div style="display: flex;align-items: center;justify-content: center;; height: 90vh;" *ngIf="!user.jobs">Chưa ứng tuyển
+<div style="display: flex;align-items: center;justify-content: center;; height: 90vh;" *ngIf="!user.jobs_saved">Chưa lưu
     việc làm nào!</div>
 
-<div class="fr-list" *ngIf="user.jobs">
-    <h2 style="font-weight: bold; font-size: 16px; padding: 16px;">Đã ứng tuyển <b style="color: #009900;">{{showJobs.length}}</b> việc
+<div class="fr-list" *ngIf="user.jobs_saved">
+    <h2 style="font-weight: bold; font-size: 16px; padding: 16px;">Đã lưu <b style="color: #009900;">{{showJobs.length}}</b> việc
         làm</h2>
     <div class="fr-jobs">
         <div class="row">
             <div class="col-12" *ngFor="let item of showJobs" (click)="gotoJobDetail(item)">
                 <div class="fr-main">
                     <div class="fr-info">
-                        <div style="width: 15%;display: flex; align-items: center;">
+                        <div style="width: 15%; display: flex; align-items: center;">
                             <img [src]="item.company.logo" alt="" style="width: 75%;">
                         </div>
                         <div style="width: 85%; display: flex; flex-direction: column; justify-content: center;">
@@ -33,14 +33,6 @@
                                         75) + '...') : item.address }}</span>
                                 </div>
                             </div>
-                            <div style="cursor: pointer;font-style: italic;display: flex;align-items: center;justify-content: space-between; margin: 4px;"
-                                (click)="openCv(item.file_down, $event)">
-                                <span>Ngày ứng tuyển: {{item.date_created.seconds*1000 | date:'dd/MM/yyyy' }}</span>
-                                <span style="display: flex;align-items: center;">
-                                    <span class="icon" nz-icon nzType="eye" nzTheme="outline"></span>
-                                    Xem CV đã ứng tuyển
-                                </span>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,7 +40,7 @@
 
         </div>
     </div>
-    <div class="panigation">
+    <div class="panigation" *ngIf="totalPages !=0 ">
         <button class="btn my-2 my-sm-0 login" (click)="previousPage()" [ngClass]="{'disabled': currentPage <= 1}"
             [disabled]="currentPage <= 1">
             <span nz-icon nzType="left" nzTheme="outline"></span>

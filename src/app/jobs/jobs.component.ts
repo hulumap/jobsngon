@@ -4,12 +4,14 @@ import { Jobsngon } from '../service/jobsngon.service';
 import address from '../../assets/jobs/address.json'
 import lang from '../../assets/jobs/lang.json'
 import career from '../../assets/jobs/career.json'
+import { NzMessageService } from 'ng-zorro-antd/message';
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
+  user: any = ""
   exp: any = [{ link: 'chua-co-kinh-nghiem', name: "Chưa có kinh nghiệm" }, { link: 'duoi-1-nam', name: "Dưới 1 năm" }, { link: '1-nam', name: "1 năm" }, { link: '2-nam', name: "2 năm" }, { link: '3-nam', name: "3 năm" }, { link: '4-nam', name: "4 năm" }, { link: '5-nam', name: "5 năm" }, { link: 'tren-5-nam', name: "trên 5 năm" }]
   sex: any = [{ link: "nam", name: "Nam" }, { link: "nu", name: "Nữ" }, { link: "khong-yeu-cau", name: "Không yêu cầu" }]
   lang: any = lang
@@ -33,7 +35,7 @@ export class JobsComponent implements OnInit {
   loading: boolean = false
   isMobile: boolean = false
   filter_mobie: boolean = false
-  constructor(private jobsngon: Jobsngon, private router: Router, private route: ActivatedRoute) {
+  constructor(private jobsngon: Jobsngon, private router: Router, private route: ActivatedRoute, private message: NzMessageService,) {
     this.route.queryParams.subscribe(params => {
       if (params) {
         if (params.key) this.filter.name = params.key
@@ -47,21 +49,48 @@ export class JobsComponent implements OnInit {
 
   ngOnInit(): void {
     if (screen.width < 600) this.isMobile = true
-    this.getJobs()
+    this.getInfo()
+  }
+
+  getInfo() {
+    this.jobsngon.getLocalData('user')
+      .then((user) => {
+        if (user) this.user = { ...user }
+        this.getJobs()
+      }, err => {
+        console.log(err)
+      })
   }
 
   getJobs() {
     this.jobsngon.getJSON_Jobs()
       .then((data) => {
-        this.jobs = data
+        this.jobs = this.jobsngon.shuffleArray(data)
         let jobsFilter = this.filterJobs(this.removeFieldsWithAllValue(this.filter))
         this.totalPages = Math.ceil(jobsFilter.length / this.pageSize);
-        this.showJobs = this.jobsngon.paginateArray(jobsFilter, this.currentPage, this.pageSize)
+        this.showJobs = this.filterJobsSaved(jobsFilter)
         this.loading = true
       }, err => {
         this.loading = true
         console.log(err)
       })
+  }
+
+  filterJobsSaved(jobsFilter) {
+    // lọc id của jobs đã lưu
+    let showJobs: any[] = []
+    if (this.user) {
+      const savedJobIds = this.user.jobs_saved.map(job => job.id);
+      showJobs = this.jobsngon.paginateArray(jobsFilter, this.currentPage, this.pageSize)
+        .map((item: any) => {
+          item.saved = savedJobIds.includes(item.id);
+          return { ...item };
+        });
+
+    } else {
+      showJobs = this.jobsngon.paginateArray(jobsFilter, this.currentPage, this.pageSize)
+    }
+    return showJobs
   }
 
 
@@ -128,7 +157,7 @@ export class JobsComponent implements OnInit {
         // address: this.address.find(item => item.link == this.filter.code_address).link
       }
       this.router.navigate(['/tim-viec-lam'], { queryParams: param });
-      this.showJobs = this.jobsngon.paginateArray(filter, this.currentPage, this.pageSize)
+      this.showJobs = this.filterJobsSaved(filter)
     }
   }
 
@@ -145,7 +174,7 @@ export class JobsComponent implements OnInit {
         //address: this.address.find(item => item.link == this.filter.code_address).link
       }
       this.router.navigate(['/tim-viec-lam'], { queryParams: param });
-      this.showJobs = this.jobsngon.paginateArray(filter, this.currentPage, this.pageSize)
+      this.showJobs = this.filterJobsSaved(filter)
     }
   }
 
@@ -158,12 +187,12 @@ export class JobsComponent implements OnInit {
     this.jobsngon.getJSON_Jobs()
       .then((data) => {
         this.currentPage = 1
-        this.jobs = data
+        this.jobs = this.jobsngon.shuffleArray(data)
         let jobsFilter = this.filterJobs(this.removeFieldsWithAllValue(this.filter))
         //console.log(this.removeFieldsWithAllValue(this.filter), jobsFilter)
         this.router.navigate(['/tim-viec-lam']);
         this.totalPages = Math.ceil(jobsFilter.length / this.pageSize);
-        this.showJobs = this.jobsngon.paginateArray(jobsFilter, this.currentPage, this.pageSize)
+        this.showJobs = this.filterJobsSaved(jobsFilter)
         this.loading = true
       }, err => {
         this.loading = true
@@ -199,6 +228,25 @@ export class JobsComponent implements OnInit {
   searchMobile() {
     this.filter_mobie = false
     this.search()
+  }
+
+
+  saved(job, event) {
+    event.stopPropagation()
+    if (this.user) {
+      if (!this.user.jobs_saved) {
+        this.user.jobs_saved = []
+      }
+      this.user.jobs_saved.push(job)
+      this.jobsngon.updateInfo({ jobs_saved: this.user.jobs_saved })
+        .then(() => {
+          job.saved = true
+          this.message.create('success', 'Lưu thành công');
+          this.jobsngon.setLocalData("user", this.user)
+        }, err => {
+          this.message.create('error', 'Lưu thất bại, vui lòng đăng nhập lại');
+        })
+    } else this.message.create('warning', 'Vui lòng đăng nhập');
   }
 
 }

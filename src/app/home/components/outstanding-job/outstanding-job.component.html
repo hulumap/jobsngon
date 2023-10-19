@@ -13,19 +13,24 @@
                     <div class="fr-name">
                         <span class="name" nz-tooltip nzTooltipTitle="{{item.name}}">
                             {{ item.name.length > 40 ? (item.name.substring(0,
-                                40) + '...') : item.name }}
+                            40) + '...') : item.name }}
                         </span>
-                        <span class="view-job" (click)="openJob(item,$event)" nz-icon nzType="eye" nzTheme="outline"
-                            style="color: #009900;"></span>
+                        <div style="display: flex;">
+                            <span nz-tooltip nzTooltipTitle="Xem nhanh" class="view-job" (click)="openJob(item,$event)" nz-icon nzType="eye" nzTheme="outline"
+                                style="color: #009900; margin-right: 4px;"></span>
+                            <span nz-tooltip nzTooltipTitle="{{item.saved ? 'Đã lưu':'Chưa lưu'}}" class="view-job" (click)="saved(item,$event)" nz-icon nzType="heart"
+                                nzTheme="outline" [style.color]="item.saved ? 'red' : ''"></span>
+                        </div>
                     </div>
                     <div class="fr-info">
                         <div style="width: 20%;align-items: center; display: flex;">
                             <img [src]="item.company.logo" alt="" style="width: 64px;">
                         </div>
                         <div style="font-size: 13px;" nz-tooltip nzTooltipTitle="{{item.company.name}}">
-                            <div class="company-name" style="cursor: pointer;" (click)="gotoDetailCompany(item.company, $event)">
+                            <div class="company-name" style="cursor: pointer;"
+                                (click)="gotoDetailCompany(item.company, $event)">
                                 {{ item.company.name.length > 40 ? (item.company.name.substring(0,
-                                    40) + '...') : item.company.name }}
+                                40) + '...') : item.company.name }}
                             </div>
                             <div class="info-jobs">
                                 <span class="icon" nz-icon nzType="wallet" nzTheme="outline"></span>

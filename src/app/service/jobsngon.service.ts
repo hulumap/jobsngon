@@ -239,12 +239,13 @@ export class Jobsngon {
   }
 
   deleteFile(downloadUrl) {
-    if (downloadUrl)
+    console.log(downloadUrl)
+    if (downloadUrl != "assets/sample.jpg")
       return this.storage.storage.refFromURL(downloadUrl).delete();
   }
 
   paginateArray<T>(array: T[], page: number, pageSize: number): T[] {
-    let sortArr = this.shuffleArray(array);
+    let sortArr = array;
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     return sortArr.slice(startIndex, endIndex)
@@ -589,6 +590,8 @@ export class Jobsngon {
     navigator.clipboard.writeText(path);
     this.message.create('success', "Đã copy liên kết")
   }
+
+
   upLogo(event) {
     return new Promise((resolve, reject) => {
       this.message.create('loading', 'Đang tải ảnh...');
@@ -599,6 +602,7 @@ export class Jobsngon {
           .uploadFile(file, `/hinh-cv/${this.getUser().uid}`)
           .then(
             (downloadURL: any) => {
+              console.log(downloadURL)
               resolve(downloadURL)
               this.message.create('success', 'Tải ảnh thành công');
             },
@@ -723,7 +727,7 @@ export class Jobsngon {
     data.date = new Date();
     return new Promise((resolve, reject) => {
       this.afs
-        .collection('cvs')
+        .collection('cvss')
         .add(data)
         .then((obj: any) => {
           resolve(obj.id);

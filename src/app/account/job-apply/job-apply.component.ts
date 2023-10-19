@@ -26,7 +26,11 @@ export class JobApplyComponent implements OnInit {
       .then((user) => {
         if (user) {
           this.user = user
-          if (this.user.jobs) this.showJobs = this.jobsngon.sort_Date(this.user.jobs, 'asc')
+          if (this.user.jobs) {
+            this.totalPages = Math.ceil(this.user.jobs.length / this.pageSize);
+            this.showJobs = this.jobsngon.paginateArray(this.user.jobs, this.currentPage, this.pageSize)
+            this.showJobs = this.jobsngon.sort_Date(this.user.jobs, 'asc')
+          }
         }
         else this.router.navigate([''])
       }, err => this.router.navigate(['']))
@@ -36,6 +40,7 @@ export class JobApplyComponent implements OnInit {
     if (this.currentPage > 1) {
       this.currentPage = this.currentPage - 1
       this.showJobs = this.jobsngon.paginateArray(this.user.jobs, this.currentPage, this.pageSize)
+      this.showJobs = this.jobsngon.sort_Date(this.user.jobs, 'asc')
     }
 
   }
@@ -45,6 +50,7 @@ export class JobApplyComponent implements OnInit {
     if (this.currentPage < this.totalPages) {
       this.currentPage = this.currentPage + 1;
       this.showJobs = this.jobsngon.paginateArray(this.user.jobs, this.currentPage, this.pageSize)
+      this.showJobs = this.jobsngon.sort_Date(this.user.jobs, 'asc')
     }
   }
 

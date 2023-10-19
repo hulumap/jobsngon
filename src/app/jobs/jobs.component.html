@@ -143,8 +143,19 @@
                                             <span class=address>{{ item.address.length > 75 ? (item.address.substring(0,
                                                 75) + '...') : item.address }}</span>
                                         </div>
-                                        <span class="view-job" (click)="openJob(item,$event)">
-                                            <button class="btn my-2 my-sm-0 view-job">Xem nhanh</button>
+                                        <span>
+                                            <button *ngIf="!item.saved" style="margin-right: 4px; color: #009900;"
+                                                (click)="saved(item,$event)" class="btn my-2 my-sm-0">
+
+                                                Lưu
+                                            </button>
+                                            <button *ngIf="item.saved"
+                                                style="margin-right: 4px; color: rgb(232, 50, 50);"
+                                                class="btn my-2 my-sm-0">
+                                               <i>Đã Lưu</i>
+                                            </button>
+                                            <button (click)="openJob(item,$event)" class="btn my-2 my-sm-0 view-job">Xem
+                                                nhanh</button>
                                         </span>
                                     </div>
                                 </div>
@@ -172,8 +183,7 @@
 
 <app-view-job *ngIf="visible" [visible]="visible" [job]="job" (hide)="close($event)"></app-view-job>
 
-<div  class="filter-fr-mobile"
-    *ngIf="filter_mobie">
+<div class="filter-fr-mobile" *ngIf="filter_mobie">
     <div class="fr-sub-search-mobile">
         <div class="item-filter">
             <nz-select nzShowSearch nzPlaceHolder="Tất cả nghề nghiệp" [(ngModel)]="filter.code_career">

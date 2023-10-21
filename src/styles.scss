@@ -22,6 +22,10 @@ p {
     // font-style: italic;
 }
 
+.fixed-top {
+    z-index: 100 !important;
+}
+
 .ant-spin-nested-loading>div>.ant-spin .ant-spin-text {
     color: #009900 !important;
 }

@@ -13,7 +13,6 @@ import { Resume } from './resume';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 const link_letter: string = "https://firebasestorage.googleapis.com/v0/b/jobsngon-a8d52.appspot.com/o/data-json%2Ftools%2Fdata.json?alt=media&token=dee60799-73a0-4b92-8bb9-f10c6beec8c0"
-const link_soup: string = ""
 @Injectable({
   providedIn: 'root',
 })
@@ -34,17 +33,16 @@ export class Jobsngon {
 
 
   sort_Date(dataArr, sort = 'asc' || 'desc') {
-    if (sort == 'asc') {
-      let asc = dataArr.sort((a, b) => {
-        return b.date_created.seconds * 1000 - a.date_created.seconds * 1000;
-      });
-      return asc;
-    } else {
-      let desc = dataArr.sort((a, b) => {
-        return a.date_created.seconds * 1000 - b.date_created.seconds * 1000;
-      });
-      return desc;
-    }
+    const sortedData = [...dataArr]; // Tạo một bản sao của mảng
+
+    sortedData.sort((a, b) => {
+      const dateA = a.date_created.seconds * 1000;
+      const dateB = b.date_created.seconds * 1000;
+
+      return sort === 'asc' ? dateA - dateB : dateB - dateA;
+    });
+
+    return sortedData;
   }
 
   // local storage 
@@ -698,25 +696,6 @@ export class Jobsngon {
         })
     })
   }
-
-  getJsonSoup(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      return new Promise((resolve, reject) => {
-        this.getLocalData('soup')
-          .then((value) => {
-            if (value) resolve(value)
-            else {
-              const jobsData = this.http.get(link_soup).toPromise(); // Lưu giá trị vào biến
-              jobsData.then((data) => {
-                this.setLocalData('soup', data)
-              })
-              resolve(jobsData) // Trả về giá trị
-            }
-          })
-      })
-    })
-  }
-
 
   /**
   * Lưu ý : tạo danh sách khách hàng sales

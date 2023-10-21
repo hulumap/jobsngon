@@ -138,7 +138,7 @@ export class LetterTableComponent implements OnInit {
 
   ngOnInit() {
     this.show = this.table.map((item) => {
-      let b = Math.floor(Math.random() * 19) + 1
+      let b = Math.floor(Math.random() * 14) + 1
       let img = 'assets/img/999/left/' + b + '.svg'
       return { ...item, img: img }
     })

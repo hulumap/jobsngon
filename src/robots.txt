@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://jobsngon.com/sitemap.xml

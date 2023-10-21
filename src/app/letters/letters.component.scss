@@ -1,10 +1,16 @@
 .wrapper-container {
     max-width: 1230px;
     padding-top: 32px !important;
+
+    @media (max-width: 768px) {
+        padding-top: 0px !important;
+    }
+
     height: auto;
     margin: auto;
     padding-bottom: 32px;
     height: 90%;
+    overflow-x: hidden;
 
     h4 {
         text-align: center;
@@ -21,7 +27,7 @@
         background-size: 100% 100%;
         box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
         padding: 16px;
-       // border: 1px solid lightgrey;
+        // border: 1px solid lightgrey;
         height: 100%;
         display: flex;
         align-items: center;
@@ -46,7 +52,7 @@
         background-color: #fdfef9;
         box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
         padding: 16px;
-       // border: 1px solid lightgrey;
+        // border: 1px solid lightgrey;
         height: 100%;
         overflow-y: auto;
 
@@ -64,5 +70,18 @@
     .content::-webkit-scrollbar-thumb {
         background-color: #009900;
         outline: 1px solid slategrey;
+    }
+
+
+    .mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 12px;
+        background-color: #f5cac4;
+        border-radius: 5px;
+        .title {
+            font-weight: bold;
+        }
     }
 }

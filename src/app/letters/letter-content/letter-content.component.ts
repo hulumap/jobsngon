@@ -72,7 +72,7 @@ export class LetterContentComponent implements OnInit {
   getData(data): any {
     let love = this.jobsngon.getData('hulu-love')
     this.char = data.map((item) => {
-      let b = Math.floor(Math.random() * 19) + 1
+      let b = Math.floor(Math.random() * 14) + 1
       this.img = 'assets/img/999/left/' + b + '.svg'
       for (let i in love) {
         if (love) {

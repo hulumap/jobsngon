@@ -33,13 +33,16 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
+                            "src/robots.txt",
+                            "src/sitemap.xml",
                             {
                                 "glob": "**/*",
                                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
                                 "output": "/assets/"
                             }
                         ],
-                        "styles": [{
+                        "styles": [
+                            {
                                 "input": "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
                             },
                             {
@@ -53,7 +56,8 @@
                     },
                     "configurations": {
                         "production": {
-                            "budgets": [{
+                            "budgets": [
+                                {
                                     "type": "initial",
                                     "maximumWarning": "500kb",
                                     "maximumError": "10mb"
@@ -64,10 +68,12 @@
                                     "maximumError": "4kb"
                                 }
                             ],
-                            "fileReplacements": [{
-                                "replace": "src/environments/environment.ts",
-                                "with": "src/environments/environment.prod.ts"
-                            }],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,

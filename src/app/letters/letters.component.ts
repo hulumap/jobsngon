@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
 })
 export class LettersComponent implements OnInit {
   title: any = "Đọc thư"
+  isMobile:boolean = false
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if (screen.width < 600) this.isMobile = true
     this.router.navigate(['doc-thu'])
   }
 

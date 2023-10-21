@@ -8,7 +8,7 @@ import { Jobsngon } from 'src/app/service/jobsngon.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public isCollapsed = true;
+  public isMobile: boolean = false
   public isLogin: boolean = false
   public user: any
   public title: any = ""
@@ -21,9 +21,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.checkLogin()
     this.showHelloUser()
+    if (screen.width < 600) this.isMobile = true
   }
   openNtd() {
     window.open('https://khachhang.jobsngon.com/', "_blank")
+  }
+
+
+  hide() {
+    if (this.isMobile) document.getElementById('menuMobile').click()
   }
 
 

@@ -2,14 +2,14 @@
     <a class="navbar-brand" href=".">
         <img src="assets/logo.svg" alt="" style="height: 54px;">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+    <button id="menuMobile" class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbarColor03"
         aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item" *ngIf="!isLogin">
+            <li class="nav-item" *ngIf="!isLogin" (click)="hide()">
                 <a class="nav-link" routerLink="/tim-viec-lam">Tìm Việc</a>
             </li>
             <li class="nav-item dropdown" *ngIf="isLogin">
@@ -17,19 +17,19 @@
                     aria-expanded="false">
                     Việc làm
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" routerLink="/tim-viec-lam">TÌm việc</a></li>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                    <li (click)="hide()"><a class="dropdown-item" routerLink="/tim-viec-lam">TÌm việc</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" routerLink="/thong-tin/viec-lam-da-ung-tuyen">Việc làm đã ứng tuyển</a></li>
+                    <li (click)="hide()"><a class="dropdown-item" routerLink="/thong-tin/viec-lam-da-ung-tuyen">Việc làm đã ứng tuyển</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" routerLink="/thong-tin/viec-lam-da-luu">Việc làm đã lưu</a></li>
+                    <li (click)="hide()"><a class="dropdown-item" routerLink="/thong-tin/viec-lam-da-luu">Việc làm đã lưu</a></li>
                 </ul>
             </li>
-            <li class="nav-item" *ngIf="!isLogin">
+            <li class="nav-item" *ngIf="!isLogin" (click)="hide()">
                 <a class="nav-link" routerLink="/mau-cv">Tạo CV</a>
             </li>
             <li class="nav-item dropdown" *ngIf="isLogin">
@@ -37,16 +37,16 @@
                     aria-expanded="false">
                    Hồ sơ
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" routerLink="/thong-tin">Quản lý thông tin</a></li>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                    <li (click)="hide()"><a class="dropdown-item" routerLink="/thong-tin">Quản lý thông tin</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" routerLink="/thong-tin/cv">Quản lý Cv</a></li>
+                    <li (click)="hide()"><a class="dropdown-item" routerLink="/thong-tin/cv">Quản lý Cv</a></li>
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/cong-ty">Công Ty</a>
+                <a (click)="hide()" class="nav-link" routerLink="/cong-ty">Công Ty</a>
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link" routerLink="/tinh-luong">Tính lương</a>
@@ -56,16 +56,16 @@
                     aria-expanded="false">
                     Công cụ
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" routerLink="/tinh-luong">Tính lương GROSS->NET</a></li>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                    <li (click)="hide()"><a class="dropdown-item" routerLink="/tinh-luong">Tính lương GROSS->NET</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" routerLink="/tinh-thue-TNCN">TÍnh thuế TNCN</a></li>
+                    <li (click)="hide()"><a class="dropdown-item" routerLink="/tinh-thue-TNCN">TÍnh thuế TNCN</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" routerLink="/doc-thu">Đọc thư</a></li>
+                    <li (click)="hide()"><a class="dropdown-item" routerLink="/doc-thu">Đọc thư</a></li>
                     <!-- <li>
                         <hr class="dropdown-divider">
                     </li> -->
@@ -97,7 +97,7 @@
                     </span>
                     <nz-dropdown-menu #menu="nzDropdownMenu">
                         <ul nz-menu nzSelectable>
-                            <li class="info-li" nz-menu-item (click)="isCollapsed = !isCollapsed"
+                            <li class="info-li" nz-menu-item
                                 routerLink="/thong-tin" nz-menu-item>Thông tin</li>
                             <li class="info-li" nz-menu-item (click)="logout()" nz-menu-item>Đăng xuất</li>
                         </ul>

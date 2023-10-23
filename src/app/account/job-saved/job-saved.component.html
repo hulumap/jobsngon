@@ -2,7 +2,8 @@
     việc làm nào!</div>
 
 <div class="fr-list" *ngIf="user.jobs_saved">
-    <h2 style="font-weight: bold; font-size: 16px; padding: 16px;">Đã lưu <b style="color: #009900;">{{showJobs.length}}</b> việc
+    <h2 style="font-weight: bold; font-size: 16px; padding: 16px;">Đã lưu <b
+            style="color: #009900;">{{this.user.jobs_saved.length}}</b> việc
         làm</h2>
     <div class="fr-jobs">
         <div class="row">
@@ -32,6 +33,11 @@
                                     <span class=address>{{ item.address.length > 75 ? (item.address.substring(0,
                                         75) + '...') : item.address }}</span>
                                 </div>
+                            </div>
+                            <div (click)="removed(item, $event)" style="cursor: pointer;font-style: italic;display: flex;align-items: center;justify-content: flex-end; margin: 4px;">
+                                <span style="display: flex;align-items: center; color: red;">
+                                    Xoá
+                                </span>
                             </div>
                         </div>
                     </div>

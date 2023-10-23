@@ -57,4 +57,18 @@ export class JobSavedComponent implements OnInit {
     event.stopPropagation()
     this.router.navigate(['/cong-ty', company.link]);
   }
+
+
+  removed(item, event) {
+    event.stopPropagation()
+    this.user.jobs_saved = this.user.jobs_saved.filter(obj => obj.id !== item.id);
+    this.showJobs = this.user.jobs_saved
+    this.jobsngon.updateInfo({ jobs_saved: this.user.jobs_saved })
+      .then(() => {
+        //this.message.create('success', 'Xoá thành công');
+        this.jobsngon.setLocalData("user", this.user)
+      }, err => {
+       // this.message.create('error', 'Lưu thất bại, vui lòng đăng nhập lại');
+      })
+  }
 }

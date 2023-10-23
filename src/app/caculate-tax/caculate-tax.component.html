@@ -22,24 +22,23 @@
                         </div>
                     </div>
                     <div class="input-info">
-                        <div style="width: 40%;">
+                        <div>
                             <span style="font-weight: 600; font-size: 15px;">Thu nhập (GROSS):</span>
                             <nz-input-group nzSuffix="(VNĐ)">
-                                <input type="text" nz-input class="input-salary"  placeholder="VD: 20.000.000 VND"/>
+                                <input type="text" nz-input class="input-salary-tax"  placeholder="VD: 20.000.000 VND"/>
                             </nz-input-group>
                         </div>
-                        <div style="width: 40%;">
+                        <div>
                             <span style="font-weight: 600; font-size: 15px;">Số người phụ thuộc:</span>
                             <nz-input-group nzSuffix="(người)">
                                 <input type="number" nz-input [(ngModel)]="number_person" />
                             </nz-input-group>
                         </div>
                     </div>
-                    <div style="display: flex;flex-direction: column;margin-top: 32px">
+                    <div class="radio_bhxh">
                         <span style="font-weight: 600; font-size: 15px; margin-bottom: 10px;">Mức lương đóng bảo
                             hiểm:</span>
-                        <nz-radio-group nzName="radiogroup" [(ngModel)]="value_bhxh"
-                            style="display: flex; justify-content: space-between; align-items: center;">
+                        <nz-radio-group nzName="radiogroup" [(ngModel)]="value_bhxh">
                             <label nz-radio nzValue="A">
                                 <span style="font-weight: 600; font-size: 15px;">Trên lương chính thức:</span>
                             </label>
@@ -47,7 +46,7 @@
                                 <div style="display: flex;align-items: center;">
                                     <span style="font-weight: 600; font-size: 15px; margin-right: 8px;">Khác:</span>
                                     <nz-input-group nzSuffix="(VNĐ)">
-                                        <input type="text" nz-input class="input-bhxh" />
+                                        <input type="text" nz-input class="input-bhxh-tax" />
                                     </nz-input-group>
                                 </div>
                             </label>

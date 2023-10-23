@@ -1,6 +1,6 @@
 <nav class="navbar  navbar-expand-lg navbar-light fixed-top">
     <a class="navbar-brand" href=".">
-        <img src="assets/logo.svg" alt="" style="height: 54px;">
+        <img src="assets/logo.png" alt="" style="height: 64px;">
     </a>
     <button id="menuMobile" class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbarColor03"
         aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,8 +75,8 @@
         </ul>
         <div class="form-inline my-2 my-lg-0" *ngIf="!isLogin">
             <div>
-                <button routerLink="/login" class="btn my-2 my-sm-0 login">Đăng Nhập</button>
-                <button routerLink="/login/signup" class="btn my-2 my-sm-0 sign-up">Đăng Ký</button>
+                <button (click)="hide()" routerLink="/login" class="btn my-2 my-sm-0 login">Đăng Nhập</button>
+                <button (click)="hide()" routerLink="/login/signup" class="btn my-2 my-sm-0 sign-up">Đăng Ký</button>
             </div>
 
             <div class="line"></div>

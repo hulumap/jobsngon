@@ -29,24 +29,23 @@
                         </div>
                     </div>
                     <div class="input-info">
-                        <div style="width: 40%;">
-                            <span style="font-weight: 600; font-size: 15px;">Thu nhập:</span>
+                        <div>
+                            <span style="font-weight: 600; font-size: 15px;">Thu nhập (GROSS):</span>
                             <nz-input-group nzSuffix="(VNĐ)">
-                                <input type="text" nz-input class="input-salary" />
+                                <input type="text" nz-input class="input-salary" placeholder="VD: 20.000.000 VND" />
                             </nz-input-group>
                         </div>
-                        <div style="width: 40%;">
+                        <div>
                             <span style="font-weight: 600; font-size: 15px;">Số người phụ thuộc:</span>
                             <nz-input-group nzSuffix="(người)">
                                 <input type="number" nz-input [(ngModel)]="number_person" />
                             </nz-input-group>
                         </div>
                     </div>
-                    <div style="display: flex;flex-direction: column;margin-top: 32px">
+                    <div class="radio_bhxh">
                         <span style="font-weight: 600; font-size: 15px; margin-bottom: 10px;">Mức lương đóng bảo
                             hiểm:</span>
-                        <nz-radio-group nzName="radiogroup" [(ngModel)]="value_bhxh"
-                            style="display: flex; justify-content: space-between; align-items: center;">
+                        <nz-radio-group nzName="radiogroup" [(ngModel)]="value_bhxh">
                             <label nz-radio nzValue="A">
                                 <span style="font-weight: 600; font-size: 15px;">Trên lương chính thức:</span>
                             </label>
@@ -57,24 +56,6 @@
                                         <input type="text" nz-input class="input-bhxh" />
                                     </nz-input-group>
                                 </div>
-                            </label>
-                        </nz-radio-group>
-                    </div>
-                    <div style="display: flex;flex-direction: column;margin-top: 32px">
-                        <span style="font-weight: 600; font-size: 15px; margin-bottom: 10px;">Vùng:</span>
-                        <nz-radio-group nzName="radiogroup" [(ngModel)]="value_area"
-                            style="display: flex; justify-content: space-between; align-items: center;">
-                            <label nz-radio nzValue="1">
-                                <span style="font-weight: 600; font-size: 15px;">I</span>
-                            </label>
-                            <label nz-radio nzValue="2">
-                                <span style="font-weight: 600; font-size: 15px;">II</span>
-                            </label>
-                            <label nz-radio nzValue="3">
-                                <span style="font-weight: 600; font-size: 15px;">III</span>
-                            </label>
-                            <label nz-radio nzValue="4">
-                                <span style="font-weight: 600; font-size: 15px;">IV</span>
                             </label>
                         </nz-radio-group>
                     </div>
@@ -96,7 +77,7 @@
                                 <tr>
                                     <td>{{gross | number: '1.0-0'}}</td>
                                     <td>- {{bhxh + bhyt + bhtn| number: '1.0-0'}}</td>
-                                    <td>- {{tax_total | number: '1.0-0'}}</td>
+                                    <td>- {{(tax_total <= 0 ? 0 : tax_total) | number: '1.0-0' }}</td>
                                     <th style="color: #009900;">{{net | number: '1.0-0'}}</th>
                                 </tr>
                             </table>
@@ -136,8 +117,8 @@
                                         salary_after_tax | number: '1.0-0' }}</span>
                             </div>
                             <div class="detail_title">
-                                <span><strong>Thuế thu nhập cá nhân(*)</strong>:</span> <span>-{{tax_total | number:
-                                    '1.0-0'}}</span>
+                                <span><strong>Thuế thu nhập cá nhân(*)</strong>:</span> <span>-{{(tax_total <= 0 ? 0 :
+                                        tax_total) | number: '1.0-0' }}</span>
                             </div>
                             <div class="detail_title" style="background-color: #ededed;">
                                 <span><strong>Lương NET</strong>:</span> <span><strong>{{net | number:

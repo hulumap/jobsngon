@@ -38,11 +38,11 @@ export class CaculateTaxComponent implements OnInit {
   cleaveSalary: any;
   cleaveBhxh: any
   ngAfterViewInit() {
-    this.cleaveSalary = new Cleave('.input-salary', {
+    this.cleaveSalary = new Cleave('.input-salary-tax', {
       numeral: true,
       numeralThousandsGroupStyle: 'thousand',
     });
-    this.cleaveBhxh = new Cleave('.input-bhxh', {
+    this.cleaveBhxh = new Cleave('.input-bhxh-tax', {
       numeral: true,
       numeralThousandsGroupStyle: 'thousand',
     });

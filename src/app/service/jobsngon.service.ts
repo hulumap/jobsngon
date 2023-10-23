@@ -31,6 +31,15 @@ export class Jobsngon {
     this.switchLanguage('vi');
   }
 
+  gotoJobDetail(job) {
+    // let url = this.router.serializeUrl(this.router.createUrlTree([`/viec-lam/${job.link}`]));
+    // window.open(url, '_blank');
+    this.router.navigate(['viec-lam', job.link], { state: { data: job } });
+  }
+
+  getDateFirebase() {
+    return firebase.firestore.FieldValue.serverTimestamp()
+  }
 
   sort_Date(dataArr, sort = 'asc' || 'desc') {
     const sortedData = [...dataArr]; // Tạo một bản sao của mảng
@@ -703,7 +712,7 @@ export class Jobsngon {
   */
   addCV(value) {
     let data = { ...value };
-    data.date = new Date();
+    data.date = this.getDateFirebase()
     return new Promise((resolve, reject) => {
       this.afs
         .collection('cvss')

@@ -33,7 +33,6 @@ export class TopHiringCompanyComponent implements OnInit {
   getCompany() {
     this.jobsngon.getJSON_Company()
       .then((data) => {
-        console.log(data)
         this.company = data
       }, err => console.log(err))
   }

@@ -144,15 +144,13 @@
                                                 75) + '...') : item.address }}</span>
                                         </div>
                                         <span>
-                                            <button *ngIf="!item.saved" style="margin-right: 4px; color: #009900;"
+                                            <button *ngIf="!item.saved" style="margin-right: 4px; color: #009900; font-size: 14px;"
                                                 (click)="saved(item,$event)" class="btn my-2 my-sm-0">
-
                                                 Lưu
                                             </button>
-                                            <button *ngIf="item.saved"
-                                                style="margin-right: 4px; color: rgb(232, 50, 50);"
+                                            <button *ngIf="item.saved" style="margin-right: 4px; color: rgb(232, 50, 50);font-size: 14px"
                                                 class="btn my-2 my-sm-0">
-                                               <i>Đã Lưu</i>
+                                                <i>Đã Lưu</i>
                                             </button>
                                             <button (click)="openJob(item,$event)" class="btn my-2 my-sm-0 view-job">Xem
                                                 nhanh</button>

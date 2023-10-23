@@ -80,8 +80,7 @@ export class OutstandingJobComponent implements OnInit {
   }
 
   gotoJobDetail(job) {
-    let url = this.router.serializeUrl(this.router.createUrlTree([`/viec-lam/${job.link}`]));
-    window.open(url, '_blank');
+    this.jobsngon.gotoJobDetail(job)
   }
   /// xem draer chi tiết jobs //
   visible = false;

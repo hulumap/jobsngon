@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Jobsngon } from '../service/jobsngon.service';
 import career from '../../assets/jobs/career.json'
 import { SubmitCvUserComponent } from '../components/up-cv/submit-cv-user/submit-cv-user.component';
@@ -18,11 +18,15 @@ export class JobDetailComponent implements OnInit {
   job: any = {}
   hide: boolean = false
   apply: any
+  stateData: any
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    public jobsngon: Jobsngon
-  ) { }
+    public jobsngon: Jobsngon,
+    private router: Router
+  ) {
+    this.stateData = this.router.getCurrentNavigation().extras.state;
+  }
 
   ngOnInit(): void {
     if (screen.width < 600) this.isMobile = true
@@ -43,23 +47,36 @@ export class JobDetailComponent implements OnInit {
   }
 
   getDetailJob() {
-    this.route.params.subscribe((routeParam) => {
-      this.jobsngon.getJSON_Company()
-        .then((company) => {
-          this.jobsngon.getDetailJobs(routeParam.link)
-            .then((data) => {
-              data.company = company.filter(item => item.id == data.id_company)[0]
-              data.level = this.level.filter(item => item.link == data.code_level)[0].name
-              data.sex = this.sex.filter(item => item.link == data.code_sex)[0].name
-              data.exp = this.exp.filter(item => item.link == data.code_exp)[0].name
-              data.career = career.filter(item => item.link == data.code_career)[0].name
-              this.job = data
-              this.jobsngon.setTitle(this.job.name)
-              this.hide = true
-              this.getInfo()
-            })
-        })
-    });
+    if (this.stateData) {
+      //  this.stateData.data.company = company.filter(item => item.id == this.stateData.data.id_company)[0]
+      this.stateData.data.level = this.level.filter(item => item.link == this.stateData.data.code_level)[0].name
+      this.stateData.data.sex = this.sex.filter(item => item.link == this.stateData.data.code_sex)[0].name
+      this.stateData.data.exp = this.exp.filter(item => item.link == this.stateData.data.code_exp)[0].name
+      this.stateData.data.career = career.filter(item => item.link == this.stateData.data.code_career)[0].name
+      this.job = this.stateData.data
+      this.jobsngon.setTitle(this.job.name)
+      this.hide = true
+      this.getInfo()
+    } else {
+      this.route.params.subscribe((routeParam) => {
+        this.jobsngon.getJSON_Company()
+          .then((company) => {
+            this.jobsngon.getDetailJobs(routeParam.link)
+              .then((data) => {
+                data.company = company.filter(item => item.id == data.id_company)[0]
+                data.level = this.level.filter(item => item.link == data.code_level)[0].name
+                data.sex = this.sex.filter(item => item.link == data.code_sex)[0].name
+                data.exp = this.exp.filter(item => item.link == data.code_exp)[0].name
+                data.career = career.filter(item => item.link == data.code_career)[0].name
+                this.job = data
+                this.jobsngon.setTitle(this.job.name)
+                this.hide = true
+                this.getInfo()
+              })
+          })
+      });
+    }
+
   }
 
   isMobile = false;

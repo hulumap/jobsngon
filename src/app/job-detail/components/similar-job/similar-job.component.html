@@ -1,5 +1,6 @@
 <div class="fr-jobs">
-    <div class="row" style="padding: 16px;">
+    <nz-skeleton [nzActive]="true" *ngIf="!loading"></nz-skeleton>
+    <div *ngIf="loading" class="row" style="padding: 16px;">
         <div class="col-12" *ngFor="let item of showJobs" style="padding: 0;" (click)="gotoJobDetail(item)">
             <div class="fr-main">
                 <div class="fr-name">
@@ -8,7 +9,7 @@
                     </span>
                 </div>
                 <div class="fr-info">
-                    <div style="width: 20%;">
+                    <div style="width: 20%; align-items: center; display: flex;">
                         <img [src]="job_company.logo" alt="" style="width: 64px;">
                     </div>
                     <div style="font-size: 13px;">

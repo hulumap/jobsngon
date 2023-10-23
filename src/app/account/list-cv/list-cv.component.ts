@@ -67,7 +67,7 @@ export class ListCvComponent implements OnInit {
         if (user) {
           this.user = user
           this.user.cvs.sort((a, b) => (b.default ? 1 : -1) - (a.default ? 1 : -1));
-         // console.log(this.user.cvs)
+          // console.log(this.user.cvs)
         }
 
         else this.router.navigate([''])
@@ -149,7 +149,7 @@ export class ListCvComponent implements OnInit {
       matchingObject.default = true;
     }
     this.update()
-    
+
   }
 
   changeCv() {
@@ -157,7 +157,7 @@ export class ListCvComponent implements OnInit {
   }
 
   update() {
-    this.jobsngon.updateInfo({ cvs: this.user.cvs })
+    this.jobsngon.updateInfo({ cvs: this.user.cvs, date: this.jobsngon.getDateFirebase() })
       .then(() => {
         //this.message.create('success', 'Cập nhật thành công');
         this.jobsngon.setLocalData("user", this.user)

@@ -58,7 +58,8 @@ export class SubmitCvUserComponent implements OnInit {
     let company = {
       name: this.data.company.name,
       logo: this.data.company.logo,
-      link: this.data.company.link
+      link: this.data.company.link,
+      id: this.data.company.id
     }
     let job: any = { ...this.data }
     job.file_down = this.file_cv.link,

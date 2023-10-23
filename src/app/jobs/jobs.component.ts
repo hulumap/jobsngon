@@ -35,7 +35,7 @@ export class JobsComponent implements OnInit {
   loading: boolean = false
   isMobile: boolean = false
   filter_mobie: boolean = false
-  constructor(private jobsngon: Jobsngon, private router: Router, private route: ActivatedRoute, private message: NzMessageService,) {
+  constructor(private jobsngon: Jobsngon, private router: Router, private route: ActivatedRoute, private message: NzMessageService) {
     this.route.queryParams.subscribe(params => {
       if (params) {
         if (params.key) this.filter.name = params.key
@@ -143,8 +143,7 @@ export class JobsComponent implements OnInit {
   }
 
   gotoJobDetail(job) {
-    let url = this.router.serializeUrl(this.router.createUrlTree([`/viec-lam/${job.link}`]));
-    window.open(url, '_blank');
+    this.jobsngon.gotoJobDetail(job)
   }
 
   previousPage() {
